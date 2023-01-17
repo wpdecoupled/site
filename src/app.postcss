@@ -1,0 +1,31 @@
+/*
+ Write your global styles here, in PostCSS syntax */
+
+@layer reset, design, theme;
+
+/*
+ open-props normalize isn't required, but makes for a nice base.
+ add this to see default styles for <details> and other HTM5 elements
+ Bonus: normalize includes light and dark vars for adaptive theming */
+@import 'open-props/normalize' layer(reset);
+
+/*
+    Base Theme
+*/
+
+@layer theme {
+	--font: var(--font-serif);
+	--primary-bg-color: var(--sand-1);
+	--primary-color: var(--stone-10);
+
+	@media (--OSdark) {
+		--primary-bg-color: var(--stone-10);
+		--primary-color: var(--sand-1);
+	}
+
+	html {
+		font-family: var(--font);
+		color: var(--primary-color);
+		background-color: var(--primary-bg-color);
+	}
+}
