@@ -1,14 +1,10 @@
-const postcssJitProps = require('postcss-jit-props');
-const OpenProps = require('open-props');
-const postcssPresetEnv = require('postcss-preset-env');
+const autoprefixer = require('autoprefixer');
+const postcssCustomMedia = require('postcss-custom-media');
 
 const config = {
 	plugins: [
-		postcssJitProps({
-			...OpenProps,
-			layer: 'design',
-		}),
-		postcssPresetEnv,
+		postcssCustomMedia,
+		autoprefixer,
 	],
 };
 
