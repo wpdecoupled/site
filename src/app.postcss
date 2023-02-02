@@ -1,33 +1,78 @@
 /*
  Write your global styles here, in PostCSS syntax */
 
-@layer reset, design, theme;
+@layer reset, design, theme, utils, components;
 
 @import 'open-props/style' layer(design);
 @import 'open-props/normalize' layer(reset);
-
-/*
-Base Theme
-*/
 @import 'open-props/media';
 
-@layer theme {
 /*
-	--primary-bg-color: var(--sand-1);
-	--primary-color: var(--stone-10);
- */
+    Base Theme
+*/
 
-	html {
-		font-family: var(--font-serif);
-		color: var(--stone-10);
-		background-color: var(--sand-1);
+@layer theme {
+
+	:root {
+		--primary-bg-color: var(--sand-1);
+		--primary-color: var(--stone-10);
+		--primary-highlight-color: var(--blue-10);
 	}
 
-	@media (--OSdark) {
+
+	html {
+		font-family: Newsreader, var(--font-serif);
+		font-size: var(--font-size-3);
+		color: var(--primary-color);
+		background-color: var(--primary-bg-color);
+	}
+
+	/* @media (--OSdark) {
 		html {
 			color: var(--sand-1);
 			background-color: var(--stone-10);
 		}
+	} */
+
+	br {
+		margin-bottom: var(--font-size-1);
+	}
+}
+
+/*
+    Utility Classes
+*/
+
+@layer utils {
+	.wrapper {
+		max-width: var(--size-xl);
+		margin-inline: auto;
+		padding: 0 var(--size-fluid-1);
+
+		/* @media(--md-n-above) {
+			padding: 0 var(--size-fluid-3);
+
+		} */
 	}
 
+	.wrapper.wide {
+		max-width: var(--size-xxl);
+	}
+
+	.hero {
+		width: 100%;
+		aspect-ratio: var(--ratio-golden);
+	}
+
+	.center {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.prose {
+		max-width: var(--size-content-3);
+
+	}
 }

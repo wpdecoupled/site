@@ -43,6 +43,7 @@
 	}
 
 	.copyright {
+		font-size: var(--font-size-0);
 		margin: auto;
 		width: fit-content;
 	}
