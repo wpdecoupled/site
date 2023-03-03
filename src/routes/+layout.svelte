@@ -15,7 +15,7 @@
 		<Footer />
 	</div>
 	<div class="post-footer">
-		<p class="copyright">Copyright &#xa9; 2023 - WPDecoupled. All Rights Reserved.</p>
+		<p class="copyright">Copyright &#xa9; 2023 - Alex Moon. All Rights Reserved.</p>
 	</div>
 </div>
 

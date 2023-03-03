@@ -1,1 +1,1 @@
-<footer>Copy links etc....</footer>
+<footer></footer>

@@ -7,6 +7,8 @@
 @import 'open-props/normalize' layer(reset);
 @import 'open-props/media';
 
+@import 'open-props/buttons';
+
 /*
     Base Theme
 */
@@ -16,6 +18,19 @@
 		--primary-bg-color: var(--sand-1);
 		--primary-color: var(--stone-10);
 		--primary-highlight-color: var(--blue-10);
+
+		/* --brand: var(--primary-highlight-color); */
+		--link: var(--blue-8)
+
+	}
+
+	@media (--OSdark) {
+		:root {
+			--primary-bg-color: var(--stone-10);
+			--primary-color: var(--sand-1);
+			--link: var(--blue-2)
+
+		}
 	}
 
 	html {
@@ -24,13 +39,6 @@
 		color: var(--primary-color);
 		background-color: var(--primary-bg-color);
 	}
-
-	/* @media (--OSdark) {
-		html {
-			color: var(--sand-1);
-			background-color: var(--stone-10);
-		}
-	} */
 
 	br {
 		margin-bottom: var(--font-size-1);
@@ -46,11 +54,6 @@
 		max-width: var(--size-xl);
 		margin-inline: auto;
 		padding: 0 var(--size-fluid-1);
-
-		/* @media(--md-n-above) {
-			padding: 0 var(--size-fluid-3);
-
-		} */
 	}
 
 	.wrapper.wide {
@@ -71,5 +74,16 @@
 
 	.prose {
 		max-width: var(--size-content-3);
+	}
+
+	.visuallyhidden {
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
 	}
 }
