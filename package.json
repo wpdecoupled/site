@@ -3,21 +3,22 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
+		"preinstall": "echo test",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"start": "node build",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
 		"test:format": "prettier --plugin-search-dir . --check . ",
 		"test:lint": "eslint .",
-		"lint": "pnpm test:lint --fix",
-		"format": "pnpm test:format --write"
+		"lint": "yarn test:lint --fix",
+		"format": "yarn test:format --write"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.29.2",
-		"@sveltejs/adapter-auto": "^1.0.1",
 		"@sveltejs/kit": "^1.1.1",
 		"@typescript-eslint/eslint-plugin": "^5.48.2",
 		"@typescript-eslint/parser": "^5.48.2",
@@ -41,6 +42,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-node": "^1.2.3",
 		"open-props": "^1.5.3"
+	},
+	"engines": {
+		"node": ">=18.0.0 <19.0.0"
 	}
 }
