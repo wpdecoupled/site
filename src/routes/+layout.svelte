@@ -15,7 +15,14 @@
 		<Footer />
 	</div>
 	<div class="post-footer">
-		<p class="copyright">Copyright &#xa9; 2023 - Alex Moon. All Rights Reserved.</p>
+		<p class="post-footer-line">Copyright &#xa9; 2023 - Alex Moon. All Rights Reserved.</p>
+
+		<p class="post-footer-line">
+			Hosting Sponsored by <u
+				><a href="https://wpengine.com/atlas/" target="_blank" rel="noreferrer">WPEngine Atlas</a
+				></u
+			>
+		</p>
 	</div>
 </div>
 
@@ -42,9 +49,12 @@
 		grid-area: footer;
 	}
 
-	.copyright {
+	.post-footer {
+		margin: var(--size-4) auto;
+	}
+	.post-footer > p {
 		font-size: var(--font-size-0);
-		margin: auto;
 		width: fit-content;
+		white-space: nowrap;
 	}
 </style>

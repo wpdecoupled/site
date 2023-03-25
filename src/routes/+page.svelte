@@ -39,7 +39,7 @@
 		<p>/ diˈkʌp əld / wɜrd-prɛs /</p>
 		<br />
 		<dfn class="prose"
-			>Using WordPress data via an API to provide content to other User Experiences beyond the
+			>Using WordPress data via an API to provide content to other user experiences beyond the
 			WordPress themeing and templating engine.</dfn
 		>
 	</section>
