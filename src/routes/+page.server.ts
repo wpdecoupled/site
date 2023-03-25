@@ -3,7 +3,7 @@ import { PUBLIC_WP_URL } from "$env/static/public";
 import { fail } from "@sveltejs/kit";
 
 const FORM_URL = PUBLIC_WP_URL +
-  "/wp-json/contact-form-7/v1/contact-forms/5/feedback";
+  "/wp-json/contact-form-7/v1/contact-forms/11/feedback";
 
 export const actions = {
   default: async (event) => {
