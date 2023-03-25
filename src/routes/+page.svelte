@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
-
+	import EmailForm from "./EmailForm.svelte"
 	export let form: ActionData;
 </script>
 
@@ -14,57 +13,16 @@
 		</p>
 	</section>
 	<section id="signup" class="center">
-		<div id="form-layout">
-			<h2>Sign up to hear when we lauch!</h2>
-			{#if form?.status === 'mail_sent'}
-				<p>{form?.message}</p>
-			{:else}
-				<form method="POST" use:enhance>
-					{#if form?.status === 'validation_failed'}<p class="error">{form.message}</p>{/if}
-					<label for="email" class="visuallyhidden">Email</label>
-					<input
-						id="email"
-						name="email"
-						placeholder="email"
-						type="email"
-						autocomplete="email"
-					/>
-					<button id="email_submit" type="submit">Sign Up</button>
-				</form>
-			{/if}
-		</div>
-	</section>
-	<section class="definition center">
-		<p>Decoupled WordPress</p>
-		<p>/ diˈkʌp əld / wɜrd-prɛs /</p>
-		<br />
-		<dfn class="prose"
-			>Using WordPress data via an API to provide content to other user experiences beyond the
-			WordPress themeing and templating engine.</dfn
-		>
+		<EmailForm form={form} />
 	</section>
 </main>
 
 <style lang="postcss">
-	.about,
-	.definition {
-		height: var(--size-13);
+	section {
+		height: 35vh;
 	}
 	.about > p {
 		font-size: var(--font-size-3);
 		line-height: var(--font-lineheight-3);
-	}
-
-	#form-layout {
-		padding: var(--size-fluid-4);
-		border: var(--border-size-1) solid var(--primary-color);
-		border-radius: var(--radius-2);
-	}
-
-	h2 {
-		font-size: var(--font-size-fluid-2);
-	}
-	form > * {
-		margin: var(--size-fluid-1);
 	}
 </style>

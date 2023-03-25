@@ -34,7 +34,7 @@
 	}
 
 	html {
-		font-family: Newsreader, var(--font-serif);
+		font-family: "Merriweather Sans", var(--font-serif);
 		font-size: var(--font-size-3);
 		color: var(--primary-color);
 		background-color: var(--primary-bg-color);
@@ -42,6 +42,16 @@
 
 	br {
 		margin-bottom: var(--font-size-1);
+	}
+
+	/* Links */
+	a {
+		text-decoration: underline;
+		text-decoration-style: double;
+	}
+	/* Don't change colors of visited links */
+	a:visited {
+		color: var(--brand, var(--link));
 	}
 }
 
@@ -70,6 +80,11 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.vcenter {
+		display: flex;
+		align-items: center;
 	}
 
 	.prose {

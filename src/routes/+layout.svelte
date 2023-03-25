@@ -14,13 +14,14 @@
 	<div class="footer">
 		<Footer />
 	</div>
-	<div class="post-footer">
-		<p class="post-footer-line">Copyright &#xa9; 2023 - Alex Moon. All Rights Reserved.</p>
-
+	<div class="post-footer wrapper">
+		<p class="post-footer-line">Copyright &#xa9; 2023 - AVLIT, LLC. All Rights Reserved.</p>
 		<p class="post-footer-line">
-			Hosting Sponsored by <u
-				><a href="https://wpengine.com/atlas/" target="_blank" rel="noreferrer">WPEngine Atlas</a
-				></u
+			Hosting sponsored by
+			<a
+				href="https://wpengine.com/atlas/?utm_source=wpdecoupled&utm_campaign=hosting_sponsor"
+				target="_blank"
+				rel="noreferrer">WPEngine Atlas</a
 			>
 		</p>
 	</div>
@@ -31,10 +32,11 @@
 		display: grid;
 		grid:
 			'header' auto
-			'main' 1fr
+			'main' max-content
 			'footer' auto
+			'post-footer' auto
 			/ 1fr;
-		gap: 8px;
+		gap: var(--size-fluid-1);
 	}
 
 	.header {
@@ -50,7 +52,11 @@
 	}
 
 	.post-footer {
-		margin: var(--size-4) auto;
+		grid-area: post-footer;
+		padding: var(--size-fluid-1) 0;
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
 	}
 	.post-footer > p {
 		font-size: var(--font-size-0);

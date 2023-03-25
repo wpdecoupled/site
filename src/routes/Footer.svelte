@@ -1,1 +1,22 @@
-<footer></footer>
+<footer class="wrapper center">
+	<section class="definition vcenter">
+		<div>
+			<p><b>Decoupled WordPress</b> - / diˈkʌp əld / wɜrd-prɛs /</p>
+			<dfn class="prose">
+				Using WordPress data via an API to provide content to other user experiences beyond the
+				WordPress themeing and templating engine.
+			</dfn>
+		</div>
+	</section>
+</footer>
+
+<style lang="postcss">
+	footer {
+		padding: var(--size-fluid-2) 0;
+
+		border-style: solid;
+		border-color: var(--primary-color);
+		border-bottom-width: var(--border-size-1);
+		border-top-width: var(--border-size-1);
+	}
+</style>

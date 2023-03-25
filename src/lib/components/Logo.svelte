@@ -1,17 +1,14 @@
 <span class="stylized-name">
-	wp<span id="decoupled">decoupled</span>
+	wp decoupled
 </span>
 
 <style lang="postcss">
 	.stylized-name {
-		font-family: Bebas Neue, var(--font-sans);
-		color: var(--sand-1);
+		font-family: Bungee Shade, var(--font-sans);
+		color: var(--primary-color);
 		letter-spacing: var(--font-letterspacing-1);
-		font-size: var(--font-size-6);
-	}
-	#decoupled {
-		vertical-align: super;
-		font-size: var(--font-size-3);
-		letter-spacing: var(--font-letterspacing-3);
+		font-size: min(10vw, 4rem);
+		white-space: nowrap;
+
 	}
 </style>
