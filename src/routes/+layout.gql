@@ -1,0 +1,10 @@
+query primaryNavMenu {
+  menu(id: "primary-nav-menu", idType: LOCATION) {
+    count
+    menuItems {
+      nodes {
+        ...MenuItem
+      }
+    }
+  }
+}

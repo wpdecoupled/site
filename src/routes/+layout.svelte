@@ -1,12 +1,19 @@
 <script lang="ts">
 	import '../app.postcss';
+	import { graphql } from '$houdini'
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
+
+	/* @type { import('./$houdini').LayoutData } */
+	export let data;
+
+	$: ({ primaryNavMenu } = data);
 </script>
 
 <div class="layout">
 	<div class="header">
-		<Header />
+
+		<Header nav={$primaryNavMenu} />
 	</div>
 	<div class="main">
 		<slot />
