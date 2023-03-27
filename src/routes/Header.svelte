@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Logo } from '$lib/components';
-	import MenuItem from '$lib/components/wp/menu/menu-item.svelte';
 	import MenuList from '$lib/components/wp/menu/menu-list.svelte';
 	export let nav;
 </script>

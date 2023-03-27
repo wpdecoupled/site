@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { graphql } from '$houdini'
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
 

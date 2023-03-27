@@ -2,7 +2,7 @@
 	import { fragment, graphql } from '$houdini';
 
 	/* @type { import('$houdini').MenuItem } */
-	export let menuItemData: MenuItem;
+	export let menuItemData;
 
 	$: data = fragment(
 		menuItemData,
