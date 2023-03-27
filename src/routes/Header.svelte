@@ -11,8 +11,7 @@
 	<!-- </nav> -->
 	<!-- <div>THEME SWITCHER HERE</div> -->
 	<nav class="wrapper">
-		<ul>
-		</ul>
+		<ul />
 	</nav>
 </header>
 

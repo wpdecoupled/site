@@ -1,6 +1,4 @@
-<span class="stylized-name">
-	wp decoupled
-</span>
+<span class="stylized-name"> wp decoupled </span>
 
 <style lang="postcss">
 	.stylized-name {

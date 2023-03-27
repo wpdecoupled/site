@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { ActionData } from './$types';
-	import EmailForm from "./EmailForm.svelte"
+	import EmailForm from './EmailForm.svelte';
 	export let form: ActionData;
 </script>
 
@@ -13,7 +13,7 @@
 		</p>
 	</section>
 	<section id="signup" class="center">
-		<EmailForm form={form} />
+		<EmailForm {form} />
 	</section>
 </main>
 

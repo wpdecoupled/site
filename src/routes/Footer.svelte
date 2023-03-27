@@ -3,8 +3,8 @@
 		<div>
 			<p><b>Decoupled WordPress</b> - / diˈkʌp əld / wɜrd-prɛs /</p>
 			<dfn class="prose">
-				Using WordPress data via an API to provide content to user experiences beyond the
-				WordPress themeing and templating engine. aka "Headless WordPress".
+				Using WordPress data via an API to provide content to user experiences beyond the WordPress
+				themeing and templating engine. aka "Headless WordPress".
 			</dfn>
 		</div>
 	</section>
