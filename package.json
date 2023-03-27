@@ -3,7 +3,6 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"preinstall": "echo test",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -15,7 +14,8 @@
 		"test:format": "prettier --plugin-search-dir . --check . ",
 		"test:lint": "eslint .",
 		"lint": "yarn test:lint --fix",
-		"format": "yarn test:format --write"
+		"format": "yarn test:format --write",
+		"generate": "houdini generate"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.29.2",

@@ -4668,8 +4668,8 @@ type MenuItemToMenuItemLinkableConnectionEdge implements Edge & MenuItemLinkable
 
 """Registered menu locations"""
 enum MenuLocationEnum {
-  """Empty menu location"""
-  EMPTY
+  """Put the menu in the primary-nav-menu location"""
+  PRIMARY_NAV_MENU
 }
 
 """
