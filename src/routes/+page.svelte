@@ -8,7 +8,7 @@
 	<section class="about center">
 		<p class="">
 			WPDecoupled will be a place for <s>headless</s>
-			decoupled WordPress countent! We hope to be
+			decoupled WordPress content! We hope to be
 			<em>the</em> place for independent content on building with decoupled WordPress.
 		</p>
 	</section>
