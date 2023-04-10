@@ -5,10 +5,11 @@ import '@sentry/tracing';
 
 import type { Handle, HandleServerError } from '@sveltejs/kit';
 
-import { PUBLIC_DSN } from '$env/static/public';
+import * as PSV from '$env/static/public';
 
 SentryNode.init({
-	dsn: PUBLIC_DSN,
+	dsn: PSV.PUBLIC_DSN,
+	environment: PSV?.PUBLIC_SENTRY_ENV || 'development',
 	tracesSampleRate: 1.0,
 	// Add the Http integration for tracing
 	integrations: [new SentryNode.Integrations.Http()],
