@@ -4,11 +4,11 @@ import * as SentrySvelte from '@sentry/svelte';
 
 import type { HandleClientError } from '@sveltejs/kit';
 
-import { PUBLIC_DSN, PUBLIC_SENTRY_ENV, NODE_ENV } from '$env/static/public';
+import { PUBLIC_DSN, PUBLIC_SENTRY_ENV } from '$env/static/public';
 
 SentrySvelte.init({
 	dsn: PUBLIC_DSN,
-	environment: PUBLIC_SENTRY_ENV || NODE_ENV || 'development',
+	environment: PUBLIC_SENTRY_ENV || 'development',
 	integrations: [new SentrySvelte.BrowserTracing()],
 	tracesSampleRate: 1.0,
 });
