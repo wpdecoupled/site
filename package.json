@@ -3,7 +3,6 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"preinstall": "echo test",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -42,6 +41,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sentry/node": "^7.47.0",
+		"@sentry/svelte": "^7.47.0",
+		"@sentry/tracing": "^7.47.0",
 		"@sveltejs/adapter-node": "^1.2.3",
 		"open-props": "^1.5.3"
 	},
