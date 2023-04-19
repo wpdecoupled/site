@@ -64,6 +64,8 @@ enum AvatarRatingEnum {
   X
 }
 
+scalar BlockAttributesObject
+
 """The category type"""
 type Category implements DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable {
   """
@@ -1313,6 +1315,72 @@ interface Connection {
   pageInfo: PageInfo!
 }
 
+"""A block used for editing the site"""
+type ContactForm7ContactFormSelector implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: ContactForm7ContactFormSelectorAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type ContactForm7ContactFormSelectorAttributes {
+  """
+  The &quot;htmlClass&quot; field on the &quot;ContactForm7ContactFormSelector&quot; block
+  """
+  htmlClass: String
+
+  """
+  The &quot;htmlId&quot; field on the &quot;ContactForm7ContactFormSelector&quot; block
+  """
+  htmlId: String
+
+  """
+  The &quot;htmlName&quot; field on the &quot;ContactForm7ContactFormSelector&quot; block
+  """
+  htmlName: String
+
+  """
+  The &quot;htmlTitle&quot; field on the &quot;ContactForm7ContactFormSelector&quot; block
+  """
+  htmlTitle: String
+
+  """
+  The &quot;id&quot; field on the &quot;ContactForm7ContactFormSelector&quot; block
+  """
+  id: Int
+
+  """
+  The &quot;title&quot; field on the &quot;ContactForm7ContactFormSelector&quot; block
+  """
+  title: String
+}
+
 """Nodes used to manage content"""
 interface ContentNode implements Node & UniformResourceIdentifiable {
   """Connection between the ContentNode type and the ContentType type"""
@@ -1979,6 +2047,7033 @@ enum ContentTypesOfPostFormatEnum {
 enum ContentTypesOfTagEnum {
   """The Type of Content object"""
   POST
+}
+
+"""A block used for editing the site"""
+type CoreArchives implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreArchivesAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreArchivesAttributes {
+  """The &quot;align&quot; field on the &quot;CoreArchives&quot; block"""
+  align: String
+
+  """The &quot;className&quot; field on the &quot;CoreArchives&quot; block"""
+  className: String
+
+  """
+  The &quot;displayAsDropdown&quot; field on the &quot;CoreArchives&quot; block
+  """
+  displayAsDropdown: Boolean
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreArchives&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreArchives&quot; block"""
+  fontSize: String
+
+  """The &quot;lock&quot; field on the &quot;CoreArchives&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;showLabel&quot; field on the &quot;CoreArchives&quot; block"""
+  showLabel: Boolean
+
+  """
+  The &quot;showPostCounts&quot; field on the &quot;CoreArchives&quot; block
+  """
+  showPostCounts: Boolean
+
+  """The &quot;style&quot; field on the &quot;CoreArchives&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;type&quot; field on the &quot;CoreArchives&quot; block"""
+  type: String
+}
+
+"""A block used for editing the site"""
+type CoreAudio implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreAudioAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreAudioAttributes {
+  """The &quot;align&quot; field on the &quot;CoreAudio&quot; block"""
+  align: String
+
+  """The &quot;autoplay&quot; field on the &quot;CoreAudio&quot; block"""
+  autoplay: Boolean
+
+  """The &quot;caption&quot; field on the &quot;CoreAudio&quot; block"""
+  caption: String
+
+  """The &quot;className&quot; field on the &quot;CoreAudio&quot; block"""
+  className: String
+
+  """The &quot;id&quot; field on the &quot;CoreAudio&quot; block"""
+  id: Float
+
+  """The &quot;lock&quot; field on the &quot;CoreAudio&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;loop&quot; field on the &quot;CoreAudio&quot; block"""
+  loop: Boolean
+
+  """The &quot;preload&quot; field on the &quot;CoreAudio&quot; block"""
+  preload: String
+
+  """The &quot;src&quot; field on the &quot;CoreAudio&quot; block"""
+  src: String
+
+  """The &quot;style&quot; field on the &quot;CoreAudio&quot; block"""
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreAvatar implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreAvatarAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreAvatarAttributes {
+  """The &quot;align&quot; field on the &quot;CoreAvatar&quot; block"""
+  align: String
+
+  """The &quot;borderColor&quot; field on the &quot;CoreAvatar&quot; block"""
+  borderColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreAvatar&quot; block"""
+  className: String
+
+  """The &quot;isLink&quot; field on the &quot;CoreAvatar&quot; block"""
+  isLink: Boolean
+
+  """The &quot;linkTarget&quot; field on the &quot;CoreAvatar&quot; block"""
+  linkTarget: String
+
+  """The &quot;lock&quot; field on the &quot;CoreAvatar&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;size&quot; field on the &quot;CoreAvatar&quot; block"""
+  size: Float
+
+  """The &quot;style&quot; field on the &quot;CoreAvatar&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;userId&quot; field on the &quot;CoreAvatar&quot; block"""
+  userId: Float
+}
+
+"""A block used for editing the site"""
+type CoreBlock implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreBlockAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreBlockAttributes {
+  """The &quot;lock&quot; field on the &quot;CoreBlock&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;ref&quot; field on the &quot;CoreBlock&quot; block"""
+  ref: Float
+}
+
+"""A block used for editing the site"""
+type CoreButton implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreButtonAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreButtonAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreButton&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreButton&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreButton&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreButton&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreButton&quot; block"""
+  gradient: String
+
+  """The &quot;linkTarget&quot; field on the &quot;CoreButton&quot; block"""
+  linkTarget: String
+
+  """The &quot;lock&quot; field on the &quot;CoreButton&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;placeholder&quot; field on the &quot;CoreButton&quot; block"""
+  placeholder: String
+
+  """The &quot;rel&quot; field on the &quot;CoreButton&quot; block"""
+  rel: String
+
+  """The &quot;style&quot; field on the &quot;CoreButton&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;text&quot; field on the &quot;CoreButton&quot; block"""
+  text: String
+
+  """The &quot;textAlign&quot; field on the &quot;CoreButton&quot; block"""
+  textAlign: String
+
+  """The &quot;textColor&quot; field on the &quot;CoreButton&quot; block"""
+  textColor: String
+
+  """The &quot;title&quot; field on the &quot;CoreButton&quot; block"""
+  title: String
+
+  """The &quot;url&quot; field on the &quot;CoreButton&quot; block"""
+  url: String
+
+  """The &quot;width&quot; field on the &quot;CoreButton&quot; block"""
+  width: Float
+}
+
+"""A block used for editing the site"""
+type CoreButtons implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreButtonsAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreButtonsAttributes {
+  """The &quot;align&quot; field on the &quot;CoreButtons&quot; block"""
+  align: String
+
+  """The &quot;className&quot; field on the &quot;CoreButtons&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreButtons&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreButtons&quot; block"""
+  fontSize: String
+
+  """The &quot;layout&quot; field on the &quot;CoreButtons&quot; block"""
+  layout: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CoreButtons&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreButtons&quot; block"""
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreCalendar implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCalendarAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCalendarAttributes {
+  """The &quot;align&quot; field on the &quot;CoreCalendar&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCalendar&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreCalendar&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreCalendar&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreCalendar&quot; block"""
+  fontSize: String
+
+  """The &quot;lock&quot; field on the &quot;CoreCalendar&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;month&quot; field on the &quot;CoreCalendar&quot; block"""
+  month: Int
+
+  """The &quot;style&quot; field on the &quot;CoreCalendar&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreCalendar&quot; block"""
+  textColor: String
+
+  """The &quot;year&quot; field on the &quot;CoreCalendar&quot; block"""
+  year: Int
+}
+
+"""A block used for editing the site"""
+type CoreCategories implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCategoriesAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCategoriesAttributes {
+  """The &quot;align&quot; field on the &quot;CoreCategories&quot; block"""
+  align: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCategories&quot; block
+  """
+  className: String
+
+  """
+  The &quot;displayAsDropdown&quot; field on the &quot;CoreCategories&quot; block
+  """
+  displayAsDropdown: Boolean
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCategories&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreCategories&quot; block"""
+  fontSize: String
+
+  """The &quot;lock&quot; field on the &quot;CoreCategories&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;showEmpty&quot; field on the &quot;CoreCategories&quot; block
+  """
+  showEmpty: Boolean
+
+  """
+  The &quot;showHierarchy&quot; field on the &quot;CoreCategories&quot; block
+  """
+  showHierarchy: Boolean
+
+  """
+  The &quot;showOnlyTopLevel&quot; field on the &quot;CoreCategories&quot; block
+  """
+  showOnlyTopLevel: Boolean
+
+  """
+  The &quot;showPostCounts&quot; field on the &quot;CoreCategories&quot; block
+  """
+  showPostCounts: Boolean
+
+  """The &quot;style&quot; field on the &quot;CoreCategories&quot; block"""
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreCode implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCodeAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCodeAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCode&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;borderColor&quot; field on the &quot;CoreCode&quot; block"""
+  borderColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreCode&quot; block"""
+  className: String
+
+  """The &quot;content&quot; field on the &quot;CoreCode&quot; block"""
+  content: String
+
+  """The &quot;cssClassName&quot; field on the &quot;CoreCode&quot; block"""
+  cssClassName: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreCode&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreCode&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreCode&quot; block"""
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CoreCode&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreCode&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreCode&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreColumn implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreColumnAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreColumnAttributes {
+  """
+  The &quot;allowedBlocks&quot; field on the &quot;CoreColumn&quot; block
+  """
+  allowedBlocks: BlockAttributesObject
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreColumn&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;borderColor&quot; field on the &quot;CoreColumn&quot; block"""
+  borderColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreColumn&quot; block"""
+  className: String
+
+  """The &quot;cssClassName&quot; field on the &quot;CoreColumn&quot; block"""
+  cssClassName: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreColumn&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreColumn&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreColumn&quot; block"""
+  gradient: String
+
+  """The &quot;layout&quot; field on the &quot;CoreColumn&quot; block"""
+  layout: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CoreColumn&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreColumn&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreColumn&quot; block"""
+  textColor: String
+
+  """
+  The &quot;verticalAlignment&quot; field on the &quot;CoreColumn&quot; block
+  """
+  verticalAlignment: String
+
+  """The &quot;width&quot; field on the &quot;CoreColumn&quot; block"""
+  width: String
+}
+
+"""A block used for editing the site"""
+type CoreColumns implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreColumnsAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreColumnsAttributes {
+  """The &quot;align&quot; field on the &quot;CoreColumns&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreColumns&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;borderColor&quot; field on the &quot;CoreColumns&quot; block"""
+  borderColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreColumns&quot; block"""
+  className: String
+
+  """
+  The &quot;cssClassName&quot; field on the &quot;CoreColumns&quot; block
+  """
+  cssClassName: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreColumns&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreColumns&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreColumns&quot; block"""
+  gradient: String
+
+  """
+  The &quot;isStackedOnMobile&quot; field on the &quot;CoreColumns&quot; block
+  """
+  isStackedOnMobile: Boolean
+
+  """The &quot;layout&quot; field on the &quot;CoreColumns&quot; block"""
+  layout: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CoreColumns&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreColumns&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreColumns&quot; block"""
+  textColor: String
+
+  """
+  The &quot;verticalAlignment&quot; field on the &quot;CoreColumns&quot; block
+  """
+  verticalAlignment: String
+}
+
+"""A block used for editing the site"""
+type CoreCommentAuthorName implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentAuthorNameAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentAuthorNameAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;isLink&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  isLink: Boolean
+
+  """
+  The &quot;linkTarget&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  linkTarget: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreCommentContent implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentContentAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentContentAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCommentContent&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentContent&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentContent&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentContent&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreCommentContent&quot; block
+  """
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CoreCommentContent&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreCommentContent&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CoreCommentContent&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreCommentContent&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreCommentDate implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentDateAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentDateAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCommentDate&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentDate&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentDate&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentDate&quot; block
+  """
+  fontSize: String
+
+  """The &quot;format&quot; field on the &quot;CoreCommentDate&quot; block"""
+  format: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreCommentDate&quot; block
+  """
+  gradient: String
+
+  """The &quot;isLink&quot; field on the &quot;CoreCommentDate&quot; block"""
+  isLink: Boolean
+
+  """The &quot;lock&quot; field on the &quot;CoreCommentDate&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreCommentDate&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreCommentDate&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreCommentEditLink implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentEditLinkAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentEditLinkAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCommentEditLink&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentEditLink&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentEditLink&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentEditLink&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreCommentEditLink&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;linkTarget&quot; field on the &quot;CoreCommentEditLink&quot; block
+  """
+  linkTarget: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreCommentEditLink&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreCommentEditLink&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CoreCommentEditLink&quot; block
+  """
+  textAlign: String
+}
+
+"""A block used for editing the site"""
+type CoreCommentReplyLink implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentReplyLinkAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentReplyLinkAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCommentReplyLink&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentReplyLink&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentReplyLink&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentReplyLink&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreCommentReplyLink&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreCommentReplyLink&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreCommentReplyLink&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CoreCommentReplyLink&quot; block
+  """
+  textAlign: String
+}
+
+"""A block used for editing the site"""
+type CoreCommentTemplate implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentTemplateAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentTemplateAttributes {
+  """
+  The &quot;align&quot; field on the &quot;CoreCommentTemplate&quot; block
+  """
+  align: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentTemplate&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentTemplate&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentTemplate&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreCommentTemplate&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreCommentTemplate&quot; block
+  """
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreComments implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentsAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentsAttributes {
+  """The &quot;align&quot; field on the &quot;CoreComments&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreComments&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreComments&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreComments&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreComments&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreComments&quot; block"""
+  gradient: String
+
+  """The &quot;legacy&quot; field on the &quot;CoreComments&quot; block"""
+  legacy: Boolean
+
+  """The &quot;lock&quot; field on the &quot;CoreComments&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreComments&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;tagName&quot; field on the &quot;CoreComments&quot; block"""
+  tagName: String
+
+  """The &quot;textColor&quot; field on the &quot;CoreComments&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreCommentsPagination implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentsPaginationAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentsPaginationAttributes {
+  """
+  The &quot;align&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;layout&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  layout: BlockAttributesObject
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;paginationArrow&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  paginationArrow: String
+
+  """
+  The &quot;style&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreCommentsPaginationNext implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentsPaginationNextAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentsPaginationNextAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCommentsPaginationNext&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentsPaginationNext&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentsPaginationNext&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentsPaginationNext&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreCommentsPaginationNext&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;label&quot; field on the &quot;CoreCommentsPaginationNext&quot; block
+  """
+  label: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreCommentsPaginationNext&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreCommentsPaginationNext&quot; block
+  """
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreCommentsPaginationNumbers implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentsPaginationNumbersAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentsPaginationNumbersAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block
+  """
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreCommentsPaginationPrevious implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentsPaginationPreviousAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentsPaginationPreviousAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;label&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
+  """
+  label: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
+  """
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreCommentsTitle implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCommentsTitleAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCommentsTitleAttributes {
+  """The &quot;align&quot; field on the &quot;CoreCommentsTitle&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  borderColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  gradient: String
+
+  """The &quot;level&quot; field on the &quot;CoreCommentsTitle&quot; block"""
+  level: Float
+
+  """The &quot;lock&quot; field on the &quot;CoreCommentsTitle&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;showCommentsCount&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  showCommentsCount: Boolean
+
+  """
+  The &quot;showPostTitle&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  showPostTitle: Boolean
+
+  """The &quot;style&quot; field on the &quot;CoreCommentsTitle&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreCover implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreCoverAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreCoverAttributes {
+  """The &quot;align&quot; field on the &quot;CoreCover&quot; block"""
+  align: String
+
+  """The &quot;allowedBlocks&quot; field on the &quot;CoreCover&quot; block"""
+  allowedBlocks: BlockAttributesObject
+
+  """The &quot;alt&quot; field on the &quot;CoreCover&quot; block"""
+  alt: String
+
+  """
+  The &quot;backgroundType&quot; field on the &quot;CoreCover&quot; block
+  """
+  backgroundType: String
+
+  """The &quot;className&quot; field on the &quot;CoreCover&quot; block"""
+  className: String
+
+  """
+  The &quot;contentPosition&quot; field on the &quot;CoreCover&quot; block
+  """
+  contentPosition: String
+
+  """
+  The &quot;customGradient&quot; field on the &quot;CoreCover&quot; block
+  """
+  customGradient: String
+
+  """
+  The &quot;customOverlayColor&quot; field on the &quot;CoreCover&quot; block
+  """
+  customOverlayColor: String
+
+  """The &quot;dimRatio&quot; field on the &quot;CoreCover&quot; block"""
+  dimRatio: Float
+
+  """The &quot;focalPoint&quot; field on the &quot;CoreCover&quot; block"""
+  focalPoint: BlockAttributesObject
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreCover&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreCover&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreCover&quot; block"""
+  gradient: String
+
+  """The &quot;hasParallax&quot; field on the &quot;CoreCover&quot; block"""
+  hasParallax: Boolean
+
+  """The &quot;id&quot; field on the &quot;CoreCover&quot; block"""
+  id: Float
+
+  """The &quot;isDark&quot; field on the &quot;CoreCover&quot; block"""
+  isDark: Boolean
+
+  """The &quot;isRepeated&quot; field on the &quot;CoreCover&quot; block"""
+  isRepeated: Boolean
+
+  """The &quot;lock&quot; field on the &quot;CoreCover&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;minHeight&quot; field on the &quot;CoreCover&quot; block"""
+  minHeight: Float
+
+  """The &quot;minHeightUnit&quot; field on the &quot;CoreCover&quot; block"""
+  minHeightUnit: String
+
+  """The &quot;overlayColor&quot; field on the &quot;CoreCover&quot; block"""
+  overlayColor: String
+
+  """The &quot;style&quot; field on the &quot;CoreCover&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;tagName&quot; field on the &quot;CoreCover&quot; block"""
+  tagName: String
+
+  """The &quot;url&quot; field on the &quot;CoreCover&quot; block"""
+  url: String
+
+  """
+  The &quot;useFeaturedImage&quot; field on the &quot;CoreCover&quot; block
+  """
+  useFeaturedImage: Boolean
+}
+
+"""A block used for editing the site"""
+type CoreEmbed implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreEmbedAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreEmbedAttributes {
+  """The &quot;align&quot; field on the &quot;CoreEmbed&quot; block"""
+  align: String
+
+  """
+  The &quot;allowResponsive&quot; field on the &quot;CoreEmbed&quot; block
+  """
+  allowResponsive: Boolean
+
+  """The &quot;caption&quot; field on the &quot;CoreEmbed&quot; block"""
+  caption: String
+
+  """The &quot;className&quot; field on the &quot;CoreEmbed&quot; block"""
+  className: String
+
+  """The &quot;lock&quot; field on the &quot;CoreEmbed&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;previewable&quot; field on the &quot;CoreEmbed&quot; block"""
+  previewable: Boolean
+
+  """
+  The &quot;providerNameSlug&quot; field on the &quot;CoreEmbed&quot; block
+  """
+  providerNameSlug: String
+
+  """The &quot;responsive&quot; field on the &quot;CoreEmbed&quot; block"""
+  responsive: Boolean
+
+  """The &quot;type&quot; field on the &quot;CoreEmbed&quot; block"""
+  type: String
+
+  """The &quot;url&quot; field on the &quot;CoreEmbed&quot; block"""
+  url: String
+}
+
+"""A block used for editing the site"""
+type CoreFile implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreFileAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreFileAttributes {
+  """The &quot;align&quot; field on the &quot;CoreFile&quot; block"""
+  align: String
+
+  """The &quot;className&quot; field on the &quot;CoreFile&quot; block"""
+  className: String
+
+  """The &quot;displayPreview&quot; field on the &quot;CoreFile&quot; block"""
+  displayPreview: Boolean
+
+  """
+  The &quot;downloadButtonText&quot; field on the &quot;CoreFile&quot; block
+  """
+  downloadButtonText: String
+
+  """The &quot;fileId&quot; field on the &quot;CoreFile&quot; block"""
+  fileId: String
+
+  """The &quot;fileName&quot; field on the &quot;CoreFile&quot; block"""
+  fileName: String
+
+  """The &quot;href&quot; field on the &quot;CoreFile&quot; block"""
+  href: String
+
+  """The &quot;id&quot; field on the &quot;CoreFile&quot; block"""
+  id: Float
+
+  """The &quot;lock&quot; field on the &quot;CoreFile&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;previewHeight&quot; field on the &quot;CoreFile&quot; block"""
+  previewHeight: Float
+
+  """
+  The &quot;showDownloadButton&quot; field on the &quot;CoreFile&quot; block
+  """
+  showDownloadButton: Boolean
+
+  """The &quot;textLinkHref&quot; field on the &quot;CoreFile&quot; block"""
+  textLinkHref: String
+
+  """The &quot;textLinkTarget&quot; field on the &quot;CoreFile&quot; block"""
+  textLinkTarget: String
+}
+
+"""A block used for editing the site"""
+type CoreFreeform implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreFreeformAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreFreeformAttributes {
+  """The &quot;content&quot; field on the &quot;CoreFreeform&quot; block"""
+  content: String
+
+  """The &quot;lock&quot; field on the &quot;CoreFreeform&quot; block"""
+  lock: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreGallery implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreGalleryAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreGalleryAttributes {
+  """The &quot;align&quot; field on the &quot;CoreGallery&quot; block"""
+  align: String
+
+  """The &quot;allowResize&quot; field on the &quot;CoreGallery&quot; block"""
+  allowResize: Boolean
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreGallery&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;caption&quot; field on the &quot;CoreGallery&quot; block"""
+  caption: String
+
+  """The &quot;className&quot; field on the &quot;CoreGallery&quot; block"""
+  className: String
+
+  """The &quot;columns&quot; field on the &quot;CoreGallery&quot; block"""
+  columns: Float
+
+  """The &quot;fixedHeight&quot; field on the &quot;CoreGallery&quot; block"""
+  fixedHeight: Boolean
+
+  """The &quot;gradient&quot; field on the &quot;CoreGallery&quot; block"""
+  gradient: String
+
+  """The &quot;ids&quot; field on the &quot;CoreGallery&quot; block"""
+  ids: BlockAttributesObject
+
+  """The &quot;imageCrop&quot; field on the &quot;CoreGallery&quot; block"""
+  imageCrop: Boolean
+
+  """The &quot;images&quot; field on the &quot;CoreGallery&quot; block"""
+  images: BlockAttributesObject
+
+  """The &quot;layout&quot; field on the &quot;CoreGallery&quot; block"""
+  layout: BlockAttributesObject
+
+  """The &quot;linkTarget&quot; field on the &quot;CoreGallery&quot; block"""
+  linkTarget: String
+
+  """The &quot;linkTo&quot; field on the &quot;CoreGallery&quot; block"""
+  linkTo: String
+
+  """The &quot;lock&quot; field on the &quot;CoreGallery&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;shortCodeTransforms&quot; field on the &quot;CoreGallery&quot; block
+  """
+  shortCodeTransforms: BlockAttributesObject
+
+  """The &quot;sizeSlug&quot; field on the &quot;CoreGallery&quot; block"""
+  sizeSlug: String
+
+  """The &quot;style&quot; field on the &quot;CoreGallery&quot; block"""
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreGroup implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreGroupAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreGroupAttributes {
+  """The &quot;align&quot; field on the &quot;CoreGroup&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreGroup&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;borderColor&quot; field on the &quot;CoreGroup&quot; block"""
+  borderColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreGroup&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreGroup&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreGroup&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreGroup&quot; block"""
+  gradient: String
+
+  """The &quot;layout&quot; field on the &quot;CoreGroup&quot; block"""
+  layout: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CoreGroup&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreGroup&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;tagName&quot; field on the &quot;CoreGroup&quot; block"""
+  tagName: String
+
+  """The &quot;textColor&quot; field on the &quot;CoreGroup&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreHeading implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreHeadingAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreHeadingAttributes {
+  """The &quot;align&quot; field on the &quot;CoreHeading&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreHeading&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreHeading&quot; block"""
+  className: String
+
+  """The &quot;content&quot; field on the &quot;CoreHeading&quot; block"""
+  content: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreHeading&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreHeading&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreHeading&quot; block"""
+  gradient: String
+
+  """The &quot;level&quot; field on the &quot;CoreHeading&quot; block"""
+  level: Float
+
+  """The &quot;lock&quot; field on the &quot;CoreHeading&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;placeholder&quot; field on the &quot;CoreHeading&quot; block"""
+  placeholder: String
+
+  """The &quot;style&quot; field on the &quot;CoreHeading&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textAlign&quot; field on the &quot;CoreHeading&quot; block"""
+  textAlign: String
+
+  """The &quot;textColor&quot; field on the &quot;CoreHeading&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreHomeLink implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreHomeLinkAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreHomeLinkAttributes {
+  """The &quot;className&quot; field on the &quot;CoreHomeLink&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreHomeLink&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreHomeLink&quot; block"""
+  fontSize: String
+
+  """The &quot;label&quot; field on the &quot;CoreHomeLink&quot; block"""
+  label: String
+
+  """The &quot;lock&quot; field on the &quot;CoreHomeLink&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreHomeLink&quot; block"""
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreHtml implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreHtmlAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreHtmlAttributes {
+  """The &quot;content&quot; field on the &quot;CoreHtml&quot; block"""
+  content: String
+
+  """The &quot;lock&quot; field on the &quot;CoreHtml&quot; block"""
+  lock: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreImage implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreImageAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreImageAttributes {
+  """The &quot;align&quot; field on the &quot;CoreImage&quot; block"""
+  align: String
+
+  """The &quot;alt&quot; field on the &quot;CoreImage&quot; block"""
+  alt: String
+
+  """The &quot;borderColor&quot; field on the &quot;CoreImage&quot; block"""
+  borderColor: String
+
+  """The &quot;caption&quot; field on the &quot;CoreImage&quot; block"""
+  caption: String
+
+  """The &quot;className&quot; field on the &quot;CoreImage&quot; block"""
+  className: String
+
+  """The &quot;height&quot; field on the &quot;CoreImage&quot; block"""
+  height: Float
+
+  """The &quot;href&quot; field on the &quot;CoreImage&quot; block"""
+  href: String
+
+  """The &quot;id&quot; field on the &quot;CoreImage&quot; block"""
+  id: Float
+
+  """The &quot;linkClass&quot; field on the &quot;CoreImage&quot; block"""
+  linkClass: String
+
+  """
+  The &quot;linkDestination&quot; field on the &quot;CoreImage&quot; block
+  """
+  linkDestination: String
+
+  """The &quot;linkTarget&quot; field on the &quot;CoreImage&quot; block"""
+  linkTarget: String
+
+  """The &quot;lock&quot; field on the &quot;CoreImage&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;rel&quot; field on the &quot;CoreImage&quot; block"""
+  rel: String
+
+  """The &quot;sizeSlug&quot; field on the &quot;CoreImage&quot; block"""
+  sizeSlug: String
+
+  """The &quot;src&quot; field on the &quot;CoreImage&quot; block"""
+  src: String
+
+  """The &quot;style&quot; field on the &quot;CoreImage&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;title&quot; field on the &quot;CoreImage&quot; block"""
+  title: String
+
+  """The &quot;url&quot; field on the &quot;CoreImage&quot; block"""
+  url: String
+
+  """The &quot;width&quot; field on the &quot;CoreImage&quot; block"""
+  width: Float
+}
+
+"""A block used for editing the site"""
+type CoreLatestComments implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreLatestCommentsAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreLatestCommentsAttributes {
+  """
+  The &quot;align&quot; field on the &quot;CoreLatestComments&quot; block
+  """
+  align: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreLatestComments&quot; block
+  """
+  className: String
+
+  """
+  The &quot;commentsToShow&quot; field on the &quot;CoreLatestComments&quot; block
+  """
+  commentsToShow: Float
+
+  """
+  The &quot;displayAvatar&quot; field on the &quot;CoreLatestComments&quot; block
+  """
+  displayAvatar: Boolean
+
+  """
+  The &quot;displayDate&quot; field on the &quot;CoreLatestComments&quot; block
+  """
+  displayDate: Boolean
+
+  """
+  The &quot;displayExcerpt&quot; field on the &quot;CoreLatestComments&quot; block
+  """
+  displayExcerpt: Boolean
+
+  """The &quot;lock&quot; field on the &quot;CoreLatestComments&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreLatestComments&quot; block
+  """
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreLatestPosts implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreLatestPostsAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreLatestPostsAttributes {
+  """
+  The &quot;addLinkToFeaturedImage&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  addLinkToFeaturedImage: Boolean
+
+  """The &quot;align&quot; field on the &quot;CoreLatestPosts&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;categories&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  categories: BlockAttributesObject
+
+  """
+  The &quot;className&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  className: String
+
+  """The &quot;columns&quot; field on the &quot;CoreLatestPosts&quot; block"""
+  columns: Float
+
+  """
+  The &quot;displayAuthor&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  displayAuthor: Boolean
+
+  """
+  The &quot;displayFeaturedImage&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  displayFeaturedImage: Boolean
+
+  """
+  The &quot;displayPostContent&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  displayPostContent: Boolean
+
+  """
+  The &quot;displayPostContentRadio&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  displayPostContentRadio: String
+
+  """
+  The &quot;displayPostDate&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  displayPostDate: Boolean
+
+  """
+  The &quot;excerptLength&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  excerptLength: Float
+
+  """
+  The &quot;featuredImageAlign&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  featuredImageAlign: String
+
+  """
+  The &quot;featuredImageSizeHeight&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  featuredImageSizeHeight: Float
+
+  """
+  The &quot;featuredImageSizeSlug&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  featuredImageSizeSlug: String
+
+  """
+  The &quot;featuredImageSizeWidth&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  featuredImageSizeWidth: Float
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CoreLatestPosts&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;order&quot; field on the &quot;CoreLatestPosts&quot; block"""
+  order: String
+
+  """The &quot;orderBy&quot; field on the &quot;CoreLatestPosts&quot; block"""
+  orderBy: String
+
+  """
+  The &quot;postLayout&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  postLayout: String
+
+  """
+  The &quot;postsToShow&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  postsToShow: Float
+
+  """
+  The &quot;selectedAuthor&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  selectedAuthor: Float
+
+  """The &quot;style&quot; field on the &quot;CoreLatestPosts&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreLegacyWidget implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreLegacyWidgetAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreLegacyWidgetAttributes {
+  """The &quot;id&quot; field on the &quot;CoreLegacyWidget&quot; block"""
+  id: String
+
+  """The &quot;idBase&quot; field on the &quot;CoreLegacyWidget&quot; block"""
+  idBase: String
+
+  """
+  The &quot;instance&quot; field on the &quot;CoreLegacyWidget&quot; block
+  """
+  instance: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CoreLegacyWidget&quot; block"""
+  lock: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreList implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreListAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreListAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreList&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreList&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreList&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreList&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreList&quot; block"""
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CoreList&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;ordered&quot; field on the &quot;CoreList&quot; block"""
+  ordered: Boolean
+
+  """The &quot;placeholder&quot; field on the &quot;CoreList&quot; block"""
+  placeholder: String
+
+  """The &quot;reversed&quot; field on the &quot;CoreList&quot; block"""
+  reversed: Boolean
+
+  """The &quot;start&quot; field on the &quot;CoreList&quot; block"""
+  start: Float
+
+  """The &quot;style&quot; field on the &quot;CoreList&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreList&quot; block"""
+  textColor: String
+
+  """The &quot;type&quot; field on the &quot;CoreList&quot; block"""
+  type: String
+
+  """The &quot;values&quot; field on the &quot;CoreList&quot; block"""
+  values: String
+}
+
+"""A block used for editing the site"""
+type CoreListItem implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreListItemAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreListItemAttributes {
+  """The &quot;className&quot; field on the &quot;CoreListItem&quot; block"""
+  className: String
+
+  """The &quot;content&quot; field on the &quot;CoreListItem&quot; block"""
+  content: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreListItem&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreListItem&quot; block"""
+  fontSize: String
+
+  """The &quot;lock&quot; field on the &quot;CoreListItem&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;placeholder&quot; field on the &quot;CoreListItem&quot; block
+  """
+  placeholder: String
+
+  """The &quot;style&quot; field on the &quot;CoreListItem&quot; block"""
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreLoginout implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreLoginoutAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreLoginoutAttributes {
+  """The &quot;className&quot; field on the &quot;CoreLoginout&quot; block"""
+  className: String
+
+  """
+  The &quot;displayLoginAsForm&quot; field on the &quot;CoreLoginout&quot; block
+  """
+  displayLoginAsForm: Boolean
+
+  """The &quot;lock&quot; field on the &quot;CoreLoginout&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;redirectToCurrent&quot; field on the &quot;CoreLoginout&quot; block
+  """
+  redirectToCurrent: Boolean
+}
+
+"""A block used for editing the site"""
+type CoreMediaText implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreMediaTextAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreMediaTextAttributes {
+  """The &quot;align&quot; field on the &quot;CoreMediaText&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreMediaText&quot; block"""
+  className: String
+
+  """
+  The &quot;focalPoint&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  focalPoint: BlockAttributesObject
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreMediaText&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreMediaText&quot; block"""
+  gradient: String
+
+  """The &quot;href&quot; field on the &quot;CoreMediaText&quot; block"""
+  href: String
+
+  """The &quot;imageFill&quot; field on the &quot;CoreMediaText&quot; block"""
+  imageFill: Boolean
+
+  """
+  The &quot;isStackedOnMobile&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  isStackedOnMobile: Boolean
+
+  """The &quot;linkClass&quot; field on the &quot;CoreMediaText&quot; block"""
+  linkClass: String
+
+  """
+  The &quot;linkDestination&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  linkDestination: String
+
+  """
+  The &quot;linkTarget&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  linkTarget: String
+
+  """The &quot;lock&quot; field on the &quot;CoreMediaText&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;mediaAlt&quot; field on the &quot;CoreMediaText&quot; block"""
+  mediaAlt: String
+
+  """The &quot;mediaId&quot; field on the &quot;CoreMediaText&quot; block"""
+  mediaId: Float
+
+  """The &quot;mediaLink&quot; field on the &quot;CoreMediaText&quot; block"""
+  mediaLink: String
+
+  """
+  The &quot;mediaPosition&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  mediaPosition: String
+
+  """
+  The &quot;mediaSizeSlug&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  mediaSizeSlug: String
+
+  """The &quot;mediaType&quot; field on the &quot;CoreMediaText&quot; block"""
+  mediaType: String
+
+  """The &quot;mediaUrl&quot; field on the &quot;CoreMediaText&quot; block"""
+  mediaUrl: String
+
+  """
+  The &quot;mediaWidth&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  mediaWidth: Float
+
+  """The &quot;rel&quot; field on the &quot;CoreMediaText&quot; block"""
+  rel: String
+
+  """The &quot;style&quot; field on the &quot;CoreMediaText&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreMediaText&quot; block"""
+  textColor: String
+
+  """
+  The &quot;verticalAlignment&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  verticalAlignment: String
+}
+
+"""A block used for editing the site"""
+type CoreMissing implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreMissingAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreMissingAttributes {
+  """The &quot;lock&quot; field on the &quot;CoreMissing&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;originalContent&quot; field on the &quot;CoreMissing&quot; block
+  """
+  originalContent: String
+
+  """
+  The &quot;originalName&quot; field on the &quot;CoreMissing&quot; block
+  """
+  originalName: String
+
+  """
+  The &quot;originalUndelimitedContent&quot; field on the &quot;CoreMissing&quot; block
+  """
+  originalUndelimitedContent: String
+}
+
+"""A block used for editing the site"""
+type CoreMore implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreMoreAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreMoreAttributes {
+  """The &quot;customText&quot; field on the &quot;CoreMore&quot; block"""
+  customText: String
+
+  """The &quot;lock&quot; field on the &quot;CoreMore&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;noTeaser&quot; field on the &quot;CoreMore&quot; block"""
+  noTeaser: Boolean
+}
+
+"""A block used for editing the site"""
+type CoreNavigation implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreNavigationAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreNavigationAttributes {
+  """The &quot;align&quot; field on the &quot;CoreNavigation&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  className: String
+
+  """
+  The &quot;customBackgroundColor&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  customBackgroundColor: String
+
+  """
+  The &quot;customOverlayBackgroundColor&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  customOverlayBackgroundColor: String
+
+  """
+  The &quot;customOverlayTextColor&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  customOverlayTextColor: String
+
+  """
+  The &quot;customTextColor&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  customTextColor: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreNavigation&quot; block"""
+  fontSize: String
+
+  """The &quot;hasIcon&quot; field on the &quot;CoreNavigation&quot; block"""
+  hasIcon: Boolean
+
+  """The &quot;icon&quot; field on the &quot;CoreNavigation&quot; block"""
+  icon: String
+
+  """The &quot;layout&quot; field on the &quot;CoreNavigation&quot; block"""
+  layout: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CoreNavigation&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;maxNestingLevel&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  maxNestingLevel: Float
+
+  """
+  The &quot;openSubmenusOnClick&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  openSubmenusOnClick: Boolean
+
+  """
+  The &quot;overlayBackgroundColor&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  overlayBackgroundColor: String
+
+  """
+  The &quot;overlayMenu&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  overlayMenu: String
+
+  """
+  The &quot;overlayTextColor&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  overlayTextColor: String
+
+  """The &quot;ref&quot; field on the &quot;CoreNavigation&quot; block"""
+  ref: Float
+
+  """
+  The &quot;rgbBackgroundColor&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  rgbBackgroundColor: String
+
+  """
+  The &quot;rgbTextColor&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  rgbTextColor: String
+
+  """
+  The &quot;showSubmenuIcon&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  showSubmenuIcon: Boolean
+
+  """The &quot;style&quot; field on the &quot;CoreNavigation&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  textColor: String
+
+  """
+  The &quot;__unstableLocation&quot; field on the &quot;CoreNavigation&quot; block
+  """
+  unstableLocation: String
+}
+
+"""A block used for editing the site"""
+type CoreNavigationLink implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreNavigationLinkAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreNavigationLinkAttributes {
+  """
+  The &quot;className&quot; field on the &quot;CoreNavigationLink&quot; block
+  """
+  className: String
+
+  """
+  The &quot;description&quot; field on the &quot;CoreNavigationLink&quot; block
+  """
+  description: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreNavigationLink&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreNavigationLink&quot; block
+  """
+  fontSize: String
+
+  """The &quot;id&quot; field on the &quot;CoreNavigationLink&quot; block"""
+  id: Float
+
+  """
+  The &quot;isTopLevelLink&quot; field on the &quot;CoreNavigationLink&quot; block
+  """
+  isTopLevelLink: Boolean
+
+  """The &quot;kind&quot; field on the &quot;CoreNavigationLink&quot; block"""
+  kind: String
+
+  """
+  The &quot;label&quot; field on the &quot;CoreNavigationLink&quot; block
+  """
+  label: String
+
+  """The &quot;lock&quot; field on the &quot;CoreNavigationLink&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;opensInNewTab&quot; field on the &quot;CoreNavigationLink&quot; block
+  """
+  opensInNewTab: Boolean
+
+  """The &quot;rel&quot; field on the &quot;CoreNavigationLink&quot; block"""
+  rel: String
+
+  """
+  The &quot;style&quot; field on the &quot;CoreNavigationLink&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;title&quot; field on the &quot;CoreNavigationLink&quot; block
+  """
+  title: String
+
+  """The &quot;type&quot; field on the &quot;CoreNavigationLink&quot; block"""
+  type: String
+
+  """The &quot;url&quot; field on the &quot;CoreNavigationLink&quot; block"""
+  url: String
+}
+
+"""A block used for editing the site"""
+type CoreNavigationSubmenu implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreNavigationSubmenuAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreNavigationSubmenuAttributes {
+  """
+  The &quot;className&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  className: String
+
+  """
+  The &quot;description&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  description: String
+
+  """
+  The &quot;id&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  id: Float
+
+  """
+  The &quot;isTopLevelItem&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  isTopLevelItem: Boolean
+
+  """
+  The &quot;kind&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  kind: String
+
+  """
+  The &quot;label&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  label: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;opensInNewTab&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  opensInNewTab: Boolean
+
+  """
+  The &quot;rel&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  rel: String
+
+  """
+  The &quot;title&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  title: String
+
+  """
+  The &quot;type&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  type: String
+
+  """
+  The &quot;url&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  url: String
+}
+
+"""A block used for editing the site"""
+type CoreNextpage implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreNextpageAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreNextpageAttributes {
+  """The &quot;lock&quot; field on the &quot;CoreNextpage&quot; block"""
+  lock: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CorePageList implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePageListAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePageListAttributes {
+  """The &quot;className&quot; field on the &quot;CorePageList&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CorePageList&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CorePageList&quot; block"""
+  fontSize: String
+
+  """The &quot;isNested&quot; field on the &quot;CorePageList&quot; block"""
+  isNested: Boolean
+
+  """The &quot;lock&quot; field on the &quot;CorePageList&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;parentPageID&quot; field on the &quot;CorePageList&quot; block
+  """
+  parentPageID: Int
+
+  """The &quot;style&quot; field on the &quot;CorePageList&quot; block"""
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CorePageListItem implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePageListItemAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePageListItemAttributes {
+  """
+  The &quot;className&quot; field on the &quot;CorePageListItem&quot; block
+  """
+  className: String
+
+  """
+  The &quot;hasChildren&quot; field on the &quot;CorePageListItem&quot; block
+  """
+  hasChildren: Boolean
+
+  """The &quot;id&quot; field on the &quot;CorePageListItem&quot; block"""
+  id: Float
+
+  """The &quot;label&quot; field on the &quot;CorePageListItem&quot; block"""
+  label: String
+
+  """The &quot;link&quot; field on the &quot;CorePageListItem&quot; block"""
+  link: String
+
+  """The &quot;lock&quot; field on the &quot;CorePageListItem&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;title&quot; field on the &quot;CorePageListItem&quot; block"""
+  title: String
+}
+
+"""A block used for editing the site"""
+type CoreParagraph implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreParagraphAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreParagraphAttributes {
+  """The &quot;align&quot; field on the &quot;CoreParagraph&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreParagraph&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreParagraph&quot; block"""
+  className: String
+
+  """The &quot;content&quot; field on the &quot;CoreParagraph&quot; block"""
+  content: String
+
+  """
+  The &quot;cssClassName&quot; field on the &quot;CoreParagraph&quot; block
+  """
+  cssClassName: String
+
+  """The &quot;direction&quot; field on the &quot;CoreParagraph&quot; block"""
+  direction: String
+
+  """The &quot;dropCap&quot; field on the &quot;CoreParagraph&quot; block"""
+  dropCap: Boolean
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreParagraph&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreParagraph&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreParagraph&quot; block"""
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CoreParagraph&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;placeholder&quot; field on the &quot;CoreParagraph&quot; block
+  """
+  placeholder: String
+
+  """The &quot;style&quot; field on the &quot;CoreParagraph&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreParagraph&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePattern implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePatternAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePatternAttributes {
+  """The &quot;className&quot; field on the &quot;CorePattern&quot; block"""
+  className: String
+
+  """The &quot;lock&quot; field on the &quot;CorePattern&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;slug&quot; field on the &quot;CorePattern&quot; block"""
+  slug: String
+}
+
+"""A block used for editing the site"""
+type CorePostAuthor implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostAuthorAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostAuthorAttributes {
+  """
+  The &quot;avatarSize&quot; field on the &quot;CorePostAuthor&quot; block
+  """
+  avatarSize: Float
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostAuthor&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;byline&quot; field on the &quot;CorePostAuthor&quot; block"""
+  byline: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePostAuthor&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePostAuthor&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CorePostAuthor&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CorePostAuthor&quot; block"""
+  gradient: String
+
+  """The &quot;isLink&quot; field on the &quot;CorePostAuthor&quot; block"""
+  isLink: Boolean
+
+  """
+  The &quot;linkTarget&quot; field on the &quot;CorePostAuthor&quot; block
+  """
+  linkTarget: String
+
+  """The &quot;lock&quot; field on the &quot;CorePostAuthor&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;showAvatar&quot; field on the &quot;CorePostAuthor&quot; block
+  """
+  showAvatar: Boolean
+
+  """The &quot;showBio&quot; field on the &quot;CorePostAuthor&quot; block"""
+  showBio: Boolean
+
+  """The &quot;style&quot; field on the &quot;CorePostAuthor&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CorePostAuthor&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CorePostAuthor&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePostAuthorBiography implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostAuthorBiographyAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostAuthorBiographyAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostAuthorBiography&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePostAuthorBiography&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePostAuthorBiography&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CorePostAuthorBiography&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CorePostAuthorBiography&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CorePostAuthorBiography&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CorePostAuthorBiography&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CorePostAuthorBiography&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CorePostAuthorBiography&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePostAuthorName implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostAuthorNameAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostAuthorNameAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;isLink&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  isLink: Boolean
+
+  """
+  The &quot;linkTarget&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  linkTarget: String
+
+  """The &quot;lock&quot; field on the &quot;CorePostAuthorName&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePostComments implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostCommentsAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostCommentsAttributes {
+  """The &quot;align&quot; field on the &quot;CorePostComments&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostComments&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePostComments&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CorePostComments&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CorePostComments&quot; block
+  """
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CorePostComments&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CorePostComments&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CorePostComments&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CorePostComments&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePostCommentsForm implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostCommentsFormAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostCommentsFormAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostCommentsForm&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePostCommentsForm&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CorePostCommentsForm&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CorePostCommentsForm&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CorePostCommentsForm&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CorePostCommentsForm&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CorePostCommentsForm&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CorePostCommentsForm&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePostContent implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostContentAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostContentAttributes {
+  """The &quot;align&quot; field on the &quot;CorePostContent&quot; block"""
+  align: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePostContent&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePostContent&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CorePostContent&quot; block
+  """
+  fontSize: String
+
+  """The &quot;layout&quot; field on the &quot;CorePostContent&quot; block"""
+  layout: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CorePostContent&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CorePostContent&quot; block"""
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CorePostDate implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostDateAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostDateAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostDate&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CorePostDate&quot; block"""
+  className: String
+
+  """
+  The &quot;displayType&quot; field on the &quot;CorePostDate&quot; block
+  """
+  displayType: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CorePostDate&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CorePostDate&quot; block"""
+  fontSize: String
+
+  """The &quot;format&quot; field on the &quot;CorePostDate&quot; block"""
+  format: String
+
+  """The &quot;gradient&quot; field on the &quot;CorePostDate&quot; block"""
+  gradient: String
+
+  """The &quot;isLink&quot; field on the &quot;CorePostDate&quot; block"""
+  isLink: Boolean
+
+  """The &quot;lock&quot; field on the &quot;CorePostDate&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CorePostDate&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textAlign&quot; field on the &quot;CorePostDate&quot; block"""
+  textAlign: String
+
+  """The &quot;textColor&quot; field on the &quot;CorePostDate&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePostExcerpt implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostExcerptAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostExcerptAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostExcerpt&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePostExcerpt&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePostExcerpt&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CorePostExcerpt&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CorePostExcerpt&quot; block
+  """
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CorePostExcerpt&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;moreText&quot; field on the &quot;CorePostExcerpt&quot; block
+  """
+  moreText: String
+
+  """
+  The &quot;showMoreOnNewLine&quot; field on the &quot;CorePostExcerpt&quot; block
+  """
+  showMoreOnNewLine: Boolean
+
+  """The &quot;style&quot; field on the &quot;CorePostExcerpt&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CorePostExcerpt&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CorePostExcerpt&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePostFeaturedImage implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostFeaturedImageAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostFeaturedImageAttributes {
+  """
+  The &quot;align&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  align: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  borderColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  className: String
+
+  """
+  The &quot;customGradient&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  customGradient: String
+
+  """
+  The &quot;customOverlayColor&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  customOverlayColor: String
+
+  """
+  The &quot;dimRatio&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  dimRatio: Float
+
+  """
+  The &quot;gradient&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;height&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  height: String
+
+  """
+  The &quot;isLink&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  isLink: Boolean
+
+  """
+  The &quot;linkTarget&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  linkTarget: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;overlayColor&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  overlayColor: String
+
+  """
+  The &quot;rel&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  rel: String
+
+  """
+  The &quot;scale&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  scale: String
+
+  """
+  The &quot;sizeSlug&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  sizeSlug: String
+
+  """
+  The &quot;style&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;width&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  width: String
+}
+
+"""A block used for editing the site"""
+type CorePostNavigationLink implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostNavigationLinkAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostNavigationLinkAttributes {
+  """
+  The &quot;arrow&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  arrow: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;label&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  label: String
+
+  """
+  The &quot;linkLabel&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  linkLabel: Boolean
+
+  """
+  The &quot;lock&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;showTitle&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  showTitle: Boolean
+
+  """
+  The &quot;style&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  textColor: String
+
+  """
+  The &quot;type&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  type: String
+}
+
+"""A block used for editing the site"""
+type CorePostTemplate implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostTemplateAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostTemplateAttributes {
+  """The &quot;align&quot; field on the &quot;CorePostTemplate&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostTemplate&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePostTemplate&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePostTemplate&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CorePostTemplate&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CorePostTemplate&quot; block
+  """
+  gradient: String
+
+  """The &quot;layout&quot; field on the &quot;CorePostTemplate&quot; block"""
+  layout: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CorePostTemplate&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CorePostTemplate&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CorePostTemplate&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePostTerms implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostTermsAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostTermsAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostTerms&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CorePostTerms&quot; block"""
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePostTerms&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CorePostTerms&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CorePostTerms&quot; block"""
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CorePostTerms&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;prefix&quot; field on the &quot;CorePostTerms&quot; block"""
+  prefix: String
+
+  """The &quot;separator&quot; field on the &quot;CorePostTerms&quot; block"""
+  separator: String
+
+  """The &quot;style&quot; field on the &quot;CorePostTerms&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;suffix&quot; field on the &quot;CorePostTerms&quot; block"""
+  suffix: String
+
+  """The &quot;term&quot; field on the &quot;CorePostTerms&quot; block"""
+  term: String
+
+  """The &quot;textAlign&quot; field on the &quot;CorePostTerms&quot; block"""
+  textAlign: String
+
+  """The &quot;textColor&quot; field on the &quot;CorePostTerms&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePostTitle implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePostTitleAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePostTitleAttributes {
+  """The &quot;align&quot; field on the &quot;CorePostTitle&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostTitle&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CorePostTitle&quot; block"""
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePostTitle&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CorePostTitle&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CorePostTitle&quot; block"""
+  gradient: String
+
+  """The &quot;isLink&quot; field on the &quot;CorePostTitle&quot; block"""
+  isLink: Boolean
+
+  """The &quot;level&quot; field on the &quot;CorePostTitle&quot; block"""
+  level: Float
+
+  """
+  The &quot;linkTarget&quot; field on the &quot;CorePostTitle&quot; block
+  """
+  linkTarget: String
+
+  """The &quot;lock&quot; field on the &quot;CorePostTitle&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;rel&quot; field on the &quot;CorePostTitle&quot; block"""
+  rel: String
+
+  """The &quot;style&quot; field on the &quot;CorePostTitle&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textAlign&quot; field on the &quot;CorePostTitle&quot; block"""
+  textAlign: String
+
+  """The &quot;textColor&quot; field on the &quot;CorePostTitle&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePreformatted implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePreformattedAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePreformattedAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePreformatted&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CorePreformatted&quot; block
+  """
+  className: String
+
+  """
+  The &quot;content&quot; field on the &quot;CorePreformatted&quot; block
+  """
+  content: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePreformatted&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CorePreformatted&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CorePreformatted&quot; block
+  """
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CorePreformatted&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CorePreformatted&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CorePreformatted&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CorePullquote implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CorePullquoteAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CorePullquoteAttributes {
+  """The &quot;align&quot; field on the &quot;CorePullquote&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CorePullquote&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CorePullquote&quot; block
+  """
+  borderColor: String
+
+  """The &quot;citation&quot; field on the &quot;CorePullquote&quot; block"""
+  citation: String
+
+  """The &quot;className&quot; field on the &quot;CorePullquote&quot; block"""
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CorePullquote&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CorePullquote&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CorePullquote&quot; block"""
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CorePullquote&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CorePullquote&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textAlign&quot; field on the &quot;CorePullquote&quot; block"""
+  textAlign: String
+
+  """The &quot;textColor&quot; field on the &quot;CorePullquote&quot; block"""
+  textColor: String
+
+  """The &quot;value&quot; field on the &quot;CorePullquote&quot; block"""
+  value: String
+}
+
+"""A block used for editing the site"""
+type CoreQuery implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreQueryAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreQueryAttributes {
+  """The &quot;align&quot; field on the &quot;CoreQuery&quot; block"""
+  align: String
+
+  """The &quot;className&quot; field on the &quot;CoreQuery&quot; block"""
+  className: String
+
+  """The &quot;displayLayout&quot; field on the &quot;CoreQuery&quot; block"""
+  displayLayout: BlockAttributesObject
+
+  """The &quot;layout&quot; field on the &quot;CoreQuery&quot; block"""
+  layout: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CoreQuery&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;namespace&quot; field on the &quot;CoreQuery&quot; block"""
+  namespace: String
+
+  """The &quot;query&quot; field on the &quot;CoreQuery&quot; block"""
+  query: BlockAttributesObject
+
+  """The &quot;queryId&quot; field on the &quot;CoreQuery&quot; block"""
+  queryId: Float
+
+  """The &quot;tagName&quot; field on the &quot;CoreQuery&quot; block"""
+  tagName: String
+}
+
+"""A block used for editing the site"""
+type CoreQueryNoResults implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreQueryNoResultsAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreQueryNoResultsAttributes {
+  """
+  The &quot;align&quot; field on the &quot;CoreQueryNoResults&quot; block
+  """
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreQueryNoResults&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreQueryNoResults&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreQueryNoResults&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreQueryNoResults&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreQueryNoResults&quot; block
+  """
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CoreQueryNoResults&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreQueryNoResults&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreQueryNoResults&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreQueryPagination implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreQueryPaginationAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreQueryPaginationAttributes {
+  """
+  The &quot;align&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;layout&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  layout: BlockAttributesObject
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;paginationArrow&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  paginationArrow: String
+
+  """
+  The &quot;style&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreQueryPaginationNext implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreQueryPaginationNextAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreQueryPaginationNextAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreQueryPaginationNext&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreQueryPaginationNext&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreQueryPaginationNext&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreQueryPaginationNext&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreQueryPaginationNext&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;label&quot; field on the &quot;CoreQueryPaginationNext&quot; block
+  """
+  label: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreQueryPaginationNext&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreQueryPaginationNext&quot; block
+  """
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreQueryPaginationNumbers implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreQueryPaginationNumbersAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreQueryPaginationNumbersAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
+  """
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreQueryPaginationPrevious implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreQueryPaginationPreviousAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreQueryPaginationPreviousAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;label&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block
+  """
+  label: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block
+  """
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreQueryTitle implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreQueryTitleAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreQueryTitleAttributes {
+  """The &quot;align&quot; field on the &quot;CoreQueryTitle&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreQueryTitle&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreQueryTitle&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreQueryTitle&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreQueryTitle&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreQueryTitle&quot; block"""
+  gradient: String
+
+  """The &quot;level&quot; field on the &quot;CoreQueryTitle&quot; block"""
+  level: Float
+
+  """The &quot;lock&quot; field on the &quot;CoreQueryTitle&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;showPrefix&quot; field on the &quot;CoreQueryTitle&quot; block
+  """
+  showPrefix: Boolean
+
+  """
+  The &quot;showSearchTerm&quot; field on the &quot;CoreQueryTitle&quot; block
+  """
+  showSearchTerm: Boolean
+
+  """The &quot;style&quot; field on the &quot;CoreQueryTitle&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CoreQueryTitle&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreQueryTitle&quot; block
+  """
+  textColor: String
+
+  """The &quot;type&quot; field on the &quot;CoreQueryTitle&quot; block"""
+  type: String
+}
+
+"""A block used for editing the site"""
+type CoreQuote implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreQuoteAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreQuoteAttributes {
+  """The &quot;align&quot; field on the &quot;CoreQuote&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreQuote&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;citation&quot; field on the &quot;CoreQuote&quot; block"""
+  citation: String
+
+  """The &quot;className&quot; field on the &quot;CoreQuote&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreQuote&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreQuote&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreQuote&quot; block"""
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CoreQuote&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreQuote&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreQuote&quot; block"""
+  textColor: String
+
+  """The &quot;value&quot; field on the &quot;CoreQuote&quot; block"""
+  value: String
+}
+
+"""A block used for editing the site"""
+type CoreReadMore implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreReadMoreAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreReadMoreAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreReadMore&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreReadMore&quot; block
+  """
+  borderColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreReadMore&quot; block"""
+  className: String
+
+  """The &quot;content&quot; field on the &quot;CoreReadMore&quot; block"""
+  content: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreReadMore&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreReadMore&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreReadMore&quot; block"""
+  gradient: String
+
+  """The &quot;linkTarget&quot; field on the &quot;CoreReadMore&quot; block"""
+  linkTarget: String
+
+  """The &quot;lock&quot; field on the &quot;CoreReadMore&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreReadMore&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreReadMore&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreRss implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreRssAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreRssAttributes {
+  """The &quot;align&quot; field on the &quot;CoreRss&quot; block"""
+  align: String
+
+  """The &quot;blockLayout&quot; field on the &quot;CoreRss&quot; block"""
+  blockLayout: String
+
+  """The &quot;className&quot; field on the &quot;CoreRss&quot; block"""
+  className: String
+
+  """The &quot;columns&quot; field on the &quot;CoreRss&quot; block"""
+  columns: Float
+
+  """The &quot;displayAuthor&quot; field on the &quot;CoreRss&quot; block"""
+  displayAuthor: Boolean
+
+  """The &quot;displayDate&quot; field on the &quot;CoreRss&quot; block"""
+  displayDate: Boolean
+
+  """The &quot;displayExcerpt&quot; field on the &quot;CoreRss&quot; block"""
+  displayExcerpt: Boolean
+
+  """The &quot;excerptLength&quot; field on the &quot;CoreRss&quot; block"""
+  excerptLength: Float
+
+  """The &quot;feedURL&quot; field on the &quot;CoreRss&quot; block"""
+  feedURL: String
+
+  """The &quot;itemsToShow&quot; field on the &quot;CoreRss&quot; block"""
+  itemsToShow: Float
+
+  """The &quot;lock&quot; field on the &quot;CoreRss&quot; block"""
+  lock: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreSearch implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreSearchAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreSearchAttributes {
+  """The &quot;align&quot; field on the &quot;CoreSearch&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreSearch&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;borderColor&quot; field on the &quot;CoreSearch&quot; block"""
+  borderColor: String
+
+  """
+  The &quot;buttonPosition&quot; field on the &quot;CoreSearch&quot; block
+  """
+  buttonPosition: String
+
+  """The &quot;buttonText&quot; field on the &quot;CoreSearch&quot; block"""
+  buttonText: String
+
+  """
+  The &quot;buttonUseIcon&quot; field on the &quot;CoreSearch&quot; block
+  """
+  buttonUseIcon: Boolean
+
+  """The &quot;className&quot; field on the &quot;CoreSearch&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreSearch&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreSearch&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreSearch&quot; block"""
+  gradient: String
+
+  """The &quot;label&quot; field on the &quot;CoreSearch&quot; block"""
+  label: String
+
+  """The &quot;lock&quot; field on the &quot;CoreSearch&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;placeholder&quot; field on the &quot;CoreSearch&quot; block"""
+  placeholder: String
+
+  """The &quot;query&quot; field on the &quot;CoreSearch&quot; block"""
+  query: BlockAttributesObject
+
+  """The &quot;showLabel&quot; field on the &quot;CoreSearch&quot; block"""
+  showLabel: Boolean
+
+  """The &quot;style&quot; field on the &quot;CoreSearch&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreSearch&quot; block"""
+  textColor: String
+
+  """The &quot;width&quot; field on the &quot;CoreSearch&quot; block"""
+  width: Float
+
+  """The &quot;widthUnit&quot; field on the &quot;CoreSearch&quot; block"""
+  widthUnit: String
+}
+
+"""A block used for editing the site"""
+type CoreSeparator implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreSeparatorAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreSeparatorAttributes {
+  """The &quot;align&quot; field on the &quot;CoreSeparator&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreSeparator&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreSeparator&quot; block"""
+  className: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreSeparator&quot; block"""
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CoreSeparator&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;opacity&quot; field on the &quot;CoreSeparator&quot; block"""
+  opacity: String
+
+  """The &quot;style&quot; field on the &quot;CoreSeparator&quot; block"""
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreShortcode implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreShortcodeAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreShortcodeAttributes {
+  """The &quot;lock&quot; field on the &quot;CoreShortcode&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;text&quot; field on the &quot;CoreShortcode&quot; block"""
+  text: String
+}
+
+"""A block used for editing the site"""
+type CoreSiteLogo implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreSiteLogoAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreSiteLogoAttributes {
+  """The &quot;align&quot; field on the &quot;CoreSiteLogo&quot; block"""
+  align: String
+
+  """The &quot;className&quot; field on the &quot;CoreSiteLogo&quot; block"""
+  className: String
+
+  """The &quot;isLink&quot; field on the &quot;CoreSiteLogo&quot; block"""
+  isLink: Boolean
+
+  """The &quot;linkTarget&quot; field on the &quot;CoreSiteLogo&quot; block"""
+  linkTarget: String
+
+  """The &quot;lock&quot; field on the &quot;CoreSiteLogo&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;shouldSyncIcon&quot; field on the &quot;CoreSiteLogo&quot; block
+  """
+  shouldSyncIcon: Boolean
+
+  """The &quot;style&quot; field on the &quot;CoreSiteLogo&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;width&quot; field on the &quot;CoreSiteLogo&quot; block"""
+  width: Float
+}
+
+"""A block used for editing the site"""
+type CoreSiteTagline implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreSiteTaglineAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreSiteTaglineAttributes {
+  """The &quot;align&quot; field on the &quot;CoreSiteTagline&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreSiteTagline&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreSiteTagline&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreSiteTagline&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreSiteTagline&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreSiteTagline&quot; block
+  """
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CoreSiteTagline&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreSiteTagline&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CoreSiteTagline&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreSiteTagline&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreSiteTitle implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreSiteTitleAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreSiteTitleAttributes {
+  """The &quot;align&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreSiteTitle&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreSiteTitle&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  gradient: String
+
+  """The &quot;isLink&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  isLink: Boolean
+
+  """The &quot;level&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  level: Float
+
+  """
+  The &quot;linkTarget&quot; field on the &quot;CoreSiteTitle&quot; block
+  """
+  linkTarget: String
+
+  """The &quot;lock&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textAlign&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  textAlign: String
+
+  """The &quot;textColor&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreSocialLink implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreSocialLinkAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreSocialLinkAttributes {
+  """
+  The &quot;className&quot; field on the &quot;CoreSocialLink&quot; block
+  """
+  className: String
+
+  """The &quot;label&quot; field on the &quot;CoreSocialLink&quot; block"""
+  label: String
+
+  """The &quot;lock&quot; field on the &quot;CoreSocialLink&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;rel&quot; field on the &quot;CoreSocialLink&quot; block"""
+  rel: String
+
+  """The &quot;service&quot; field on the &quot;CoreSocialLink&quot; block"""
+  service: String
+
+  """The &quot;url&quot; field on the &quot;CoreSocialLink&quot; block"""
+  url: String
+}
+
+"""A block used for editing the site"""
+type CoreSocialLinks implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreSocialLinksAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreSocialLinksAttributes {
+  """The &quot;align&quot; field on the &quot;CoreSocialLinks&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  className: String
+
+  """
+  The &quot;customIconBackgroundColor&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  customIconBackgroundColor: String
+
+  """
+  The &quot;customIconColor&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  customIconColor: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;iconBackgroundColor&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  iconBackgroundColor: String
+
+  """
+  The &quot;iconBackgroundColorValue&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  iconBackgroundColorValue: String
+
+  """
+  The &quot;iconColor&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  iconColor: String
+
+  """
+  The &quot;iconColorValue&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  iconColorValue: String
+
+  """The &quot;layout&quot; field on the &quot;CoreSocialLinks&quot; block"""
+  layout: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CoreSocialLinks&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;openInNewTab&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  openInNewTab: Boolean
+
+  """
+  The &quot;showLabels&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  showLabels: Boolean
+
+  """The &quot;size&quot; field on the &quot;CoreSocialLinks&quot; block"""
+  size: String
+
+  """The &quot;style&quot; field on the &quot;CoreSocialLinks&quot; block"""
+  style: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreSpacer implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreSpacerAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreSpacerAttributes {
+  """The &quot;className&quot; field on the &quot;CoreSpacer&quot; block"""
+  className: String
+
+  """The &quot;height&quot; field on the &quot;CoreSpacer&quot; block"""
+  height: String
+
+  """The &quot;lock&quot; field on the &quot;CoreSpacer&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreSpacer&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;width&quot; field on the &quot;CoreSpacer&quot; block"""
+  width: String
+}
+
+"""A block used for editing the site"""
+type CoreTable implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreTableAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreTableAttributes {
+  """The &quot;align&quot; field on the &quot;CoreTable&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreTable&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;body&quot; field on the &quot;CoreTable&quot; block"""
+  body: BlockAttributesObject
+
+  """The &quot;borderColor&quot; field on the &quot;CoreTable&quot; block"""
+  borderColor: String
+
+  """The &quot;caption&quot; field on the &quot;CoreTable&quot; block"""
+  caption: String
+
+  """The &quot;className&quot; field on the &quot;CoreTable&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreTable&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreTable&quot; block"""
+  fontSize: String
+
+  """The &quot;foot&quot; field on the &quot;CoreTable&quot; block"""
+  foot: BlockAttributesObject
+
+  """The &quot;gradient&quot; field on the &quot;CoreTable&quot; block"""
+  gradient: String
+
+  """
+  The &quot;hasFixedLayout&quot; field on the &quot;CoreTable&quot; block
+  """
+  hasFixedLayout: Boolean
+
+  """The &quot;head&quot; field on the &quot;CoreTable&quot; block"""
+  head: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CoreTable&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreTable&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreTable&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreTagCloud implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreTagCloudAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreTagCloudAttributes {
+  """The &quot;align&quot; field on the &quot;CoreTagCloud&quot; block"""
+  align: String
+
+  """The &quot;className&quot; field on the &quot;CoreTagCloud&quot; block"""
+  className: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreTagCloud&quot; block"""
+  fontFamily: String
+
+  """
+  The &quot;largestFontSize&quot; field on the &quot;CoreTagCloud&quot; block
+  """
+  largestFontSize: String
+
+  """The &quot;lock&quot; field on the &quot;CoreTagCloud&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;numberOfTags&quot; field on the &quot;CoreTagCloud&quot; block
+  """
+  numberOfTags: Float
+
+  """
+  The &quot;showTagCounts&quot; field on the &quot;CoreTagCloud&quot; block
+  """
+  showTagCounts: Boolean
+
+  """
+  The &quot;smallestFontSize&quot; field on the &quot;CoreTagCloud&quot; block
+  """
+  smallestFontSize: String
+
+  """The &quot;style&quot; field on the &quot;CoreTagCloud&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;taxonomy&quot; field on the &quot;CoreTagCloud&quot; block"""
+  taxonomy: String
+}
+
+"""A block used for editing the site"""
+type CoreTemplatePart implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreTemplatePartAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreTemplatePartAttributes {
+  """The &quot;align&quot; field on the &quot;CoreTemplatePart&quot; block"""
+  align: String
+
+  """The &quot;area&quot; field on the &quot;CoreTemplatePart&quot; block"""
+  area: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreTemplatePart&quot; block
+  """
+  className: String
+
+  """The &quot;lock&quot; field on the &quot;CoreTemplatePart&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;slug&quot; field on the &quot;CoreTemplatePart&quot; block"""
+  slug: String
+
+  """
+  The &quot;tagName&quot; field on the &quot;CoreTemplatePart&quot; block
+  """
+  tagName: String
+
+  """The &quot;theme&quot; field on the &quot;CoreTemplatePart&quot; block"""
+  theme: String
+}
+
+"""A block used for editing the site"""
+type CoreTermDescription implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreTermDescriptionAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreTermDescriptionAttributes {
+  """
+  The &quot;align&quot; field on the &quot;CoreTermDescription&quot; block
+  """
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreTermDescription&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;CoreTermDescription&quot; block
+  """
+  className: String
+
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreTermDescription&quot; block
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreTermDescription&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;lock&quot; field on the &quot;CoreTermDescription&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;style&quot; field on the &quot;CoreTermDescription&quot; block
+  """
+  style: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;CoreTermDescription&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreTermDescription&quot; block
+  """
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreTextColumns implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreTextColumnsAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreTextColumnsAttributes {
+  """
+  The &quot;className&quot; field on the &quot;CoreTextColumns&quot; block
+  """
+  className: String
+
+  """The &quot;columns&quot; field on the &quot;CoreTextColumns&quot; block"""
+  columns: Float
+
+  """The &quot;content&quot; field on the &quot;CoreTextColumns&quot; block"""
+  content: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;CoreTextColumns&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;width&quot; field on the &quot;CoreTextColumns&quot; block"""
+  width: String
+}
+
+"""A block used for editing the site"""
+type CoreVerse implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreVerseAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreVerseAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreVerse&quot; block
+  """
+  backgroundColor: String
+
+  """The &quot;className&quot; field on the &quot;CoreVerse&quot; block"""
+  className: String
+
+  """The &quot;content&quot; field on the &quot;CoreVerse&quot; block"""
+  content: String
+
+  """The &quot;fontFamily&quot; field on the &quot;CoreVerse&quot; block"""
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreVerse&quot; block"""
+  fontSize: String
+
+  """The &quot;gradient&quot; field on the &quot;CoreVerse&quot; block"""
+  gradient: String
+
+  """The &quot;lock&quot; field on the &quot;CoreVerse&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreVerse&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textAlign&quot; field on the &quot;CoreVerse&quot; block"""
+  textAlign: String
+
+  """The &quot;textColor&quot; field on the &quot;CoreVerse&quot; block"""
+  textColor: String
+}
+
+"""A block used for editing the site"""
+type CoreVideo implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreVideoAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreVideoAttributes {
+  """The &quot;align&quot; field on the &quot;CoreVideo&quot; block"""
+  align: String
+
+  """The &quot;autoplay&quot; field on the &quot;CoreVideo&quot; block"""
+  autoplay: Boolean
+
+  """The &quot;caption&quot; field on the &quot;CoreVideo&quot; block"""
+  caption: String
+
+  """The &quot;className&quot; field on the &quot;CoreVideo&quot; block"""
+  className: String
+
+  """The &quot;controls&quot; field on the &quot;CoreVideo&quot; block"""
+  controls: Boolean
+
+  """The &quot;id&quot; field on the &quot;CoreVideo&quot; block"""
+  id: Float
+
+  """The &quot;lock&quot; field on the &quot;CoreVideo&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;loop&quot; field on the &quot;CoreVideo&quot; block"""
+  loop: Boolean
+
+  """The &quot;muted&quot; field on the &quot;CoreVideo&quot; block"""
+  muted: Boolean
+
+  """The &quot;playsInline&quot; field on the &quot;CoreVideo&quot; block"""
+  playsInline: Boolean
+
+  """The &quot;poster&quot; field on the &quot;CoreVideo&quot; block"""
+  poster: String
+
+  """The &quot;preload&quot; field on the &quot;CoreVideo&quot; block"""
+  preload: String
+
+  """The &quot;src&quot; field on the &quot;CoreVideo&quot; block"""
+  src: String
+
+  """The &quot;style&quot; field on the &quot;CoreVideo&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;tracks&quot; field on the &quot;CoreVideo&quot; block"""
+  tracks: BlockAttributesObject
+}
+
+"""A block used for editing the site"""
+type CoreWidgetGroup implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: CoreWidgetGroupAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type CoreWidgetGroupAttributes {
+  """
+  The &quot;className&quot; field on the &quot;CoreWidgetGroup&quot; block
+  """
+  className: String
+
+  """The &quot;lock&quot; field on the &quot;CoreWidgetGroup&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;title&quot; field on the &quot;CoreWidgetGroup&quot; block"""
+  title: String
 }
 
 """Input for the createCategory mutation."""
@@ -2804,6 +9899,36 @@ interface Edge {
 
   """The connected node"""
   node: Node!
+}
+
+"""Blocks that can be edited to create content and layouts"""
+interface EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the Block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
 }
 
 """Asset enqueued by the CMS"""
@@ -5089,6 +12214,12 @@ interface NodeWithContentEditor implements Node {
   id: ID!
 }
 
+"""Node that has content blocks associated with it"""
+interface NodeWithEditorBlocks {
+  """List of editor blocks"""
+  editorBlocks(flat: Boolean): [EditorBlock]
+}
+
 """A node that can have an excerpt"""
 interface NodeWithExcerpt implements Node {
   """The excerpt of the post."""
@@ -5230,7 +12361,7 @@ enum OrderEnum {
 }
 
 """The page type"""
-type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
+type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
   """
   Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
   """
@@ -5346,6 +12477,9 @@ type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode 
   If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds
   """
   editingLockedBy: ContentNodeToEditLockConnectionEdge
+
+  """List of editor blocks"""
+  editorBlocks(flat: Boolean): [EditorBlock]
 
   """The RSS enclosure for the object"""
   enclosure: String
@@ -5946,7 +13080,7 @@ enum PluginStatusEnum {
 }
 
 """The post type"""
-type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable {
+type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable {
   """Connection between the NodeWithAuthor type and the User type"""
   author: NodeWithAuthorToUserConnectionEdge
 
@@ -6036,6 +13170,9 @@ type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node 
   If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds
   """
   editingLockedBy: ContentNodeToEditLockConnectionEdge
+
+  """List of editor blocks"""
+  editorBlocks(flat: Boolean): [EditorBlock]
 
   """The RSS enclosure for the object"""
   enclosure: String
@@ -11775,6 +18912,36 @@ interface UniformResourceIdentifiable implements Node {
   uri: String
 }
 
+"""A block used for resolving blocks not found in the WordPress registry"""
+type UnknownBlock implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
 """Input for the updateCategory mutation."""
 input UpdateCategoryInput {
   """The slug that the category will be an alias of"""
@@ -12625,6 +19792,11 @@ type User implements Commenter & DatabaseIdentifier & Node & UniformResourceIden
     """The number of items to return before the referenced "before" cursor"""
     last: Int
   ): UserToUserRoleConnection
+
+  """
+  Whether the Toolbar should be displayed when the user is viewing the site.
+  """
+  shouldShowAdminToolbar: Boolean
 
   """
   The slug for the user. This field is equivalent to WP_User-&gt;user_nicename

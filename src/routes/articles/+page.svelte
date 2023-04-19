@@ -1,10 +1,24 @@
 <script lang="ts">
-	/* @type { import('./$houdini').PageData } */
-	export let data;
+	import type { PageData } from './$houdini';
+
+	export let data: PageData;
 
 	$: ({ Articles } = data);
 </script>
 
-<main>
-	<pre>{JSON.stringify($Articles, null, 2)}</pre>
+<main class="wrapper">
+	<h1>Articles</h1>
+	{#if $Articles.fetching}
+		<p>Loading...</p>
+	{:else if !$Articles.data?.posts?.nodes}
+		<p>No articles found</p>
+	{:else}
+		<ul>
+			{#each $Articles.data?.posts?.nodes as article}
+				<li>
+					<a href="/articles/{article.slug}">{article.title}</a>
+				</li>
+			{/each}
+		</ul>
+	{/if}
 </main>

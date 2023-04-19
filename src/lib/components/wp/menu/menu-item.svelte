@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { fragment, graphql } from '$houdini';
+	import { fragment, graphql, type MenuItem } from '$houdini';
 
-	/* @type { import('$houdini').MenuItem } */
-	export let menuItemData;
+	export let menuItemData: MenuItem;
 
 	$: data = fragment(
 		menuItemData,

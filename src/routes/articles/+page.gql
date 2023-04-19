@@ -2,6 +2,7 @@ query Articles {
 	posts {
 		nodes {
 			id
+			slug
 			title
 			content
 		}

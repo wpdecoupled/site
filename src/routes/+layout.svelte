@@ -4,8 +4,9 @@
 	import Footer from './Footer.svelte';
 	import Analytics from './Analytics.svelte';
 
-	/* @type { import('./$houdini').LayoutData } */
-	export let data;
+	import type { LayoutData } from './$houdini';
+
+	export let data: LayoutData;
 
 	$: ({ primaryNavMenu } = data);
 </script>
@@ -13,8 +14,7 @@
 <Analytics />
 <div class="layout">
 	<div class="header">
-
-		<Header nav={$primaryNavMenu} />
+		<Header data={primaryNavMenu} />
 	</div>
 	<div class="main">
 		<slot />

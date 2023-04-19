@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { Logo } from '$lib/components';
 	import MenuList from '$lib/components/wp/menu/menu-list.svelte';
-	export let nav;
+	import type { LayoutData } from './$houdini';
+
+	export let data: LayoutData['primaryNavMenu'];
+
+	$: ({ data: resultData } = $data);
 </script>
 
 <header class="center">
@@ -9,7 +13,9 @@
 		<Logo />
 	</a>
 	<!-- <div>THEME SWITCHER HERE</div> -->
-	<MenuList {nav} />
+	{#if resultData?.menu}
+		<MenuList data={resultData.menu} />
+	{/if}
 </header>
 
 <style>
