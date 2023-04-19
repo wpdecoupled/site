@@ -2,6 +2,7 @@
 	import '../app.postcss';
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
+	import Analytics from './Analytics.svelte';
 
 	/* @type { import('./$houdini').LayoutData } */
 	export let data;
@@ -9,6 +10,7 @@
 	$: ({ primaryNavMenu } = data);
 </script>
 
+<Analytics />
 <div class="layout">
 	<div class="header">
 
