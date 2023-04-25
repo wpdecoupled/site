@@ -69,6 +69,6 @@
 	.post-footer > p {
 		font-size: var(--font-size-0);
 		width: fit-content;
-		white-space: nowrap;
+		/* white-space: nowrap; */
 	}
 </style>
