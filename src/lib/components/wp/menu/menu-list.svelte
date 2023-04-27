@@ -42,7 +42,7 @@
 		justify-content: space-between;
 
 		gap: var(--size-fluid-4);
-		padding: var(--size-fluid-1) 0;
+		padding: 0;
 		margin: auto;
 	}
 </style>

@@ -8,6 +8,8 @@
 
 	export let data: LayoutData;
 
+	let year = new Date().getFullYear();
+
 	$: ({ primaryNavMenu } = data);
 </script>
 
@@ -23,7 +25,7 @@
 		<Footer />
 	</div>
 	<div class="post-footer wrapper">
-		<p class="post-footer-line">Copyright &#xa9; 2023 - AVLIT, LLC. All Rights Reserved.</p>
+		<p class="post-footer-line">Copyright &#xa9; {year} - AVLIT, LLC. All Rights Reserved.</p>
 		<p class="post-footer-line">
 			Hosting sponsored by
 			<a
@@ -61,14 +63,20 @@
 
 	.post-footer {
 		grid-area: post-footer;
-		padding: var(--size-fluid-1) 0;
+
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
+		flex-wrap: wrap;
+		gap: var(--size-4);
 	}
-	.post-footer > p {
+	.post-footer-line {
 		font-size: var(--font-size-0);
-		width: fit-content;
-		/* white-space: nowrap; */
 	}
+
+	.post-footer-line a {
+		margin-inline: 0;
+		padding-inline: 0;
+	}
+
 </style>
