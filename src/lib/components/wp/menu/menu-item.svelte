@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import { classNames } from '$lib/strings';
 	import { fragment, graphql, type MenuItem } from '$houdini';
 
 	export let menuItemData: MenuItem;
@@ -18,10 +20,16 @@
 	);
 
 	$: ({ title, target } = $data);
+	$: current_url = $page.url.pathname;
 </script>
 
 <li class="nav-item">
-	<a href={$data.uri} {title} class={$data.cssClasses} {target}>{$data.label}</a>
+	<a
+		href={$data.uri}
+		{title}
+		class={classNames($data.cssClasses, { current: current_url === $data.uri })}
+		{target}>{$data.label}</a
+	>
 </li>
 
 <style lang="postcss">
@@ -29,5 +37,10 @@
 		list-style: none;
 		white-space: nowrap;
 		width: max-content;
+	}
+
+
+	a.current {
+		text-decoration-style: wavy;
 	}
 </style>
