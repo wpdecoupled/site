@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Post from "$lib/components/wp/post/post.svelte";
+
 	import type { PageData } from './$houdini';
 
 	export let data: PageData;
@@ -12,9 +14,6 @@
 	{:else if !$Article.data?.post}
 		<p>No article found</p>
 	{:else}
-		<article class="">
-			<h1>{$Article.data.post.title}</h1>
-			<div class="prose">{@html $Article.data.post.content}</div>
-		</article>
+		<Post post={$Article.data.post} />
 	{/if}
 </main>

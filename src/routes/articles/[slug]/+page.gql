@@ -1,19 +1,5 @@
 query Article($slug: ID!) {
-	post (id: $slug, idType: SLUG) {
-		title
-		content
-		dateGmt
-		modifiedGmt
-		slug
-		author {
-			node {
-				name
-			}
-		}
-		featuredImage {
-			node {
-				sourceUrl
-			}
-		}
+	post(id: $slug, idType: SLUG) {
+		...PostPage
 	}
 }
