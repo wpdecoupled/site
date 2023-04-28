@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { formatDate } from '$lib/strings';
 	import { fragment, graphql, type PostPreview } from '$houdini';
 
 	export let post: PostPreview;
@@ -24,11 +25,7 @@
 	let date: string;
 
 	$: if ($data.dateGmt) {
-		date = new Date($data.dateGmt).toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-		});
+		date = formatDate($data.dateGmt);
 	}
 
 	$: cleanExcerpt = $data.excerpt?.replace(/<[^>]*>?/gm, '');
@@ -38,7 +35,7 @@
 	<article>
 		<h2><a href={$data.uri} rel="bookmark">{$data.title}</a></h2>
 		<p class="details">
-			Posted {date ?? 'IN THE FUTURE'} by {$data.author?.node.name ?? 'Unknown'}
+			Posted {date || 'IN THE FUTURE'} by {$data.author?.node.name ?? 'Unknown'}
 		</p>
 		{#if $data.excerpt}
 			<p>
