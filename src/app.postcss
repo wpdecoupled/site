@@ -47,10 +47,27 @@
 		text-decoration: underline;
 		text-decoration-style: double;
 	}
+
+	:is(h1, h2, h3, h4, h5, h6) a {
+    all: inherit;
+		cursor: pointer;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) a:visited {
+    all: inherit;
+		cursor: pointer;
+  }
+
 	/* Don't change colors of visited links */
 	a:visited {
 		color: var(--brand, var(--link));
 	}
+
+	/* Headings */
+
+	h2 {
+		padding-bottom: var(--size-1);
+	 }
 }
 
 /*

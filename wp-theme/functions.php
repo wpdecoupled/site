@@ -66,3 +66,11 @@ if (is_feed() || get_query_var('sitemap')) {
 		add_filter($filter, 'wp_make_link_relative');
 	}
 }
+
+/**
+ * Change the excerpt more string
+ */
+function my_theme_excerpt_more( $more ) {
+	return '&hellip;';
+}
+add_filter( 'excerpt_more', 'my_theme_excerpt_more' );
