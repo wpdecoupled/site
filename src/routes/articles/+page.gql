@@ -1,10 +1,7 @@
-query Articles {
+query Posts {
 	posts {
 		nodes {
-			id
-			slug
-			title
-			content
+			...PostPreview
 		}
 	}
 }

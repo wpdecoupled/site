@@ -1,24 +1,25 @@
 <script lang="ts">
+	import PostArchive from '$lib/components/wp/post/post-archive.svelte';
+	import PostPreview from '$lib/components/wp/post/post-preview.svelte';
 	import type { PageData } from './$houdini';
 
 	export let data: PageData;
 
-	$: ({ Articles } = data);
+	$: ({ Posts } = data);
 </script>
 
 <main class="wrapper">
-	<h1>Articles</h1>
-	{#if $Articles.fetching}
+	<h1 class="visuallyhidden">Articles</h1>
+	{#if $Posts.fetching}
 		<p>Loading...</p>
-	{:else if !$Articles.data?.posts?.nodes}
+	{:else if !$Posts.data?.posts?.nodes}
 		<p>No articles found</p>
 	{:else}
-		<ul>
-			{#each $Articles.data?.posts?.nodes as article}
-				<li>
-					<a href="/articles/{article.slug}">{article.title}</a>
-				</li>
+		<PostArchive>
+			{#each $Posts.data?.posts?.nodes as post}
+				<PostPreview  post={post} />
 			{/each}
-		</ul>
+		</PostArchive>
 	{/if}
 </main>
+
