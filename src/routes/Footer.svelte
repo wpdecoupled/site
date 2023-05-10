@@ -12,8 +12,6 @@
 
 <style lang="postcss">
 	footer {
-		padding: var(--size-fluid-2) 0;
-
 		border-style: solid;
 		border-color: var(--primary-color);
 		border-bottom-width: var(--border-size-1);

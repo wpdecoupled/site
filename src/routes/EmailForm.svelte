@@ -9,7 +9,7 @@
 	{#if form?.status === 'mail_sent'}
 		<p>{form?.message}</p>
 	{:else}
-		<h2>Sign up to hear when we lauch!</h2>
+		<h2>Want to hear when we launch new features?</h2>
 		<form method="POST" use:enhance>
 			{#if form?.status === 'validation_failed'}<p class="error">{form.message}</p>{/if}
 			<label for="email" class="visuallyhidden">Email</label>
