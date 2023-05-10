@@ -14,3 +14,4 @@ yarn.lock
 
 # Houdini
 $houdini
+schema.graphql

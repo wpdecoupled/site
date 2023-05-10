@@ -78,5 +78,4 @@
 		margin-inline: 0;
 		padding-inline: 0;
 	}
-
 </style>

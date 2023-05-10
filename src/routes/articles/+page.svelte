@@ -17,9 +17,8 @@
 	{:else}
 		<PostArchive>
 			{#each $Posts.data?.posts?.nodes as post}
-				<PostPreview  post={post} />
+				<PostPreview {post} />
 			{/each}
 		</PostArchive>
 	{/if}
 </main>
-
