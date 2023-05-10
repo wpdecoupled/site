@@ -23,7 +23,7 @@ export const GET = (async (event) => {
   const if_modified_since = req.headers.get("if-modified-since");
   const if_none_match = req.headers.get("if-none-match");
   const { feedType } = params;
-	const site_url = url.origin;
+  const site_url = url.origin;
 
   //Fetch content from WP
   const { data: feed_data } = await feedStore.fetch({ event });
@@ -36,9 +36,12 @@ export const GET = (async (event) => {
   );
 
   //Create feed
-	if (!feed_data) {
-		throw error(StatusCodes.INTERNAL_SERVER_ERROR);
-	}
+  if (!feed_data) {
+    throw error(StatusCodes.INTERNAL_SERVER_ERROR, {
+      message: "Failed to fetch feed data",
+			errorId: "feed-fetch-failed",
+    });
+  }
   const feed = createFeed({ feed_data, last_modified, site_url });
 
   // Generate Response Body and Content-Type
