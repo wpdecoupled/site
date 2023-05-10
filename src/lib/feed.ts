@@ -12,7 +12,7 @@ export const FEED_QUERY = graphql`
       description
       timezone
     }
-    posts(where: { orderby: { field: DATE, order: DESC } }, first: 20) {
+    posts(where: { orderby: { field: DATE, order: DESC } }, first: 10) {
       nodes {
         title
         uri
@@ -33,12 +33,6 @@ export const FEED_QUERY = graphql`
             uri
           }
         }
-      }
-      pageInfo {
-        endCursor
-        startCursor
-        hasPreviousPage
-        hasNextPage
       }
     }
     last_modified: posts(
@@ -76,11 +70,11 @@ export function createFeed({ feed_data, last_modified, site_url }: { feed_data: 
 		}
     const author = post.author.node
     const categories = post.categories.nodes
-
+		const url = `${site_url}${post.uri}`
     feed.addItem({
-      id: post.id,
+      id: url,
       title: post.title,
-      link: `${site_url}${post.uri}`,
+      link: url,
       description: post.excerpt ?? undefined,
       content: post.content ?? undefined,
       date: new Date(post.modifiedGmt),
