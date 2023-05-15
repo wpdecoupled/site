@@ -1,5 +1,16 @@
-query primaryNavMenu {
-  menu(id: "primary-nav-menu", idType: LOCATION) {
-    ...MenuItems
+query LayoutQuery($uri: String!) {
+	menu(id: "primary-nav-menu", idType: LOCATION) {
+		...MenuItems
+	}
+
+	nodeByUri(uri: $uri) {
+		... on NodeWithRankMathSeo {
+			seo {
+				fullHead
+				jsonLd {
+					raw
+				}
+			}
+		}
 	}
 }
