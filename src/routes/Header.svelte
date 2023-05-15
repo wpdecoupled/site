@@ -3,7 +3,7 @@
 	import MenuList from '$lib/components/wp/menu/menu-list.svelte';
 	import type { LayoutData } from './$houdini';
 
-	export let data: LayoutData["LayoutQuery"];
+	export let data: LayoutData['LayoutQuery'];
 
 	$: ({ data: resultData } = $data);
 </script>

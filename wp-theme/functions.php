@@ -74,3 +74,10 @@ function my_theme_excerpt_more( $more ) {
 	return '&hellip;';
 }
 add_filter( 'excerpt_more', 'my_theme_excerpt_more' );
+
+
+/**
+ * Rank Math URL Check ignore
+ * Filter whether we need to check for URL mismatch or not.
+ */
+add_filter( 'rank_math/registration/do_url_check', '__return_false' );
