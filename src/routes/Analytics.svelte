@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* global gtag */
 	import { page } from '$app/stores';
 	import { PUBLIC_GA_ID } from '$env/static/public';
 
