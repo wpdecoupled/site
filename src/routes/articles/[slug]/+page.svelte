@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Post from "$lib/components/wp/post/post.svelte";
+	import Post from '$lib/components/wp/post/post.svelte';
 
 	import type { PageData } from './$houdini';
 

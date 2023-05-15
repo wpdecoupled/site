@@ -17,14 +17,15 @@
 		`)
 	);
 </script>
+
 {#if $menuItemsData && $menuItemsData.menuItems}
-<nav class="wrapper">
-	<ul>
-		{#each $menuItemsData.menuItems.nodes as menuItem}
-			<MenuItem menuItemData={menuItem} />
-		{/each}
-	</ul>
-</nav>
+	<nav class="wrapper">
+		<ul>
+			{#each $menuItemsData.menuItems.nodes as menuItem}
+				<MenuItem menuItemData={menuItem} />
+			{/each}
+		</ul>
+	</nav>
 {/if}
 
 <style lang="postcss">

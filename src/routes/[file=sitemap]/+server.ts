@@ -8,9 +8,12 @@ export const GET = (async ({ url }) => {
 	const resp = await fetch(PUBLIC_WP_URL + url.pathname + url.search);
 
 	if (!resp.ok) {
-		console.error("Error fetching", url.pathname, resp.status)
-		throw error(resp.status)
+		console.error('Error fetching', url.pathname, resp.status);
+		throw error(resp.status);
 	}
 
-	return new Response(await resp.text(), { status: StatusCodes.OK, headers: { 'Content-Type': 'application/xml'} })
+	return new Response(await resp.text(), {
+		status: StatusCodes.OK,
+		headers: { 'Content-Type': 'application/xml' },
+	});
 }) satisfies RequestHandler;

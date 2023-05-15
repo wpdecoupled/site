@@ -109,13 +109,11 @@
 		padding-bottom: var(--size-fluid-1);
 		line-height: var(--font-lineheight-2);
 		letter-spacing: var(--font-letterspacing-1);
-
 	}
 
 	:global(.prose .content h2) {
 		padding-bottom: var(--size-fluid-2);
 		font-size: var(--font-size-5);
 		line-height: var(--font-lineheight-4);
-
 	}
 </style>

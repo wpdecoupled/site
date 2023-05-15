@@ -1,41 +1,42 @@
 function append(acc: string, arg: string | number): string {
-  return acc + arg + " ";
+	return acc + arg + ' ';
 }
 
 type BaseValue = string | number | null | undefined;
-type PossibleClassNames = BaseValue | BaseValue[] | {
-  [key: NonNullable<BaseValue>]: unknown;
-};
+type PossibleClassNames =
+	| BaseValue
+	| BaseValue[]
+	| {
+			[key: NonNullable<BaseValue>]: unknown;
+	  };
 
 export function classNames(...args: PossibleClassNames[]): string {
-  let classes = "";
+	let classes = '';
 
-  for (const arg of args) {
-    if (arg == undefined) continue;
+	for (const arg of args) {
+		if (arg == undefined) continue;
 
-    if (typeof arg === "string" || typeof arg === "number") {
-      classes = append(classes, arg);
-    } else if (Array.isArray(arg) && arg.length) {
-      const inner = classNames(...arg);
-      if (inner) classes = append(classes, inner);
-    } else if (typeof arg === "object") {
-      for (const [key, value] of Object.entries(arg)) {
-        if (value) classes = append(classes, key);
-      }
-    }
-  }
+		if (typeof arg === 'string' || typeof arg === 'number') {
+			classes = append(classes, arg);
+		} else if (Array.isArray(arg) && arg.length) {
+			const inner = classNames(...arg);
+			if (inner) classes = append(classes, inner);
+		} else if (typeof arg === 'object') {
+			for (const [key, value] of Object.entries(arg)) {
+				if (value) classes = append(classes, key);
+			}
+		}
+	}
 
-  return classes;
+	return classes;
 }
 
-export function formatDate(
-  date: string | undefined | null,
-): string {
-  if (date == undefined) return '';
+export function formatDate(date: string | undefined | null): string {
+	if (date == undefined) return '';
 
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+	return new Date(date).toLocaleDateString('en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
 }

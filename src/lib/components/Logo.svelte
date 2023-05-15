@@ -7,6 +7,5 @@
 		letter-spacing: var(--font-letterspacing-1);
 		font-size: min(10vw, 4rem);
 		white-space: nowrap;
-
 	}
 </style>
