@@ -7,4 +7,12 @@ export default defineConfig({
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}'],
 	},
+	server: {
+		proxy: {
+			'^/(?:.*sitemap.*).(xml|xsl)$': {
+				target: 'https://cms.wpdecoupled.dev',
+				changeOrigin: true,
+			},
+		},
+	},
 });
