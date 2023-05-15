@@ -14,8 +14,8 @@
 </script>
 
 <svelte:head>
-	{@html $LayoutQuery.data?.nodeByUri?.seo?.fullHead}
-	{@html $LayoutQuery.data?.nodeByUri?.seo?.jsonLd?.raw}
+	{@html $LayoutQuery.data?.nodeByUri?.seo?.fullHead ?? ''}
+	{@html $LayoutQuery.data?.nodeByUri?.seo?.jsonLd?.raw ?? ''}
 </svelte:head>
 
 <Analytics />
