@@ -10,13 +10,18 @@
 
 	let year = new Date().getFullYear();
 
-	$: ({ primaryNavMenu } = data);
+	$: ({ LayoutQuery } = data);
 </script>
+
+<svelte:head>
+	{@html $LayoutQuery.data?.nodeByUri?.seo?.fullHead ?? ''}
+	{@html $LayoutQuery.data?.nodeByUri?.seo?.jsonLd?.raw ?? ''}
+</svelte:head>
 
 <Analytics />
 <div class="layout">
 	<div class="header">
-		<Header data={primaryNavMenu} />
+		<Header data={LayoutQuery} />
 	</div>
 	<div class="main">
 		<slot />

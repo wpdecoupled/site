@@ -67,7 +67,7 @@ enum AvatarRatingEnum {
 scalar BlockAttributesObject
 
 """The category type"""
-type Category implements DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable {
+type Category implements DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & NodeWithRankMathSeo & TermNode & UniformResourceIdentifiable {
   """
   The ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
   """
@@ -232,6 +232,9 @@ type Category implements DatabaseIdentifier & HierarchicalNode & HierarchicalTer
     where: CategoryToPostConnectionWhereArgs
   ): CategoryToPostConnection
 
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
+
   """An alphanumeric identifier for the object unique to its type."""
   slug: String
 
@@ -307,6 +310,37 @@ enum CategoryIdType {
 
   """The URI for the node"""
   URI
+}
+
+"""The RankMath SEO meta settings for Categories."""
+type CategoryMetaSettings implements RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """Description for archive pages."""
+  archiveDescription: String
+
+  """Default title tag for archive page."""
+  archiveTitle: String
+
+  """
+  Whether custom robots meta for author page are set. Otherwise the default meta will be used, as set in the Global Meta tab.
+  """
+  hasCustomRobotsMeta: Boolean
+
+  """Whether the SEO Controls meta box for user profile pages is enabled."""
+  hasSeoControls: Boolean
+
+  """
+  Whether to show additional information (name &amp; total number of posts) when an author archive is shared on Slack.
+  """
+  hasSlackEnhancedSharing: Boolean
+
+  """Whether to include snippet data for this taxonomy."""
+  hasSnippetData: Boolean
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
 }
 
 """Connection between the Category type and the category type"""
@@ -1382,7 +1416,7 @@ type ContactForm7ContactFormSelectorAttributes {
 }
 
 """Nodes used to manage content"""
-interface ContentNode implements Node & UniformResourceIdentifiable {
+interface ContentNode implements Node & NodeWithRankMathSeo & UniformResourceIdentifiable {
   """Connection between the ContentNode type and the ContentType type"""
   contentType: ContentNodeToContentTypeConnectionEdge
 
@@ -1454,7 +1488,7 @@ interface ContentNode implements Node & UniformResourceIdentifiable {
   """
   guid: String
 
-  """The unique resource identifier path"""
+  """The globally unique ID for the object"""
   id: ID!
 
   """Whether the node is a Content Node"""
@@ -1490,6 +1524,9 @@ interface ContentNode implements Node & UniformResourceIdentifiable {
 
   """Whether the object is a node in the preview state"""
   previewRevisionId: ID
+
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
 
   """
   The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
@@ -1675,7 +1712,7 @@ interface ContentTemplate {
 }
 
 """An Post Type object"""
-type ContentType implements Node & UniformResourceIdentifiable {
+type ContentType implements Node & NodeWithRankMathSeo & UniformResourceIdentifiable {
   """Whether this content type should can be exported."""
   canExport: Boolean
 
@@ -1801,6 +1838,9 @@ type ContentType implements Node & UniformResourceIdentifiable {
 
   """The REST Controller class assigned to handling this content type."""
   restControllerClass: String
+
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
 
   """Makes this content type available via the admin bar."""
   showInAdminBar: Boolean
@@ -10114,7 +10154,7 @@ type GeneralSettings {
 }
 
 """The graphqlDocument type"""
-type GraphqlDocument implements ContentNode & DatabaseIdentifier & Node & NodeWithContentEditor & NodeWithTemplate & NodeWithTitle & UniformResourceIdentifiable {
+type GraphqlDocument implements ContentNode & DatabaseIdentifier & Node & NodeWithContentEditor & NodeWithRankMathSeo & NodeWithTemplate & NodeWithTitle & UniformResourceIdentifiable {
   """Alias names for saved GraphQL query documents"""
   alias: [String!]
 
@@ -10249,6 +10289,9 @@ type GraphqlDocument implements ContentNode & DatabaseIdentifier & Node & NodeWi
   """Whether the object is a node in the preview state"""
   previewRevisionId: ID
 
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
+
   """
   The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
   """
@@ -10343,7 +10386,7 @@ type GraphqlDocumentToPreviewConnectionEdge implements Edge & GraphqlDocumentCon
 }
 
 """Content node with hierarchical (parent/child) relationships"""
-interface HierarchicalContentNode implements ContentNode & DatabaseIdentifier & HierarchicalNode & Node & UniformResourceIdentifiable {
+interface HierarchicalContentNode implements ContentNode & DatabaseIdentifier & HierarchicalNode & Node & NodeWithRankMathSeo & UniformResourceIdentifiable {
   """
   Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
   """
@@ -10508,6 +10551,9 @@ interface HierarchicalContentNode implements ContentNode & DatabaseIdentifier & 
 
   """Whether the object is a node in the preview state"""
   previewRevisionId: ID
+
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
 
   """
   The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
@@ -10763,7 +10809,7 @@ interface HierarchicalNode implements DatabaseIdentifier & Node {
 }
 
 """Term node with hierarchical (parent/child) relationships"""
-interface HierarchicalTermNode implements DatabaseIdentifier & HierarchicalNode & Node & TermNode & UniformResourceIdentifiable {
+interface HierarchicalTermNode implements DatabaseIdentifier & HierarchicalNode & Node & NodeWithRankMathSeo & TermNode & UniformResourceIdentifiable {
   """The number of objects connected to the object"""
   count: Int
 
@@ -10835,6 +10881,9 @@ interface HierarchicalTermNode implements DatabaseIdentifier & HierarchicalNode 
   """The globally unique identifier of the parent node."""
   parentId: ID
 
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
+
   """An alphanumeric identifier for the object unique to its type."""
   slug: String
 
@@ -10876,7 +10925,7 @@ type MediaDetails {
 }
 
 """The mediaItem type"""
-type MediaItem implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & Node & NodeWithAuthor & NodeWithComments & NodeWithTemplate & NodeWithTitle & UniformResourceIdentifiable {
+type MediaItem implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & Node & NodeWithAuthor & NodeWithComments & NodeWithRankMathSeo & NodeWithTemplate & NodeWithTitle & UniformResourceIdentifiable {
   """Alternative text to display when resource is not displayed"""
   altText: String
 
@@ -11116,6 +11165,9 @@ type MediaItem implements ContentNode & DatabaseIdentifier & HierarchicalContent
 
   """Whether the object is a node in the preview state"""
   previewRevisionId: ID
+
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
 
   """The sizes attribute value for an image."""
   sizes(
@@ -12275,6 +12327,15 @@ interface NodeWithPageAttributes implements Node {
   menuOrder: Int
 }
 
+"""A node with RankMath SEO data."""
+interface NodeWithRankMathSeo implements Node {
+  """The globally unique ID for the object"""
+  id: ID!
+
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
+}
+
 """A node that can have revisions"""
 interface NodeWithRevisions implements Node {
   """The globally unique ID for the object"""
@@ -12361,7 +12422,7 @@ enum OrderEnum {
 }
 
 """The page type"""
-type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
+type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
   """
   Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
   """
@@ -12638,6 +12699,9 @@ type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode 
     where: PageToRevisionConnectionWhereArgs
   ): PageToRevisionConnection
 
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
+
   """
   The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
   """
@@ -12726,6 +12790,67 @@ interface PageInfo {
 
   """When paginating backwards, the cursor to continue."""
   startCursor: String
+}
+
+"""The RankMath SEO meta settings for Pages."""
+type PageMetaSettings implements RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """List of custom fields name to include in the Page analysis"""
+  analyzedFields: [String]
+
+  """Default article type when creating a new Pages."""
+  articleType: RankMathArticleTypeEnum
+
+  """Default description for single Pages pages."""
+  description: String
+
+  """Whether to list bulk editing columns to the post listing screen."""
+  hasBulkEditing: RankMathBulkEditingTypeEnum
+
+  """
+  Whether custom robots meta for author page are set. Otherwise the default meta will be used, as set in the Global Meta tab.
+  """
+  hasCustomRobotsMeta: Boolean
+
+  """
+  Whether Link Suggestions meta box and the Pillar Content featured are enabled for this post type.
+  """
+  hasLinkSuggestions: Boolean
+
+  """Whether the SEO Controls meta box for user profile pages is enabled."""
+  hasSeoControls: Boolean
+
+  """
+  Whether to show additional information (name &amp; total number of posts) when an author archive is shared on Slack.
+  """
+  hasSlackEnhancedSharing: Boolean
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
+
+  """
+  Whether to use the Focus Keyword as the default text for the links instead of the post titles.
+  """
+  shouldUseFocusKeyword: Boolean
+
+  """Default rich snippet headline."""
+  snippetDescription: String
+
+  """Default rich snippet headline."""
+  snippetHeadline: String
+
+  """Default rich snippet select when creating a new Pages."""
+  snippetType: RankMathSnippetTypeEnum
+
+  """
+  The default image to display when sharing this post type on social media
+  """
+  socialImage: MediaItem
+
+  """Default title tag for single Pages pages."""
+  title: String
 }
 
 """Connection between the Page type and the Comment type"""
@@ -13080,7 +13205,7 @@ enum PluginStatusEnum {
 }
 
 """The post type"""
-type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable {
+type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable {
   """Connection between the NodeWithAuthor type and the User type"""
   author: NodeWithAuthorToUserConnectionEdge
 
@@ -13345,6 +13470,9 @@ type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node 
     where: PostToRevisionConnectionWhereArgs
   ): PostToRevisionConnection
 
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
+
   """
   The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
   """
@@ -13492,7 +13620,7 @@ interface PostConnectionPageInfo implements PageInfo & WPPageInfo {
 }
 
 """The postFormat type"""
-type PostFormat implements DatabaseIdentifier & Node & TermNode & UniformResourceIdentifiable {
+type PostFormat implements DatabaseIdentifier & Node & NodeWithRankMathSeo & TermNode & UniformResourceIdentifiable {
   """Connection between the PostFormat type and the ContentNode type"""
   contentNodes(
     """
@@ -13562,7 +13690,7 @@ type PostFormat implements DatabaseIdentifier & Node & TermNode & UniformResourc
     last: Int
   ): TermNodeToEnqueuedStylesheetConnection
 
-  """The unique resource identifier path"""
+  """The globally unique ID for the object"""
   id: ID!
 
   """Whether the node is a Content Node"""
@@ -13604,6 +13732,9 @@ type PostFormat implements DatabaseIdentifier & Node & TermNode & UniformResourc
     """Arguments for filtering the connection"""
     where: PostFormatToPostConnectionWhereArgs
   ): PostFormatToPostConnection
+
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
 
   """An alphanumeric identifier for the object unique to its type."""
   slug: String
@@ -13680,6 +13811,31 @@ enum PostFormatIdType {
 
   """The URI for the node"""
   URI
+}
+
+"""The RankMath SEO meta settings for Formats."""
+type PostFormatMetaSettings implements RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """Description for archive pages."""
+  archiveDescription: String
+
+  """Default title tag for archive page."""
+  archiveTitle: String
+
+  """
+  Whether custom robots meta for author page are set. Otherwise the default meta will be used, as set in the Global Meta tab.
+  """
+  hasCustomRobotsMeta: Boolean
+
+  """
+  Whether to show additional information (name &amp; total number of posts) when an author archive is shared on Slack.
+  """
+  hasSlackEnhancedSharing: Boolean
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
 }
 
 """Connection between the PostFormat type and the ContentNode type"""
@@ -13951,6 +14107,67 @@ enum PostIdType {
 
   """Identify a resource by the URI."""
   URI
+}
+
+"""The RankMath SEO meta settings for Posts."""
+type PostMetaSettings implements RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """List of custom fields name to include in the Page analysis"""
+  analyzedFields: [String]
+
+  """Default article type when creating a new Posts."""
+  articleType: RankMathArticleTypeEnum
+
+  """Default description for single Posts pages."""
+  description: String
+
+  """Whether to list bulk editing columns to the post listing screen."""
+  hasBulkEditing: RankMathBulkEditingTypeEnum
+
+  """
+  Whether custom robots meta for author page are set. Otherwise the default meta will be used, as set in the Global Meta tab.
+  """
+  hasCustomRobotsMeta: Boolean
+
+  """
+  Whether Link Suggestions meta box and the Pillar Content featured are enabled for this post type.
+  """
+  hasLinkSuggestions: Boolean
+
+  """Whether the SEO Controls meta box for user profile pages is enabled."""
+  hasSeoControls: Boolean
+
+  """
+  Whether to show additional information (name &amp; total number of posts) when an author archive is shared on Slack.
+  """
+  hasSlackEnhancedSharing: Boolean
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
+
+  """
+  Whether to use the Focus Keyword as the default text for the links instead of the post titles.
+  """
+  shouldUseFocusKeyword: Boolean
+
+  """Default rich snippet headline."""
+  snippetDescription: String
+
+  """Default rich snippet headline."""
+  snippetHeadline: String
+
+  """Default rich snippet select when creating a new Posts."""
+  snippetType: RankMathSnippetTypeEnum
+
+  """
+  The default image to display when sharing this post type on social media
+  """
+  socialImage: MediaItem
+
+  """Default title tag for single Posts pages."""
+  title: String
 }
 
 """The format of post field data."""
@@ -15004,6 +15221,2358 @@ interface Previewable {
   previewRevisionId: ID
 }
 
+"""The config for an advanced robots meta values."""
+type RankMathAdvancedRobotsMeta {
+  """
+  Whether to specify a maximum size of image preview to be shown for images on the page.
+  """
+  hasImagePreview: Boolean
+
+  """Whether to specify a maximum text length of a snippet of your page"""
+  hasSnippet: Boolean
+
+  """Whether to specify a maximum duration of an animated video preview."""
+  hasVideoPreview: Boolean
+
+  """The maximum size of image preview to be shown for images."""
+  imagePreviewSize: RankMathImagePreviewSize
+
+  """
+  The maximum text length (in characters) of the snippet. -1 for no limit.
+  """
+  snippetLength: Int
+
+  """
+  The maximum duration (seconds characters) of the snippet. -1 for no limit.
+  """
+  videoDuration: Int
+}
+
+"""The SEO Article Type"""
+enum RankMathArticleTypeEnum {
+  """Article."""
+  ARTICLE
+
+  """Blog post."""
+  BLOG_POST
+
+  """News article."""
+  NEWS_ARTICLE
+}
+
+"""The RankMath SEO Author Archive meta settings."""
+type RankMathAuthorArchiveMetaSettings implements RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """Description for archive pages."""
+  archiveDescription: String
+
+  """Default title tag for archive page."""
+  archiveTitle: String
+
+  """Change the `/author/` part in author archive URLs."""
+  baseSlug: String
+
+  """Whether author archives are enabled."""
+  hasArchives: Boolean
+
+  """
+  Whether custom robots meta for author page are set. Otherwise the default meta will be used, as set in the Global Meta tab.
+  """
+  hasCustomRobotsMeta: Boolean
+
+  """Whether the SEO Controls meta box for user profile pages is enabled."""
+  hasSeoControls: Boolean
+
+  """
+  Whether to show additional information (name &amp; total number of posts) when an author archive is shared on Slack.
+  """
+  hasSlackEnhancedSharing: Boolean
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
+}
+
+"""The RankMath SEO breadcrumbs settings."""
+type RankMathBreadcrumbsConfig {
+  """Format the label used for archive pages."""
+  archiveFormat: String
+
+  """
+  Whether to show all ancestor categories, if a category is a child category.
+  """
+  hasAncestorCategories: Boolean
+
+  """
+  Whether the Blog page is visible in the breadcrumbs. Only relevant if you have a Posts page set.
+  """
+  hasBlogPage: Boolean
+
+  """Whether to display the homepage breadcrumb in trail."""
+  hasHome: Boolean
+
+  """Whether the post title is visible in the breadcrumbs."""
+  hasPostTitle: Boolean
+
+  """Whether the taxonomy name is visible in the breadcrumbs."""
+  hasTaxonomyName: Boolean
+
+  """Label used for homepage link (first item) in breadcrumbs."""
+  homeLabel: String
+
+  """Link to use for homepage (first item) in breadcrumbs."""
+  homeUrl: String
+
+  """Label used for 404 error item in breadcrumbs."""
+  notFoundLabel: String
+
+  """Prefix for the breadcrumb path."""
+  prefix: String
+
+  """Format the label used for search results pages."""
+  searchFormat: String
+
+  """Separator character or string that appears between breadcrumb items."""
+  separator: String
+}
+
+"""The setting chosen for the RankMath Bulk Editing feature"""
+enum RankMathBulkEditingTypeEnum {
+  """Disabled."""
+  DISABLED
+
+  """Enabled."""
+  ENABLED
+
+  """Read only."""
+  READ_ONLY
+}
+
+"""The category term object SEO data"""
+type RankMathCategoryTermSeo implements RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The title."""
+  title: String
+}
+
+"""The seo data for Post Objects"""
+interface RankMathContentNodeSeo implements RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """Whether the item is considered pillar (cornerstone) content"""
+  isPillarContent: Boolean
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The SEO score"""
+  seoScore: RankMathSeoScore
+
+  """The title."""
+  title: String
+}
+
+"""The RankMath SEO Post Type settings."""
+type RankMathContentTypeMetaSettings {
+  """The RankMath SEO meta settings for Pages."""
+  page: PageMetaSettings
+
+  """The RankMath SEO meta settings for Posts."""
+  post: PostMetaSettings
+}
+
+"""The RankMath SEO DateArchive meta settings."""
+type RankMathDateArchiveMetaSettings implements RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """Description for archive pages."""
+  archiveDescription: String
+
+  """Default title tag for archive page."""
+  archiveTitle: String
+
+  """Whether archives are enabled."""
+  hasArchives: Boolean
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
+}
+
+"""A block used for editing the site"""
+type RankMathFaqBlock implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: RankMathFaqBlockAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type RankMathFaqBlockAttributes {
+  """
+  The &quot;className&quot; field on the &quot;RankMathFaqBlock&quot; block
+  """
+  className: String
+
+  """
+  The &quot;contentCssClasses&quot; field on the &quot;RankMathFaqBlock&quot; block
+  """
+  contentCssClasses: String
+
+  """
+  The &quot;listCssClasses&quot; field on the &quot;RankMathFaqBlock&quot; block
+  """
+  listCssClasses: String
+
+  """
+  The &quot;listStyle&quot; field on the &quot;RankMathFaqBlock&quot; block
+  """
+  listStyle: String
+
+  """The &quot;lock&quot; field on the &quot;RankMathFaqBlock&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;questions&quot; field on the &quot;RankMathFaqBlock&quot; block
+  """
+  questions: BlockAttributesObject
+
+  """
+  The &quot;sizeSlug&quot; field on the &quot;RankMathFaqBlock&quot; block
+  """
+  sizeSlug: String
+
+  """
+  The &quot;textAlign&quot; field on the &quot;RankMathFaqBlock&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;titleCssClasses&quot; field on the &quot;RankMathFaqBlock&quot; block
+  """
+  titleCssClasses: String
+
+  """
+  The &quot;titleWrapper&quot; field on the &quot;RankMathFaqBlock&quot; block
+  """
+  titleWrapper: String
+}
+
+"""RankMath Frontend SEO Score settings."""
+type RankMathFrontendSeoScore {
+  """The list of post types which should display the calculated SEO score."""
+  enabledPostTypes: [ContentTypeEnum]
+
+  """
+  Whether to insert a backlink to RankMath.com to show your support, if you are showing the SEO scores on the front end.
+  """
+  hasRankMathBacklink: Boolean
+
+  """
+  Where the SEO score badges should be displayed automatically, or if the `[rank_math_seo_score]` shortcode is used instead.
+  """
+  position: RankMathSeoScorePositionEnum
+
+  """The list of post types which should display the calculated SEO score."""
+  template: RankMathSeoScoreTemplateTypeEnum
+}
+
+"""The RankMath SEO general site settings"""
+type RankMathGeneral {
+  """Breadcrumbs settings."""
+  breadcrumbs: RankMathBreadcrumbsConfig
+
+  """Frontend SEO score settings."""
+  frontendSeoScore: RankMathFrontendSeoScore
+
+  """Whether RankMath breadcrumbs are enabled."""
+  hasBreadcrumbs: Boolean
+
+  """
+  Whether to display the calculated SEO Score as a badge on the frontend. It can be disabled for specific posts in the post editor.
+  """
+  hasFrontendSeoScore: Boolean
+
+  """Link settings."""
+  links: RankMathLinks
+
+  """The content to add after each post in your site feeds"""
+  rssAfterContent: String
+
+  """The content to add before each post in your site feeds"""
+  rssBeforeContent: String
+
+  """Webmaster Tools settings."""
+  webmaster: RankMathWebmaster
+}
+
+"""The RankMath SEO Global settings."""
+type RankMathGlobalMetaSettings implements RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """
+  When a featured image or an OpenGraph Image is not set for individual posts/pages/CPTs, this image will be used as a fallback thumbnail when your post is shared on Facebook.
+  """
+  openGraphImage: MediaItem
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
+
+  """The separator character used in titles."""
+  separator: String
+
+  """
+  Whether to automatically capitalize the first character of each word in the titles.
+  """
+  shouldCapitalizeTitles: Boolean
+
+  """Whether to index enpty Taxonomy archives"""
+  shouldIndexEmptyTaxonomies: Boolean
+
+  """
+  Card type selected when creating a new post. This will also be applied for posts without a card type selected.
+  """
+  twitterCardType: RankMathTwitterCardTypeEnum
+}
+
+"""The graphql_document post object SEO data"""
+type RankMathGraphqlDocumentObjectSeo implements RankMathContentNodeSeo & RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """Whether the item is considered pillar (cornerstone) content"""
+  isPillarContent: Boolean
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The SEO score"""
+  seoScore: RankMathSeoScore
+
+  """The title."""
+  title: String
+}
+
+"""The graphql_document post type object SEO data"""
+type RankMathGraphqlDocumentTypeSeo implements RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The title."""
+  title: String
+}
+
+"""
+The RankMath SEO Homepage settings. Only used when the Settings &gt; Reading &gt; Your homepage displays is set to `Your latest posts`.
+"""
+type RankMathHomepageMetaSettings implements RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """Meta description."""
+  description: String
+
+  """
+  Whether custom robots meta for author page are set. Otherwise the default meta will be used, as set in the Global Meta tab.
+  """
+  hasCustomRobotsMeta: Boolean
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
+
+  """
+  Description when shared on Facebook, Twitter and other social networks.
+  """
+  socialDescription: String
+
+  """
+  Image displayed when your homepage is shared on Facebook and other social networks.
+  """
+  socialImage: MediaItem
+
+  """Title when shared on Facebook, Twitter and other social networks."""
+  socialTitle: String
+
+  """Title tag."""
+  title: String
+}
+
+"""A block used for editing the site"""
+type RankMathHowtoBlock implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: RankMathHowtoBlockAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type RankMathHowtoBlockAttributes {
+  """
+  The &quot;className&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  className: String
+
+  """
+  The &quot;contentCssClasses&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  contentCssClasses: String
+
+  """The &quot;days&quot; field on the &quot;RankMathHowtoBlock&quot; block"""
+  days: String
+
+  """
+  The &quot;description&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  description: String
+
+  """
+  The &quot;hasDuration&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  hasDuration: Boolean
+
+  """
+  The &quot;hours&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  hours: String
+
+  """
+  The &quot;imageID&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  imageID: Int
+
+  """
+  The &quot;listCssClasses&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  listCssClasses: String
+
+  """
+  The &quot;listStyle&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  listStyle: String
+
+  """The &quot;lock&quot; field on the &quot;RankMathHowtoBlock&quot; block"""
+  lock: BlockAttributesObject
+
+  """
+  The &quot;mainSizeSlug&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  mainSizeSlug: String
+
+  """
+  The &quot;minutes&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  minutes: String
+
+  """
+  The &quot;sizeSlug&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  sizeSlug: String
+
+  """
+  The &quot;steps&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  steps: BlockAttributesObject
+
+  """
+  The &quot;textAlign&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  textAlign: String
+
+  """
+  The &quot;timeLabel&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  timeLabel: String
+
+  """
+  The &quot;titleCssClasses&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  titleCssClasses: String
+
+  """
+  The &quot;titleWrapper&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  titleWrapper: String
+}
+
+"""Robots meta image preview size."""
+enum RankMathImagePreviewSize {
+  """Large"""
+  LARGE
+
+  """Prevents search engines from following links on the pages"""
+  NONE
+
+  """Standard."""
+  STANDARD
+}
+
+"""The JSON+LD information."""
+type RankMathJsonLd {
+  """The raw JSON+LD output"""
+  raw: String
+}
+
+"""The knowledge graph type"""
+enum RankMathKnowledgeGraphTypeEnum {
+  """Company."""
+  COMPANY
+
+  """Person."""
+  PERSON
+}
+
+"""The RankMath SEO links settings."""
+type RankMathLinks {
+  """The default redirection url for attachments without a parent post"""
+  defaultAttachmentRedirectUrl: String
+
+  """Whether  /category/ should be included in category archive URLs."""
+  hasCategoryBase: Boolean
+
+  """
+  Only add `nofollow` attributes to links with the following target domains. If null, `nofollow` will be applied to &lt;em&gt;all&lt;/em&gt; external domains.
+  """
+  nofollowDomains: String
+
+  """
+  `nofollow` attributes will &lt;em&gt;not&lt;/em&gt; be added to links with the following target domains.
+  """
+  nofollowExcludedDomains: String
+
+  """
+  Whether to automatically add the `rel=&quot;nofollow&quot; attribute to links pointing to external image files.
+  """
+  shouldNofollowImageLinks: Boolean
+
+  """
+  Whether to automatically add the `rel=&quot;nofollow&quot; attribute to external links appearing in your posts, pages, and other post types.
+  """
+  shouldNofollowLinks: Boolean
+
+  """
+  Whether to automatically add `target=&quot;_blank&quot;` attribute for external links appearing in your posts, pages, and other post types to make them open in a new browser tab or window.
+  """
+  shouldOpenInNewWindow: Boolean
+
+  """
+  Whether to redirect all attachment page URLs to the post they appear in.
+  """
+  shouldRedirectAttachments: Boolean
+}
+
+"""The RankMath SEO Local settings."""
+type RankMathLocalMetaSettings {
+  """The logo to be used in the Google&#039;s Knowledge Graph."""
+  logo: MediaItem
+
+  """Your name or company name to be used in Google&#039;s Knowledge Graph"""
+  name: String
+
+  """Whether the site represents a person or an organization."""
+  type: RankMathKnowledgeGraphTypeEnum
+
+  """URL of the item."""
+  url: String
+}
+
+"""The attachment post object SEO data"""
+type RankMathMediaItemObjectSeo implements RankMathContentNodeSeo & RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """Whether the item is considered pillar (cornerstone) content"""
+  isPillarContent: Boolean
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The SEO score"""
+  seoScore: RankMathSeoScore
+
+  """The title."""
+  title: String
+}
+
+"""The attachment post type object SEO data"""
+type RankMathMediaItemTypeSeo implements RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The title."""
+  title: String
+}
+
+"""The RankMath SEO titles and meta site settings"""
+type RankMathMeta {
+  """Author Archive settings."""
+  authorArchives: RankMathAuthorArchiveMetaSettings
+
+  """Content type settings."""
+  contentTypes: RankMathContentTypeMetaSettings
+
+  """Date Archive settings."""
+  dateArchives: RankMathDateArchiveMetaSettings
+
+  """Global settings."""
+  global: RankMathGlobalMetaSettings
+
+  """
+  Homepage settings. Only used is the Homepage is set to display a list of posts.
+  """
+  homepage: RankMathHomepageMetaSettings
+
+  """Local settings."""
+  local: RankMathLocalMetaSettings
+
+  """Title tag on 404 Not Found error page."""
+  notFoundTitle: String
+
+  """Title tag on search results page."""
+  searchTitle: String
+
+  """Whether to index paginated archive pages from getting."""
+  shouldIndexArchiveSubpages: Boolean
+
+  """Whether to index /page/2 and further of any archive."""
+  shouldIndexPaginatedPages: Boolean
+
+  """Whether to index password protected pages and posts."""
+  shouldIndexPasswordProtected: Boolean
+
+  """Whether to index search result pages."""
+  shouldIndexSearch: Boolean
+
+  """Social settings."""
+  social: RankMathSocialMetaSettings
+
+  """Taxonomy settings."""
+  taxonomies: RankMathTaxonomyMetaSettings
+}
+
+"""Meta Settings with archive fields."""
+interface RankMathMetaSettingWithArchive {
+  """Description for archive pages."""
+  archiveDescription: String
+
+  """Default title tag for archive page."""
+  archiveTitle: String
+}
+
+"""Meta settings with robots fields."""
+interface RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
+}
+
+"""The OpenGraph Article meta."""
+type RankMathOpenGraphArticle {
+  """The author."""
+  author: String
+
+  """The date modified."""
+  modifiedTime: String
+
+  """The date published."""
+  publishedTime: String
+
+  """The publisher"""
+  publisher: String
+
+  """The article category."""
+  section: String
+
+  """The article tags."""
+  tags: [String]
+}
+
+"""The OpenGraph Facebook meta."""
+type RankMathOpenGraphFacebook {
+  """The Facebook admins associated with this resource"""
+  admins: [String]
+
+  """The Facebook app ID associated with this resource"""
+  appId: ID
+}
+
+"""The OpenGraph Image meta."""
+type RankMathOpenGraphImage {
+  """Height of image in pixels. """
+  height: Float
+
+  """The https:// URL for the image."""
+  secureUrl: String
+
+  """MIME type of the image. """
+  type: String
+
+  """URL for the image."""
+  url: String
+
+  """Width of image in pixels."""
+  width: Float
+}
+
+"""The Facebook OpenGraph Locale."""
+enum RankMathOpenGraphLocaleEnum {
+  """af_ZA."""
+  AF_ZA
+
+  """ak_GH."""
+  AK_GH
+
+  """am_ET."""
+  AM_ET
+
+  """ar_AR."""
+  AR_AR
+
+  """as_IN."""
+  AS_IN
+
+  """ay_BO."""
+  AY_BO
+
+  """az_AZ."""
+  AZ_AZ
+
+  """be_BY."""
+  BE_BY
+
+  """bg_BG."""
+  BG_BG
+
+  """bn_IN."""
+  BN_IN
+
+  """bp_IN."""
+  BP_IN
+
+  """br_FR."""
+  BR_FR
+
+  """bs_BA."""
+  BS_BA
+
+  """ca_ES."""
+  CA_ES
+
+  """cb_IQ."""
+  CB_IQ
+
+  """ck_US."""
+  CK_US
+
+  """co_FR."""
+  CO_FR
+
+  """cs_CZ."""
+  CS_CZ
+
+  """cx_PH."""
+  CX_PH
+
+  """cy_GB."""
+  CY_GB
+
+  """da_DK."""
+  DA_DK
+
+  """de_DE."""
+  DE_DE
+
+  """el_GR."""
+  EL_GR
+
+  """em_ZM."""
+  EM_ZM
+
+  """en_GB."""
+  EN_GB
+
+  """en_PI."""
+  EN_PI
+
+  """en_UD."""
+  EN_UD
+
+  """en_US."""
+  EN_US
+
+  """eo_EO."""
+  EO_EO
+
+  """es_ES."""
+  ES_ES
+
+  """es_LA."""
+  ES_LA
+
+  """es_MX."""
+  ES_MX
+
+  """et_EE."""
+  ET_EE
+
+  """eu_ES."""
+  EU_ES
+
+  """fa_IR."""
+  FA_IR
+
+  """fb_LT."""
+  FB_LT
+
+  """ff_NG."""
+  FF_NG
+
+  """fi_FI."""
+  FI_FI
+
+  """fo_FO."""
+  FO_FO
+
+  """fr_CA."""
+  FR_CA
+
+  """fr_FR."""
+  FR_FR
+
+  """fy_NL."""
+  FY_NL
+
+  """ga_IE."""
+  GA_IE
+
+  """gl_ES."""
+  GL_ES
+
+  """gn_PY."""
+  GN_PY
+
+  """gu_IN."""
+  GU_IN
+
+  """gx_GR."""
+  GX_GR
+
+  """ha_NG."""
+  HA_NG
+
+  """he_IL."""
+  HE_IL
+
+  """hi_IN."""
+  HI_IN
+
+  """hr_HR."""
+  HR_HR
+
+  """ht_HT."""
+  HT_HT
+
+  """hu_HU."""
+  HU_HU
+
+  """hy_AM."""
+  HY_AM
+
+  """id_ID."""
+  ID_ID
+
+  """ig_NG."""
+  IG_NG
+
+  """ik_US."""
+  IK_US
+
+  """is_IS."""
+  IS_IS
+
+  """it_IT."""
+  IT_IT
+
+  """iu_CA."""
+  IU_CA
+
+  """ja_JP."""
+  JA_JP
+
+  """ja_KS."""
+  JA_KS
+
+  """jv_ID."""
+  JV_ID
+
+  """ka_GE."""
+  KA_GE
+
+  """kk_KZ."""
+  KK_KZ
+
+  """km_KH."""
+  KM_KH
+
+  """kn_IN."""
+  KN_IN
+
+  """ko_KR."""
+  KO_KR
+
+  """ks_IN."""
+  KS_IN
+
+  """ku_TR."""
+  KU_TR
+
+  """ky_KG."""
+  KY_KG
+
+  """la_VA."""
+  LA_VA
+
+  """lg_UG."""
+  LG_UG
+
+  """li_NL."""
+  LI_NL
+
+  """ln_CD."""
+  LN_CD
+
+  """lo_LA."""
+  LO_LA
+
+  """lt_LT."""
+  LT_LT
+
+  """lv_LV."""
+  LV_LV
+
+  """mg_MG."""
+  MG_MG
+
+  """mi_NZ."""
+  MI_NZ
+
+  """mk_MK."""
+  MK_MK
+
+  """ml_IN."""
+  ML_IN
+
+  """mn_MN."""
+  MN_MN
+
+  """mr_IN."""
+  MR_IN
+
+  """ms_MY."""
+  MS_MY
+
+  """mt_MT."""
+  MT_MT
+
+  """my_MM."""
+  MY_MM
+
+  """nb_NO."""
+  NB_NO
+
+  """nd_ZW."""
+  ND_ZW
+
+  """ne_NP."""
+  NE_NP
+
+  """nl_BE."""
+  NL_BE
+
+  """nl_NL."""
+  NL_NL
+
+  """nn_NO."""
+  NN_NO
+
+  """nr_ZA."""
+  NR_ZA
+
+  """ns_ZA."""
+  NS_ZA
+
+  """ny_MW."""
+  NY_MW
+
+  """om_ET."""
+  OM_ET
+
+  """or_IN."""
+  OR_IN
+
+  """pa_IN."""
+  PA_IN
+
+  """pl_PL."""
+  PL_PL
+
+  """ps_AF."""
+  PS_AF
+
+  """pt_BR."""
+  PT_BR
+
+  """pt_PT."""
+  PT_PT
+
+  """qc_GT."""
+  QC_GT
+
+  """qr_GR."""
+  QR_GR
+
+  """qu_PE."""
+  QU_PE
+
+  """qz_MM."""
+  QZ_MM
+
+  """rm_CH."""
+  RM_CH
+
+  """ro_RO."""
+  RO_RO
+
+  """ru_RU."""
+  RU_RU
+
+  """rw_RW."""
+  RW_RW
+
+  """sa_IN."""
+  SA_IN
+
+  """sc_IT."""
+  SC_IT
+
+  """se_NO."""
+  SE_NO
+
+  """si_LK."""
+  SI_LK
+
+  """sk_SK."""
+  SK_SK
+
+  """sl_SI."""
+  SL_SI
+
+  """sn_ZW."""
+  SN_ZW
+
+  """so_SO."""
+  SO_SO
+
+  """sq_AL."""
+  SQ_AL
+
+  """sr_RS."""
+  SR_RS
+
+  """ss_SZ."""
+  SS_SZ
+
+  """st_ZA."""
+  ST_ZA
+
+  """su_ID."""
+  SU_ID
+
+  """sv_SE."""
+  SV_SE
+
+  """sw_KE."""
+  SW_KE
+
+  """sy_SY."""
+  SY_SY
+
+  """sz_PL."""
+  SZ_PL
+
+  """ta_IN."""
+  TA_IN
+
+  """te_IN."""
+  TE_IN
+
+  """tg_TJ."""
+  TG_TJ
+
+  """th_TH."""
+  TH_TH
+
+  """tk_TM."""
+  TK_TM
+
+  """tl_PH."""
+  TL_PH
+
+  """tl_ST."""
+  TL_ST
+
+  """tn_BW."""
+  TN_BW
+
+  """tr_TR."""
+  TR_TR
+
+  """ts_ZA."""
+  TS_ZA
+
+  """tt_RU."""
+  TT_RU
+
+  """tz_MA."""
+  TZ_MA
+
+  """uk_UA."""
+  UK_UA
+
+  """ur_PK."""
+  UR_PK
+
+  """uz_UZ."""
+  UZ_UZ
+
+  """ve_ZA."""
+  VE_ZA
+
+  """vi_VN."""
+  VI_VN
+
+  """wo_SN."""
+  WO_SN
+
+  """xh_ZA."""
+  XH_ZA
+
+  """yi_DE."""
+  YI_DE
+
+  """yo_NG."""
+  YO_NG
+
+  """zh_CN."""
+  ZH_CN
+
+  """zh_HK."""
+  ZH_HK
+
+  """zh_TW."""
+  ZH_TW
+
+  """zu_ZA."""
+  ZU_ZA
+
+  """zz_TR."""
+  ZZ_TR
+}
+
+"""The OpenGraph meta."""
+type RankMathOpenGraphMeta {
+  """A list of other locales this page is available in"""
+  alternateLocales: [RankMathOpenGraphLocaleEnum]
+
+  """The OpenGraph Article meta."""
+  articleMeta: RankMathOpenGraphArticle
+
+  """
+  A brief description of the content, usually between 2 and 4 sentences. 
+  """
+  description: String
+
+  """The Facebook OpenGraph meta values."""
+  facebookMeta: RankMathOpenGraphFacebook
+
+  """The OpenGraph image meta"""
+  image: RankMathOpenGraphImage
+
+  """The locale of the resource."""
+  locale: RankMathOpenGraphLocaleEnum
+
+  """The Facebook OpenGraph meta values."""
+  productMeta: RankMathProduct
+
+  """The name of the site this resource is associated with."""
+  siteName: String
+
+  """The Slack Enhanced Data meta values."""
+  slackEnhancedData: [RankMathOpenGraphSlackEnhancedData]
+
+  """The title of your object as it should appear within the graph."""
+  title: String
+
+  """The Twitter OpenGraph meta values."""
+  twitterMeta: RankMathOpenGraphTwitter
+
+  """The OpenGraph object type."""
+  type: String
+
+  """The updated time"""
+  updatedTime: String
+
+  """
+  The canonical URL of your object that will be used as its permanent ID in the graph.
+  """
+  url: String
+
+  """The Twitter OpenGraph meta values."""
+  videoMeta: RankMathOpenGraphVideo
+}
+
+"""The OpenGraph Product availibility"""
+enum RankMathOpenGraphProductAvailabilityEnum {
+  """The product is in stock"""
+  IN_STOCK
+
+  """The product is out of stock"""
+  OUT_OF_STOCK
+}
+
+"""The Enhanced Data Tags for Slack Sharing."""
+type RankMathOpenGraphSlackEnhancedData {
+  """The Enhanced Data"""
+  data: String
+
+  """The Enhanced Data label"""
+  label: String
+}
+
+"""The OpenGraph Twitter meta."""
+type RankMathOpenGraphTwitter {
+  """The app country."""
+  appCountry: String
+
+  """The Twitter card type"""
+  card: RankMathTwitterCardTypeEnum
+
+  """@username of content creator"""
+  creator: String
+
+  """Description of content (maximum 200 characters)"""
+  description: String
+
+  """The Twitter Google Play app meta"""
+  googleplayApp: RankMathOpenGraphTwitterApp
+
+  """URL of image to use in the card."""
+  image: String
+
+  """The Twitter iPad app meta"""
+  ipadApp: RankMathOpenGraphTwitterApp
+
+  """The Twitter iPhone app meta"""
+  iphoneApp: RankMathOpenGraphTwitterApp
+
+  """URL to raw video or audio stream"""
+  playerStream: String
+
+  """The content type of the stream"""
+  playerStreamContentType: String
+
+  """URL of the twitter player."""
+  playerUrl: Int
+
+  """@username of website"""
+  site: String
+
+  """Title of content"""
+  title: String
+}
+
+"""The OpenGraph Twitter App meta."""
+type RankMathOpenGraphTwitterApp {
+  """The App ID ."""
+  id: ID
+
+  """The name of the Twitter app."""
+  name: String
+
+  """Your app\’s custom URL scheme."""
+  url: String
+}
+
+"""The OpenGraph Video meta."""
+type RankMathOpenGraphVideo {
+  """The duration of the video."""
+  duration: String
+
+  """The URL of the video."""
+  url: String
+}
+
+"""The page post object SEO data"""
+type RankMathPageObjectSeo implements RankMathContentNodeSeo & RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """Whether the item is considered pillar (cornerstone) content"""
+  isPillarContent: Boolean
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The SEO score"""
+  seoScore: RankMathSeoScore
+
+  """The title."""
+  title: String
+}
+
+"""The page post type object SEO data"""
+type RankMathPageTypeSeo implements RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The title."""
+  title: String
+}
+
+"""The post_format term object SEO data"""
+type RankMathPostFormatTermSeo implements RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The title."""
+  title: String
+}
+
+"""The post post object SEO data"""
+type RankMathPostObjectSeo implements RankMathContentNodeSeo & RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """Whether the item is considered pillar (cornerstone) content"""
+  isPillarContent: Boolean
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The SEO score"""
+  seoScore: RankMathSeoScore
+
+  """The title."""
+  title: String
+}
+
+"""The post post type object SEO data"""
+type RankMathPostTypeSeo implements RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The title."""
+  title: String
+}
+
+"""The OpenGraph Product meta."""
+type RankMathProduct {
+  """The currency of the object price."""
+  availability: RankMathOpenGraphProductAvailabilityEnum
+
+  """The brand of the product."""
+  brand: String
+
+  """The currency of the object price."""
+  currency: String
+
+  """The price of the object"""
+  price: Float
+}
+
+"""A block used for editing the site"""
+type RankMathRichSnippet implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: RankMathRichSnippetAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type RankMathRichSnippetAttributes {
+  """
+  The &quot;className&quot; field on the &quot;RankMathRichSnippet&quot; block
+  """
+  className: String
+
+  """The &quot;id&quot; field on the &quot;RankMathRichSnippet&quot; block"""
+  id: String
+
+  """
+  The &quot;lock&quot; field on the &quot;RankMathRichSnippet&quot; block
+  """
+  lock: BlockAttributesObject
+
+  """
+  The &quot;post_id&quot; field on the &quot;RankMathRichSnippet&quot; block
+  """
+  postId: Int
+}
+
+"""Robot meta value tag."""
+enum RankMathRobotsMetaValueEnum {
+  """
+  IndexInstructs search engines to index and show these pages in the search results.
+  """
+  INDEX
+
+  """No ArchivePrevents search engines from showing Cached links for pages"""
+  NOARCHIVE
+
+  """No FollowPrevents search engines from following links on the pages"""
+  NOFOLLOW
+
+  """
+  No Image IndexPrevents images on a page from being indexed by Google and other search engines
+  """
+  NOIMAGEINDEX
+
+  """
+  No IndexPrevents pages from being indexed and displayed in search engine result pages
+  """
+  NOINDEX
+
+  """No SnippetPrevents a snippet from being shown in the search results"""
+  NOSNIPPET
+}
+
+"""Base SEO fields shared across WP types."""
+interface RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The title."""
+  title: String
+}
+
+"""The SEO rating"""
+enum RankMathSeoRatingEnum {
+  """Bad ( < 50 ) score"""
+  BAD
+
+  """Good (50-79) score"""
+  GOOD
+
+  """Great ( > 80 ) score"""
+  GREAT
+
+  """Unknown score."""
+  UNKNOWN
+}
+
+"""The Seo score information."""
+type RankMathSeoScore {
+  """The html output for the Frontend SEO badge"""
+  badgeHtml: String
+
+  """Whether the SEO score should be displayed on the frontend"""
+  hasFrontendScore: Boolean
+
+  """The SEO score"""
+  rating: RankMathSeoRatingEnum
+
+  """The SEO score"""
+  score: Int
+}
+
+"""The frontend SEO Score position"""
+enum RankMathSeoScorePositionEnum {
+  """Above & below content"""
+  BOTH
+
+  """Below content"""
+  BOTTOM
+
+  """Custom (use shortcode)"""
+  CUSTOM
+
+  """Above content"""
+  TOP
+}
+
+"""The frontend SEO Score template type"""
+enum RankMathSeoScoreTemplateTypeEnum {
+  """Circle template"""
+  CIRCLE
+
+  """Square template"""
+  SQUARE
+}
+
+"""The RankMath SEO site settings"""
+type RankMathSettings {
+  """General settings."""
+  general: RankMathGeneral
+
+  """Meta settings."""
+  meta: RankMathMeta
+
+  """Sitemap settings."""
+  sitemap: RankMathSitemap
+}
+
+"""The RankMath SEO titles and meta site settings"""
+type RankMathSitemap {
+  """Author sitemap settings. Null if authors are not indexable."""
+  author: RankMathSitemapAuthorSettings
+
+  """Content types included in the sitemap."""
+  contentTypes(
+    """Limit results to specific content types."""
+    include: [ContentTypeEnum]
+  ): [RankMathSitemapContentTypeSettings]
+
+  """Sitemap general settings."""
+  general: RankMathSitemapGeneralSettings
+
+  """The URL to the sitemap index."""
+  sitemapIndexUrl: String
+
+  """Content types included in the sitemap."""
+  taxonomies(
+    """Limit results to specific taxonomies."""
+    include: [TaxonomyEnum]
+  ): [RankMathSitemapTaxonomySettings]
+}
+
+"""The RankMath SEO Sitemap general settings."""
+type RankMathSitemapAuthorSettings {
+  """The connected authors whose URLs are included in the sitemap"""
+  connectedAuthors(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+  ): RankMathSitemapAuthorSettingsToUserConnection
+
+  """List of user roles excluded from the sitemap."""
+  excludedRoles: [UserRoleEnum]
+
+  """List of user IDs excluded from the sitemap."""
+  excludedUserDatabaseIds: [Int]
+
+  """The sitemap URL."""
+  sitemapUrl: String
+}
+
+"""
+Connection between the RankMathSitemapAuthorSettings type and the User type
+"""
+type RankMathSitemapAuthorSettingsToUserConnection implements Connection & UserConnection {
+  """Edges for the RankMathSitemapAuthorSettingsToUserConnection connection"""
+  edges: [RankMathSitemapAuthorSettingsToUserConnectionEdge!]!
+
+  """The nodes of the connection, without the edges"""
+  nodes: [User!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: RankMathSitemapAuthorSettingsToUserConnectionPageInfo!
+}
+
+"""An edge in a connection"""
+type RankMathSitemapAuthorSettingsToUserConnectionEdge implements Edge & UserConnectionEdge {
+  """A cursor for use in pagination"""
+  cursor: String
+
+  """The item at the end of the edge"""
+  node: User!
+}
+
+"""
+Page Info on the &quot;RankMathSitemapAuthorSettingsToUserConnection&quot;
+"""
+type RankMathSitemapAuthorSettingsToUserConnectionPageInfo implements PageInfo & UserConnectionPageInfo & WPPageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+"""The RankMath SEO Sitemap general settings."""
+type RankMathSitemapContentTypeSettings {
+  """The connected authors whose URLs are included in the sitemap"""
+  connectedContentNodes(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+  ): RankMathSitemapContentTypeSettingsToContentNodeConnection
+
+  """
+  List of custom field (post meta) names which contain image URLs to include them in the sitemaps.
+  """
+  customImageMetaKeys: [String]
+
+  """Whether the content type is included in the sitemap."""
+  isInSitemap: Boolean
+
+  """The sitemap URL."""
+  sitemapUrl: String
+
+  """The content type."""
+  type: ContentTypeEnum
+}
+
+"""
+Connection between the RankMathSitemapContentTypeSettings type and the ContentNode type
+"""
+type RankMathSitemapContentTypeSettingsToContentNodeConnection implements Connection & ContentNodeConnection {
+  """
+  Edges for the RankMathSitemapContentTypeSettingsToContentNodeConnection connection
+  """
+  edges: [RankMathSitemapContentTypeSettingsToContentNodeConnectionEdge!]!
+
+  """The nodes of the connection, without the edges"""
+  nodes: [ContentNode!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: RankMathSitemapContentTypeSettingsToContentNodeConnectionPageInfo!
+}
+
+"""An edge in a connection"""
+type RankMathSitemapContentTypeSettingsToContentNodeConnectionEdge implements ContentNodeConnectionEdge & Edge {
+  """A cursor for use in pagination"""
+  cursor: String
+
+  """The item at the end of the edge"""
+  node: ContentNode!
+}
+
+"""
+Page Info on the &quot;RankMathSitemapContentTypeSettingsToContentNodeConnection&quot;
+"""
+type RankMathSitemapContentTypeSettingsToContentNodeConnectionPageInfo implements ContentNodeConnectionPageInfo & PageInfo & WPPageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+"""The RankMath SEO Sitemap general settings."""
+type RankMathSitemapGeneralSettings {
+  """Whether to notify search engines when the sitemap is updated."""
+  canPingSearchEngines: Boolean
+
+  """
+  A list of post IDs excluded from the sitemap. This option **applies** to all posts types including posts, pages, and custom post types.
+  """
+  excludedPostDatabaseIds: [Int]
+
+  """
+  A list of term IDs excluded from the sitemap. This option **applies** to all taxonomies.
+  """
+  excludedTermDatabaseIds: [Int]
+
+  """
+  Whether the Featured Image is included in sitemaps too, even if it does not appear directly in the post content.
+  """
+  hasFeaturedImage: Boolean
+
+  """
+  Whether reference to images from the post content is included in sitemaps.
+  """
+  hasImages: Boolean
+
+  """Max number of links on each sitemap page."""
+  linksPerSitemap: Int
+}
+
+"""The RankMath SEO Sitemap general settings."""
+type RankMathSitemapTaxonomySettings {
+  """The connected authors whose URLs are included in the sitemap"""
+  connectedTerms(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+  ): RankMathSitemapTaxonomySettingsToTermNodeConnection
+
+  """Whether to archive pages of terms that have no posts associated."""
+  hasEmptyTerms: Boolean
+
+  """Whether the content type is included in the sitemap."""
+  isInSitemap: Boolean
+
+  """The sitemap URL."""
+  sitemapUrl: String
+
+  """The taxonomy type."""
+  type: TaxonomyEnum
+}
+
+"""
+Connection between the RankMathSitemapTaxonomySettings type and the TermNode type
+"""
+type RankMathSitemapTaxonomySettingsToTermNodeConnection implements Connection & TermNodeConnection {
+  """
+  Edges for the RankMathSitemapTaxonomySettingsToTermNodeConnection connection
+  """
+  edges: [RankMathSitemapTaxonomySettingsToTermNodeConnectionEdge!]!
+
+  """The nodes of the connection, without the edges"""
+  nodes: [TermNode!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: RankMathSitemapTaxonomySettingsToTermNodeConnectionPageInfo!
+}
+
+"""An edge in a connection"""
+type RankMathSitemapTaxonomySettingsToTermNodeConnectionEdge implements Edge & TermNodeConnectionEdge {
+  """A cursor for use in pagination"""
+  cursor: String
+
+  """The item at the end of the edge"""
+  node: TermNode!
+}
+
+"""
+Page Info on the &quot;RankMathSitemapTaxonomySettingsToTermNodeConnection&quot;
+"""
+type RankMathSitemapTaxonomySettingsToTermNodeConnectionPageInfo implements PageInfo & TermNodeConnectionPageInfo & WPPageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+"""The rich snippet type."""
+enum RankMathSnippetTypeEnum {
+  """Article"""
+  ARTICLE
+
+  """Book"""
+  BOOK
+
+  """Course"""
+  COURSE
+
+  """Event"""
+  EVENT
+
+  """Job Posting"""
+  JOBPOSTING
+
+  """Local Business"""
+  LOCAL_BUSINESS
+
+  """Music"""
+  MUSIC
+
+  """None."""
+  OFF
+
+  """Person"""
+  PERSON
+
+  """Product"""
+  PRODUCT
+
+  """Recipe"""
+  RECIPE
+
+  """Restaurant"""
+  RESTAURANT
+
+  """Service"""
+  SERVICE
+
+  """Software Application"""
+  SOFTWARE
+
+  """Video"""
+  VIDEO
+}
+
+"""The RankMath SEO Social settings."""
+type RankMathSocialMetaSettings {
+  """A list of numeric Facebook admin User Ids."""
+  facebookAdminId: [Int]
+
+  """The facebook Facebook app ID."""
+  facebookAppId: Int
+
+  """
+  The personal Facebook profile URL used to show authorship when articles are shared on Facebook.
+  """
+  facebookAuthorUrl: String
+
+  """The complete Facebook page URL."""
+  facebookPageUrl: String
+
+  """Twitter Username of the auther used in the `twitter:creater` tag."""
+  twitterAuthorName: String
+}
+
+"""The post_tag term object SEO data"""
+type RankMathTagTermSeo implements RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The title."""
+  title: String
+}
+
+"""The RankMath SEO Taxonomy meta settings."""
+type RankMathTaxonomyMetaSettings {
+  """The RankMath SEO meta settings for Categories."""
+  category: CategoryMetaSettings
+
+  """The RankMath SEO meta settings for Formats."""
+  postFormat: PostFormatMetaSettings
+
+  """The RankMath SEO meta settings for Tags."""
+  tag: TagMetaSettings
+}
+
+"""A block used for editing the site"""
+type RankMathTocBlock implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """Attributes of the %s Block Type"""
+  attributes: RankMathTocBlockAttributes
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
+}
+
+"""Attributes of the %s Block Type"""
+type RankMathTocBlockAttributes {
+  """The &quot;align&quot; field on the &quot;RankMathTocBlock&quot; block"""
+  align: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;RankMathTocBlock&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;className&quot; field on the &quot;RankMathTocBlock&quot; block
+  """
+  className: String
+
+  """
+  The &quot;excludeHeadings&quot; field on the &quot;RankMathTocBlock&quot; block
+  """
+  excludeHeadings: BlockAttributesObject
+
+  """
+  The &quot;fontSize&quot; field on the &quot;RankMathTocBlock&quot; block
+  """
+  fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;RankMathTocBlock&quot; block
+  """
+  gradient: String
+
+  """
+  The &quot;headings&quot; field on the &quot;RankMathTocBlock&quot; block
+  """
+  headings: BlockAttributesObject
+
+  """The &quot;lock&quot; field on the &quot;RankMathTocBlock&quot; block"""
+  lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;RankMathTocBlock&quot; block"""
+  style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;RankMathTocBlock&quot; block
+  """
+  textColor: String
+}
+
+"""The Twitter Card Type Enum"""
+enum RankMathTwitterCardTypeEnum {
+  """The twitter App card"""
+  APP
+
+  """The twitter Player card"""
+  PLAYER
+
+  """Summary Card."""
+  SUMMARY
+
+  """Summary Card with Large Image."""
+  SUMMARY_LARGE_IMAGE
+}
+
+"""The user object SEO data"""
+type RankMathUserSeo implements RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The title."""
+  title: String
+}
+
+"""The RankMath SEO Webmaster Tools settings"""
+type RankMathWebmaster {
+  """The Baidu Webmaster Tools verification HTML code or ID."""
+  baidu: String
+
+  """The Bing Webmaster Tools verification HTML code or ID."""
+  bing: String
+
+  """The Google Search Console verification HTML code or ID."""
+  google: String
+
+  """The Norton Safe Web verification HTML code or ID."""
+  norton: String
+
+  """The Pinterest verification HTML code or ID."""
+  pinterest: String
+
+  """The Yandex verification HTML code or ID."""
+  yandex: String
+}
+
 """The reading setting type"""
 type ReadingSettings {
   """The ID of the page that should display the latest posts"""
@@ -15838,6 +18407,9 @@ type RootQuery {
     """Arguments for filtering the connection"""
     where: RootQueryToPostConnectionWhereArgs
   ): RootQueryToPostConnection
+
+  """RankMath SEO site settings"""
+  rankMathSettings: RankMathSettings
 
   """Fields of the &#039;ReadingSettings&#039; settings group"""
   readingSettings: ReadingSettings
@@ -17928,7 +20500,7 @@ type Settings {
 }
 
 """The tag type"""
-type Tag implements DatabaseIdentifier & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable {
+type Tag implements DatabaseIdentifier & MenuItemLinkable & Node & NodeWithRankMathSeo & TermNode & UniformResourceIdentifiable {
   """Connection between the Tag type and the ContentNode type"""
   contentNodes(
     """
@@ -18038,6 +20610,9 @@ type Tag implements DatabaseIdentifier & MenuItemLinkable & Node & TermNode & Un
     where: TagToPostConnectionWhereArgs
   ): TagToPostConnection
 
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
+
   """An alphanumeric identifier for the object unique to its type."""
   slug: String
 
@@ -18116,6 +20691,37 @@ enum TagIdType {
 
   """The URI for the node"""
   URI
+}
+
+"""The RankMath SEO meta settings for Tags."""
+type TagMetaSettings implements RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """Description for archive pages."""
+  archiveDescription: String
+
+  """Default title tag for archive page."""
+  archiveTitle: String
+
+  """
+  Whether custom robots meta for author page are set. Otherwise the default meta will be used, as set in the Global Meta tab.
+  """
+  hasCustomRobotsMeta: Boolean
+
+  """Whether the SEO Controls meta box for user profile pages is enabled."""
+  hasSeoControls: Boolean
+
+  """
+  Whether to show additional information (name &amp; total number of posts) when an author archive is shared on Slack.
+  """
+  hasSlackEnhancedSharing: Boolean
+
+  """Whether to include snippet data for this taxonomy."""
+  hasSnippetData: Boolean
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
 }
 
 """Connection between the Tag type and the ContentNode type"""
@@ -18565,7 +21171,7 @@ type TaxonomyToContentTypeConnectionPageInfo implements ContentTypeConnectionPag
 """
 Terms are nodes within a Taxonomy, used to group and relate other nodes.
 """
-interface TermNode implements Node & UniformResourceIdentifiable {
+interface TermNode implements Node & NodeWithRankMathSeo & UniformResourceIdentifiable {
   """The number of objects connected to the object"""
   count: Int
 
@@ -18613,7 +21219,7 @@ interface TermNode implements Node & UniformResourceIdentifiable {
     last: Int
   ): TermNodeToEnqueuedStylesheetConnection
 
-  """The unique resource identifier path"""
+  """The globally unique ID for the object"""
   id: ID!
 
   """Whether the node is a Content Node"""
@@ -18630,6 +21236,9 @@ interface TermNode implements Node & UniformResourceIdentifiable {
 
   """The human friendly name of the object."""
   name: String
+
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
 
   """An alphanumeric identifier for the object unique to its type."""
   slug: String
@@ -19538,7 +22147,7 @@ type UpdateUserPayload {
 }
 
 """A User object"""
-type User implements Commenter & DatabaseIdentifier & Node & UniformResourceIdentifiable {
+type User implements Commenter & DatabaseIdentifier & Node & NodeWithRankMathSeo & UniformResourceIdentifiable {
   """
   Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument.
   """
@@ -19792,6 +22401,9 @@ type User implements Commenter & DatabaseIdentifier & Node & UniformResourceIden
     """The number of items to return before the referenced "before" cursor"""
     last: Int
   ): UserToUserRoleConnection
+
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
 
   """
   Whether the Toolbar should be displayed when the user is viewing the site.
