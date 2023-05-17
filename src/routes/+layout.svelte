@@ -3,6 +3,7 @@
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
 	import Analytics from './Analytics.svelte';
+	import Seo from './Seo.svelte';
 
 	import type { LayoutData } from './$houdini';
 
@@ -13,11 +14,9 @@
 	$: ({ LayoutQuery } = data);
 </script>
 
-<svelte:head>
-	{@html $LayoutQuery.data?.nodeByUri?.seo?.fullHead ?? ''}
-	{@html $LayoutQuery.data?.nodeByUri?.seo?.jsonLd?.raw ?? ''}
-</svelte:head>
-
+{#if $LayoutQuery.data?.nodeByUri}
+	<Seo data={$LayoutQuery.data.nodeByUri} />
+{/if}
 <Analytics />
 <div class="layout">
 	<div class="header">
