@@ -54,6 +54,10 @@
 		padding-bottom: var(--size-fluid-1);
 	}
 
+	h2 {
+		font-size: var(--font-size-3)
+	}
+
 	.details {
 		font-size: var(--font-size-0);
 		font-style: italic;
