@@ -11,7 +11,8 @@
 				"esbenp.prettier-vscode",
 				"svelte.svelte-vscode",
 				"phoenisx.cssvar",
-				"GitHub.copilot"
+				"GitHub.copilot",
+				"GraphQL.vscode-graphql"
 			]
 		}
 	}
