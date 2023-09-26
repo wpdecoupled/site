@@ -4,8 +4,7 @@
 @layer reset, design, theme, utils, components;
 
 @import 'open-props/style' layer(design);
-@import 'open-props/normalize' layer(reset);
-@import 'open-props/media';
+@import 'open-props/normalize/light' layer(reset);
 
 @import 'open-props/buttons';
 
@@ -19,23 +18,18 @@
 		--primary-color: var(--stone-10);
 		--primary-highlight-color: var(--blue-10);
 
-		/* --brand: var(--primary-highlight-color); */
-		--link: var(--blue-8);
-	}
+		/* theme */
+		--brand: var(--primary-highlight-color);
+		--text-1: var(--primary-color);
+		--text-2: var(--primary-color);
+		--surface-1: var(--sand-0);
+		--surface-2: var(--sand-1);
+		--surface-3: var(--sand-2);
+		--surface-4: var(--sand-3);
+		--surface-shadow: var(--primary-color);
+		/* --shadow-strength: var(--shadow-strength-dark); */
 
-	@media (--OSdark) {
-		:root {
-			--primary-bg-color: var(--stone-10);
-			--primary-color: var(--sand-1);
-			--link: var(--blue-2);
-		}
-	}
-
-	html {
-		font-family: 'Merriweather Sans', var(--font-serif);
-		font-size: var(--font-size-3);
-		color: var(--primary-color);
-		background-color: var(--primary-bg-color);
+		font-family: 'Lora', var(--font-serif);
 	}
 
 	br {
@@ -65,9 +59,13 @@
 
 	/* Headings */
 
-	h2 {
-		padding-bottom: var(--size-1);
+	h1 {
+		font-size: var(--font-size-6);
 	}
+
+	/* h2 {
+		padding-bottom: var(--size-1);
+	} */
 }
 
 /*

@@ -72,6 +72,10 @@
 		margin: auto;
 	}
 
+	h1 {
+		max-inline-size: 100%;
+	}
+
 	header,
 	.content {
 		margin-bottom: var(--size-fluid-4);
@@ -79,6 +83,7 @@
 
 	.top-intro {
 		font-size: smaller;
+		font-style: italic;
 		padding-top: var(--size-fluid-1);
 	}
 
