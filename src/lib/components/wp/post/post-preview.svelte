@@ -9,7 +9,6 @@
 		graphql`
 			fragment PostPreview on Post {
 				title
-				slug
 				excerpt
 				uri
 				dateGmt

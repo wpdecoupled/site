@@ -5,14 +5,19 @@
 
 @import 'open-props/style' layer(design);
 @import 'open-props/normalize/light' layer(reset);
-
-@import 'open-props/buttons';
+@import 'open-props/buttons' layer(design);
 
 /*
     Base Theme
 */
 
+
+
 @layer theme {
+	* {
+		box-sizing: border-box;
+	}
+
 	:root {
 		--primary-bg-color: var(--sand-1);
 		--primary-color: var(--stone-10);
@@ -77,6 +82,7 @@
 		max-width: var(--size-xl);
 		margin-inline: auto;
 		padding: var(--size-fluid-2) var(--size-fluid-1);
+		overflow: hidden;
 	}
 
 	.wrapper.wide {

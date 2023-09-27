@@ -12,7 +12,8 @@
 				"svelte.svelte-vscode",
 				"phoenisx.cssvar",
 				"GitHub.copilot",
-				"GraphQL.vscode-graphql"
+				"GraphQL.vscode-graphql",
+				"EditorConfig.EditorConfig"
 			]
 		}
 	}

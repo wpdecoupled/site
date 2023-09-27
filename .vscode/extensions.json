@@ -3,6 +3,7 @@
 		"csstools.postcss",
 		"esbenp.prettier-vscode",
 		"svelte.svelte-vscode",
-		"phoenisx.cssvar"
+		"phoenisx.cssvar",
+		"editorconfig.editorconfig"
 	]
 }
