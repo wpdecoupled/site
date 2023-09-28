@@ -4,7 +4,6 @@
 	import RecentPosts from '$lib/components/wp/content/recent-posts.svelte';
 	import PostMiniCard from '$lib/components/wp/post/post-mini-card.svelte';
 	import type { PageData } from './$houdini';
-	// import { graphql, type RecentPostsType } from '$houdini';
 
 	export let form: ActionData;
 

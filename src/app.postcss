@@ -11,8 +11,6 @@
     Base Theme
 */
 
-
-
 @layer theme {
 	* {
 		box-sizing: border-box;
@@ -42,6 +40,7 @@
 	}
 
 	/* Links */
+
 	a {
 		text-decoration: underline;
 		text-decoration-style: double;
@@ -50,6 +49,10 @@
 	:is(h1, h2, h3, h4, h5, h6) a {
 		all: inherit;
 		cursor: pointer;
+
+		&:focus-visible {
+			outline: 2px solid var(--brand, var(--link));
+		}
 	}
 
 	:is(h1, h2, h3, h4, h5, h6) a:visited {
