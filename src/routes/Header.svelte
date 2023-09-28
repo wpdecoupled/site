@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { Logo } from '$lib/components';
 	import MenuList from '$lib/components/wp/menu/menu-list.svelte';
+	import Search from './search/input.svelte';
 	import type { LayoutData } from './$houdini';
+	import { path } from 'houdini';
 
 	export let data: LayoutData['LayoutQuery'];
 
@@ -12,6 +15,9 @@
 	<a class="wrapper logo" href="/">
 		<Logo />
 	</a>
+	{#if !$page.url.pathname.startsWith('/search')}
+		<Search />
+	{/if}
 	<!-- <div>THEME SWITCHER HERE</div> -->
 	{#if resultData?.menu}
 		<MenuList data={resultData.menu} />

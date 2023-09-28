@@ -1,0 +1,12 @@
+query SearchQuery($query: String!) {
+	contentNodes(where: { search: $query, contentTypes: [POST, PAGE, BULLETIN, GUIDE] }) {
+		edges {
+			node {
+				uri
+				... on NodeWithTitle {
+					title
+				}
+			}
+		}
+	}
+}
