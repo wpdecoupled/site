@@ -4,7 +4,6 @@
 	import MenuList from '$lib/components/wp/menu/menu-list.svelte';
 	import Search from './search/input.svelte';
 	import type { LayoutData } from './$houdini';
-	import { path } from 'houdini';
 
 	export let data: LayoutData['LayoutQuery'];
 
