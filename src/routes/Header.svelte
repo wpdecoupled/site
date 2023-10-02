@@ -2,7 +2,8 @@
 	import { page } from '$app/stores';
 	import { Logo } from '$lib/components';
 	import MenuList from '$lib/components/wp/menu/menu-list.svelte';
-	import Search from './search/input.svelte';
+	import OpenSearch from './search/openSearch.svelte';
+
 	import type { LayoutData } from './$houdini';
 
 	export let data: LayoutData['LayoutQuery'];
@@ -11,12 +12,15 @@
 </script>
 
 <header class="center">
-	<a class="wrapper logo" href="/">
-		<Logo />
-	</a>
-	{#if !$page.url.pathname.startsWith('/search')}
-		<Search />
-	{/if}
+	<div class="banner">
+		<div></div>
+		<a class="wrapper logo" href="/">
+			<Logo />
+		</a>
+		{#if !$page.url.pathname.startsWith('/search')}
+			<OpenSearch />
+		{/if}
+	</div>
 	<!-- <div>THEME SWITCHER HERE</div> -->
 	{#if resultData?.menu}
 		<MenuList data={resultData.menu} />
@@ -27,6 +31,12 @@
 	header {
 		display: flex;
 		justify-content: space-between;
+	}
+
+	.banner {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
 	}
 
 	.logo {

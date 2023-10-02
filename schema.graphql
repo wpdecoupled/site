@@ -3,6 +3,18 @@ schema {
   mutation: RootMutation
 }
 
+"""A Field Group managed by ACF"""
+interface AcfFieldGroup {
+  """The name of the field group"""
+  fieldGroupName: String @deprecated(reason: "Use __typename instead")
+}
+
+"""Fields associated with an ACF Field Group"""
+interface AcfFieldGroupFields {
+  """The name of the field group"""
+  fieldGroupName: String @deprecated(reason: "Use __typename instead")
+}
+
 """
 Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from.
 """
@@ -70,6 +82,315 @@ scalar BlockAttributesObject
 interface BlockWithSupportsAnchor {
   """The anchor field for the block."""
   anchor: String
+}
+
+"""The bulletin type"""
+type Bulletin implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithRankMathSeo & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & WithAcfBulletinInfo {
+  """The id field matches the WP_Post-&gt;ID field."""
+  bulletinId: Int! @deprecated(reason: "Deprecated in favor of the databaseId field")
+
+  """Fields of the BulletinInfo ACF Field Group"""
+  bulletinInfo: BulletinInfo
+
+  """Connection between the ContentNode type and the ContentType type"""
+  contentType: ContentNodeToContentTypeConnectionEdge
+
+  """The name of the Content Type the node belongs to"""
+  contentTypeName: String!
+
+  """The unique identifier stored in the database"""
+  databaseId: Int!
+
+  """Post publishing date."""
+  date: String
+
+  """The publishing date set in GMT."""
+  dateGmt: String
+
+  """The desired slug of the post"""
+  desiredSlug: String
+
+  """
+  If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds
+  """
+  editingLockedBy: ContentNodeToEditLockConnectionEdge
+
+  """The RSS enclosure for the object"""
+  enclosure: String
+
+  """Connection between the ContentNode type and the EnqueuedScript type"""
+  enqueuedScripts(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+  ): ContentNodeToEnqueuedScriptConnection
+
+  """
+  Connection between the ContentNode type and the EnqueuedStylesheet type
+  """
+  enqueuedStylesheets(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+  ): ContentNodeToEnqueuedStylesheetConnection
+
+  """
+  The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table.
+  """
+  guid: String
+
+  """The globally unique identifier of the bulletin object."""
+  id: ID!
+
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
+
+  """Whether the object is a node in the preview state"""
+  isPreview: Boolean
+
+  """Whether the object is restricted from the current viewer"""
+  isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
+
+  """The user that most recently edited the node"""
+  lastEditedBy: ContentNodeToEditLastConnectionEdge
+
+  """The permalink of the post"""
+  link: String
+
+  """
+  The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+  """
+  modified: String
+
+  """
+  The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
+  """
+  modifiedGmt: String
+
+  """Connection between the Bulletin type and the bulletin type"""
+  preview: BulletinToPreviewConnectionEdge
+
+  """The database id of the preview node"""
+  previewRevisionDatabaseId: Int
+
+  """Whether the object is a node in the preview state"""
+  previewRevisionId: ID
+
+  """The RankMath SEO data for the node."""
+  seo: RankMathSeo
+
+  """
+  The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
+  """
+  slug: String
+
+  """The current status of the object"""
+  status: String
+
+  """The template assigned to the node"""
+  template: ContentTemplate
+
+  """
+  The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
+  """
+  title(
+    """Format of the field output"""
+    format: PostObjectFieldFormatEnum
+  ): String
+
+  """The unique resource identifier path"""
+  uri: String
+}
+
+"""Connection to bulletin Nodes"""
+interface BulletinConnection implements Connection {
+  """
+  A list of edges (relational context) between RootQuery and connected bulletin Nodes
+  """
+  edges: [BulletinConnectionEdge!]!
+
+  """A list of connected bulletin Nodes"""
+  nodes: [Bulletin!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: BulletinConnectionPageInfo!
+}
+
+"""Edge between a Node and a connected bulletin"""
+interface BulletinConnectionEdge implements Edge {
+  """
+  Opaque reference to the nodes position in the connection. Value can be used with pagination args.
+  """
+  cursor: String
+
+  """The connected bulletin Node"""
+  node: Bulletin!
+}
+
+"""Page Info on the connected BulletinConnectionEdge"""
+interface BulletinConnectionPageInfo implements PageInfo & WPPageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+"""The Type of Identifier used to fetch a single resource. Default is ID."""
+enum BulletinIdType {
+  """Identify a resource by the Database ID."""
+  DATABASE_ID
+
+  """Identify a resource by the (hashed) Global ID."""
+  ID
+
+  """
+  Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier.
+  """
+  SLUG
+
+  """Identify a resource by the URI."""
+  URI
+}
+
+"""Added by WPGraphQL for ACF Redux"""
+type BulletinInfo implements AcfFieldGroup & AcfFieldGroupFields & BulletinInfo_Fields {
+  """
+  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  """
+  description: String
+
+  """The name of the field group"""
+  fieldGroupName: String @deprecated(reason: "Use __typename instead")
+
+  """
+  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  """
+  linkToNews: String!
+}
+
+"""
+Interface representing fields of the ACF &quot;BulletinInfo&quot; Field Group
+"""
+interface BulletinInfo_Fields implements AcfFieldGroup & AcfFieldGroupFields {
+  """
+  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  """
+  description: String
+
+  """The name of the field group"""
+  fieldGroupName: String @deprecated(reason: "Use __typename instead")
+
+  """
+  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  """
+  linkToNews: String!
+}
+
+"""The RankMath SEO meta settings for Bulletins."""
+type BulletinMetaSettings implements RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots {
+  """Advanced robots meta tag settings."""
+  advancedRobotsMeta: RankMathAdvancedRobotsMeta
+
+  """List of custom fields name to include in the Page analysis"""
+  analyzedFields: [String]
+
+  """Description for archive pages."""
+  archiveDescription: String
+
+  """Default title tag for archive page."""
+  archiveTitle: String
+
+  """Default article type when creating a new Bulletins."""
+  articleType: RankMathArticleTypeEnum
+
+  """Default description for single Bulletins pages."""
+  description: String
+
+  """Whether to list bulk editing columns to the post listing screen."""
+  hasBulkEditing: RankMathBulkEditingTypeEnum
+
+  """
+  Whether custom robots meta for author page are set. Otherwise the default meta will be used, as set in the Global Meta tab.
+  """
+  hasCustomRobotsMeta: Boolean
+
+  """
+  Whether Link Suggestions meta box and the Pillar Content featured are enabled for this post type.
+  """
+  hasLinkSuggestions: Boolean
+
+  """Whether the SEO Controls meta box for user profile pages is enabled."""
+  hasSeoControls: Boolean
+
+  """
+  Whether to show additional information (name &amp; total number of posts) when an author archive is shared on Slack.
+  """
+  hasSlackEnhancedSharing: Boolean
+
+  """Custom values for robots meta tag."""
+  robotsMeta: [RankMathRobotsMetaValueEnum]
+
+  """
+  Whether to use the Focus Keyword as the default text for the links instead of the post titles.
+  """
+  shouldUseFocusKeyword: Boolean
+
+  """Default rich snippet headline."""
+  snippetDescription: String
+
+  """Default rich snippet headline."""
+  snippetHeadline: String
+
+  """Default rich snippet select when creating a new Bulletins."""
+  snippetType: RankMathSnippetTypeEnum
+
+  """Default title tag for single Bulletins pages."""
+  title: String
+}
+
+"""Connection between the Bulletin type and the bulletin type"""
+type BulletinToPreviewConnectionEdge implements BulletinConnectionEdge & Edge & OneToOneConnection {
+  """
+  Opaque reference to the nodes position in the connection. Value can be used with pagination args.
+  """
+  cursor: String
+
+  """The node of the connection, without the edges"""
+  node: Bulletin!
 }
 
 """The category type"""
@@ -1925,6 +2246,9 @@ interface ContentTypeConnectionPageInfo implements PageInfo & WPPageInfo {
 enum ContentTypeEnum {
   """The Type of Content object"""
   ATTACHMENT
+
+  """The Type of Content object"""
+  BULLETIN
 
   """The Type of Content object"""
   GRAPHQL_DOCUMENT
@@ -9486,6 +9810,47 @@ type CoreWidgetGroupAttributes {
   title: String
 }
 
+"""Input for the createBulletin mutation."""
+input CreateBulletinInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """
+  The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 
+  """
+  date: String
+
+  """
+  A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types.
+  """
+  menuOrder: Int
+
+  """The password used to protect the content of the object"""
+  password: String
+
+  """The slug of the object"""
+  slug: String
+
+  """The status of the object"""
+  status: PostStatusEnum
+
+  """The title of the object"""
+  title: String
+}
+
+"""The payload for the createBulletin mutation."""
+type CreateBulletinPayload {
+  """The Post object mutation type."""
+  bulletin: Bulletin
+
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+}
+
 """Input for the createCategory mutation."""
 input CreateCategoryInput {
   """The slug that the category will be an alias of"""
@@ -10111,6 +10476,39 @@ input DateQueryInput {
 type DefaultTemplate implements ContentTemplate {
   """The name of the template"""
   templateName: String
+}
+
+"""Input for the deleteBulletin mutation."""
+input DeleteBulletinInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """
+  Whether the object should be force deleted instead of being moved to the trash
+  """
+  forceDelete: Boolean
+
+  """The ID of the bulletin to delete"""
+  id: ID!
+
+  """Override the edit lock when another user is editing the post"""
+  ignoreEditLock: Boolean
+}
+
+"""The payload for the deleteBulletin mutation."""
+type DeleteBulletinPayload {
+  """The object before it was deleted"""
+  bulletin: Bulletin
+
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """The ID of the deleted object"""
+  deletedId: ID
 }
 
 """Input for the deleteCategory mutation."""
@@ -11999,12 +12397,18 @@ enum GuideIdType {
 }
 
 """The RankMath SEO meta settings for Guides."""
-type GuideMetaSettings implements RankMathMetaSettingWithRobots {
+type GuideMetaSettings implements RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots {
   """Advanced robots meta tag settings."""
   advancedRobotsMeta: RankMathAdvancedRobotsMeta
 
   """List of custom fields name to include in the Page analysis"""
   analyzedFields: [String]
+
+  """Description for archive pages."""
+  archiveDescription: String
+
+  """Default title tag for archive page."""
+  archiveTitle: String
 
   """Default article type when creating a new Guides."""
   articleType: RankMathArticleTypeEnum
@@ -12049,11 +12453,6 @@ type GuideMetaSettings implements RankMathMetaSettingWithRobots {
 
   """Default rich snippet select when creating a new Guides."""
   snippetType: RankMathSnippetTypeEnum
-
-  """
-  The default image to display when sharing this post type on social media
-  """
-  socialImage: MediaItem
 
   """Default title tag for single Guides pages."""
   title: String
@@ -13563,7 +13962,7 @@ enum MenuItemNodeIdTypeEnum {
 }
 
 """Deprecated in favor of MenuItemLinkeable Interface"""
-union MenuItemObjectUnion = Category | Guide | Page | Post | Tag
+union MenuItemObjectUnion = Bulletin | Category | Guide | Page | Post | Tag
 
 """Connection between the MenuItem type and the Menu type"""
 type MenuItemToMenuConnectionEdge implements Edge & MenuConnectionEdge & OneToOneConnection {
@@ -17225,6 +17624,72 @@ enum RankMathBulkEditingTypeEnum {
   READ_ONLY
 }
 
+"""The bulletin post object SEO data"""
+type RankMathBulletinObjectSeo implements RankMathContentNodeSeo & RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """Whether the item is considered pillar (cornerstone) content"""
+  isPillarContent: Boolean
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The SEO score"""
+  seoScore: RankMathSeoScore
+
+  """The title."""
+  title: String
+}
+
+"""The bulletin post type object SEO data"""
+type RankMathBulletinTypeSeo implements RankMathSeo {
+  """The title to use in the breadcrumbs for this post"""
+  breadcrumbTitle: String
+
+  """The canonical url."""
+  canonicalUrl: String
+
+  """The meta description."""
+  description: String
+
+  """The focus keywords you want to rank for"""
+  focusKeywords: [String]
+
+  """The fully-rendered `head` tag for the given item"""
+  fullHead: String
+
+  """The JSON+LD data"""
+  jsonLd: RankMathJsonLd
+
+  """The open graph meta properties."""
+  openGraph: RankMathOpenGraphMeta
+
+  """A list of the robots meta properties to output."""
+  robots: [String]
+
+  """The title."""
+  title: String
+}
+
 """The category term object SEO data"""
 type RankMathCategoryTermSeo implements RankMathSeo {
   """The title to use in the breadcrumbs for this post"""
@@ -17340,6 +17805,9 @@ interface RankMathContentNodeSeo implements RankMathSeo {
 
 """The RankMath SEO Post Type settings."""
 type RankMathContentTypeMetaSettings {
+  """The RankMath SEO meta settings for Bulletins."""
+  bulletin: BulletinMetaSettings
+
   """The RankMath SEO meta settings for Guides."""
   guide: GuideMetaSettings
 
@@ -19766,6 +20234,12 @@ type RestoreCommentPayload {
 
 """The root mutation"""
 type RootMutation {
+  """The createBulletin mutation"""
+  createBulletin(
+    """Input for the createBulletin mutation"""
+    input: CreateBulletinInput!
+  ): CreateBulletinPayload
+
   """The createCategory mutation"""
   createCategory(
     """Input for the createCategory mutation"""
@@ -19831,6 +20305,12 @@ type RootMutation {
     """Input for the createUser mutation"""
     input: CreateUserInput!
   ): CreateUserPayload
+
+  """The deleteBulletin mutation"""
+  deleteBulletin(
+    """Input for the deleteBulletin mutation"""
+    input: DeleteBulletinInput!
+  ): DeleteBulletinPayload
 
   """The deleteCategory mutation"""
   deleteCategory(
@@ -19928,6 +20408,12 @@ type RootMutation {
     input: SendPasswordResetEmailInput!
   ): SendPasswordResetEmailPayload
 
+  """The updateBulletin mutation"""
+  updateBulletin(
+    """Input for the updateBulletin mutation"""
+    input: UpdateBulletinInput!
+  ): UpdateBulletinPayload
+
   """The updateCategory mutation"""
   updateCategory(
     """Input for the updateCategory mutation"""
@@ -20005,6 +20491,59 @@ type RootMutation {
 type RootQuery {
   """Entry point to get all settings for the site"""
   allSettings: Settings
+
+  """An object of the bulletin Type. Decoupled WordPress News"""
+  bulletin(
+    """
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requestor doesn't have proper capabilities to preview, no node will be returned.
+    """
+    asPreview: Boolean
+
+    """The globally unique identifier of the object."""
+    id: ID!
+
+    """Type of unique identifier to fetch by. Default is Global ID"""
+    idType: BulletinIdType
+  ): Bulletin
+
+  """A bulletin object"""
+  bulletinBy(
+    """Get the bulletin by its database ID"""
+    bulletinId: Int
+
+    """Get the bulletin object by its global ID"""
+    id: ID
+
+    """
+    Get the bulletin by its slug (only available for non-hierarchical types)
+    """
+    slug: String
+
+    """Get the bulletin by its uri"""
+    uri: String
+  ): Bulletin @deprecated(reason: "Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)")
+
+  """Connection between the RootQuery type and the bulletin type"""
+  bulletins(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+
+    """Arguments for filtering the connection"""
+    where: RootQueryToBulletinConnectionWhereArgs
+  ): RootQueryToBulletinConnection
 
   """Connection between the RootQuery type and the category type"""
   categories(
@@ -20819,6 +21358,100 @@ type RootQuery {
 
   """Fields of the &#039;WritingSettings&#039; settings group"""
   writingSettings: WritingSettings
+}
+
+"""Connection between the RootQuery type and the bulletin type"""
+type RootQueryToBulletinConnection implements BulletinConnection & Connection {
+  """Edges for the RootQueryToBulletinConnection connection"""
+  edges: [RootQueryToBulletinConnectionEdge!]!
+
+  """The nodes of the connection, without the edges"""
+  nodes: [Bulletin!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: RootQueryToBulletinConnectionPageInfo!
+}
+
+"""An edge in a connection"""
+type RootQueryToBulletinConnectionEdge implements BulletinConnectionEdge & Edge {
+  """A cursor for use in pagination"""
+  cursor: String
+
+  """The item at the end of the edge"""
+  node: Bulletin!
+}
+
+"""Page Info on the &quot;RootQueryToBulletinConnection&quot;"""
+type RootQueryToBulletinConnectionPageInfo implements BulletinConnectionPageInfo & PageInfo & WPPageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+"""Arguments for filtering the RootQueryToBulletinConnection connection"""
+input RootQueryToBulletinConnectionWhereArgs {
+  """Filter the connection based on dates"""
+  dateQuery: DateQueryInput
+
+  """
+  True for objects with passwords; False for objects without passwords; null for all objects with or without passwords
+  """
+  hasPassword: Boolean
+
+  """Specific database ID of the object"""
+  id: Int
+
+  """Array of IDs for the objects to retrieve"""
+  in: [ID]
+
+  """Get objects with a specific mimeType property"""
+  mimeType: MimeTypeEnum
+
+  """Slug / post_name of the object"""
+  name: String
+
+  """Specify objects to retrieve. Use slugs"""
+  nameIn: [String]
+
+  """
+  Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored
+  """
+  notIn: [ID]
+
+  """What paramater to use to order the objects by."""
+  orderby: [PostObjectsConnectionOrderbyInput]
+
+  """Use ID to return only children. Use 0 to return only top-level items"""
+  parent: ID
+
+  """Specify objects whose parent is in an array"""
+  parentIn: [ID]
+
+  """Specify posts whose parent is not in an array"""
+  parentNotIn: [ID]
+
+  """Show posts with a specific password."""
+  password: String
+
+  """Show Posts based on a keyword search"""
+  search: String
+
+  """Retrieve posts where post status is in an array."""
+  stati: [PostStatusEnum]
+
+  """Show posts with a specific status."""
+  status: PostStatusEnum
+
+  """Title of the object"""
+  title: String
 }
 
 """Connection between the RootQuery type and the category type"""
@@ -23924,6 +24557,53 @@ interface UniformResourceIdentifiable implements Node {
   uri: String
 }
 
+"""Input for the updateBulletin mutation."""
+input UpdateBulletinInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """
+  The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 
+  """
+  date: String
+
+  """The ID of the bulletin object"""
+  id: ID!
+
+  """Override the edit lock when another user is editing the post"""
+  ignoreEditLock: Boolean
+
+  """
+  A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types.
+  """
+  menuOrder: Int
+
+  """The password used to protect the content of the object"""
+  password: String
+
+  """The slug of the object"""
+  slug: String
+
+  """The status of the object"""
+  status: PostStatusEnum
+
+  """The title of the object"""
+  title: String
+}
+
+"""The payload for the updateBulletin mutation."""
+type UpdateBulletinPayload {
+  """The Post object mutation type."""
+  bulletin: Bulletin
+
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+}
+
 """Input for the updateCategory mutation."""
 input UpdateCategoryInput {
   """The slug that the category will be an alias of"""
@@ -25939,6 +26619,14 @@ interface WPPageInfo implements PageInfo {
 
   """When paginating backwards, the cursor to continue."""
   startCursor: String
+}
+
+"""
+Provides access to fields of the &quot;BulletinInfo&quot; ACF Field Group via the &quot;bulletinInfo&quot; field
+"""
+interface WithAcfBulletinInfo {
+  """Fields of the BulletinInfo ACF Field Group"""
+  bulletinInfo: BulletinInfo
 }
 
 """The writing setting type"""

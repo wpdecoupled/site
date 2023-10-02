@@ -1,5 +1,3 @@
-import crypto from 'node:crypto';
-
 import * as SentrySvelte from '@sentry/svelte';
 
 import type { HandleClientError } from '@sveltejs/kit';
