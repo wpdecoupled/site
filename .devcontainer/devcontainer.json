@@ -13,7 +13,8 @@
 				"phoenisx.cssvar",
 				"GitHub.copilot",
 				"GraphQL.vscode-graphql",
-				"EditorConfig.EditorConfig"
+				"EditorConfig.EditorConfig",
+				"eamodio.gitlens"
 			]
 		}
 	}

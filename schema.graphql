@@ -3,6 +3,18 @@ schema {
   mutation: RootMutation
 }
 
+"""A Field Group managed by ACF"""
+interface AcfFieldGroup {
+  """The name of the field group"""
+  fieldGroupName: String @deprecated(reason: "Use __typename instead")
+}
+
+"""Fields associated with an ACF Field Group"""
+interface AcfFieldGroupFields {
+  """The name of the field group"""
+  fieldGroupName: String @deprecated(reason: "Use __typename instead")
+}
+
 """
 Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from.
 """
@@ -70,6 +82,40 @@ scalar BlockAttributesObject
 interface BlockWithSupportsAnchor {
   """The anchor field for the block."""
   anchor: String
+}
+
+"""Added by WPGraphQL for ACF Redux"""
+type BulletinInfo implements AcfFieldGroup & AcfFieldGroupFields & BulletinInfo_Fields {
+  """
+  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  """
+  description: String
+
+  """The name of the field group"""
+  fieldGroupName: String @deprecated(reason: "Use __typename instead")
+
+  """
+  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  """
+  linkToNews: String!
+}
+
+"""
+Interface representing fields of the ACF &quot;BulletinInfo&quot; Field Group
+"""
+interface BulletinInfo_Fields implements AcfFieldGroup & AcfFieldGroupFields {
+  """
+  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  """
+  description: String
+
+  """The name of the field group"""
+  fieldGroupName: String @deprecated(reason: "Use __typename instead")
+
+  """
+  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  """
+  linkToNews: String!
 }
 
 """The category type"""
@@ -9688,6 +9734,9 @@ input CreateGuideInput {
   """
   date: String
 
+  """The excerpt of the object"""
+  excerpt: String
+
   """
   A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types.
   """
@@ -11657,7 +11706,7 @@ input GraphqlDocumentToTermNodeConnectionWhereArgs {
 }
 
 """The guide type"""
-type Guide implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithFeaturedImage & NodeWithGuideEditorBlocks & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
+type Guide implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithGuideEditorBlocks & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
   """
   Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
   """
@@ -11789,6 +11838,12 @@ type Guide implements ContentNode & DatabaseIdentifier & HierarchicalContentNode
     """The number of items to return before the referenced "before" cursor"""
     last: Int
   ): ContentNodeToEnqueuedStylesheetConnection
+
+  """The excerpt of the post."""
+  excerpt(
+    """Format of the field output"""
+    format: PostObjectFieldFormatEnum
+  ): String
 
   """
   Connection between the NodeWithFeaturedImage type and the MediaItem type
@@ -11999,12 +12054,18 @@ enum GuideIdType {
 }
 
 """The RankMath SEO meta settings for Guides."""
-type GuideMetaSettings implements RankMathMetaSettingWithRobots {
+type GuideMetaSettings implements RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots {
   """Advanced robots meta tag settings."""
   advancedRobotsMeta: RankMathAdvancedRobotsMeta
 
   """List of custom fields name to include in the Page analysis"""
   analyzedFields: [String]
+
+  """Description for archive pages."""
+  archiveDescription: String
+
+  """Default title tag for archive page."""
+  archiveTitle: String
 
   """Default article type when creating a new Guides."""
   articleType: RankMathArticleTypeEnum
@@ -12049,11 +12110,6 @@ type GuideMetaSettings implements RankMathMetaSettingWithRobots {
 
   """Default rich snippet select when creating a new Guides."""
   snippetType: RankMathSnippetTypeEnum
-
-  """
-  The default image to display when sharing this post type on social media
-  """
-  socialImage: MediaItem
 
   """Default title tag for single Guides pages."""
   title: String
@@ -24140,6 +24196,9 @@ input UpdateGuideInput {
   The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17 
   """
   date: String
+
+  """The excerpt of the object"""
+  excerpt: String
 
   """The ID of the guide object"""
   id: ID!
