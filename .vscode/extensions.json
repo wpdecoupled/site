@@ -4,6 +4,7 @@
 		"esbenp.prettier-vscode",
 		"svelte.svelte-vscode",
 		"phoenisx.cssvar",
-		"editorconfig.editorconfig"
+		"editorconfig.editorconfig",
+		"eamodio.gitlens"
 	]
 }
