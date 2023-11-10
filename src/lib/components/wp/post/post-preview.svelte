@@ -4,18 +4,6 @@
 
 	export let post: PostPreview;
 
-	// $: data = fragment(
-	// 	post,
-	// 	graphql`
-	// 		fragment PostPreview on Post {
-	// 			...PostTitle
-	// 			...PostExcerpt
-	// 			...PostMeta
-	// 			...PostAuthor
-	// 		}
-	// 	`
-	// );
-
 	$: title = fragment(
 		post,
 		graphql`
@@ -72,7 +60,7 @@
 		<p class="details">
 			Posted {date || 'IN THE FUTURE'} by {$author.author?.node.name ?? 'Unknown'}
 		</p>
-		{#if $author.excerpt}
+		{#if $excerpt.excerpt}
 			<p>
 				{@html cleanExcerpt}
 				<a class="readmore" href={$meta.uri}>Read More »</a>
