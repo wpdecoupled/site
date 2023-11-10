@@ -5,18 +5,18 @@
 
 	export let data: PageData;
 
-	$: ({ Posts } = data);
+	$: ({ GuidePosts } = data);
 </script>
 
 <main class="wrapper">
-	<h1 class="visuallyhidden">Articles</h1>
-	{#if $Posts.fetching}
+	<h1 class="visuallyhidden">Guides</h1>
+	{#if $GuidePosts.fetching}
 		<p>Loading...</p>
-	{:else if !$Posts.data?.posts?.nodes}
-		<p>No articles found</p>
+	{:else if !$GuidePosts.data?.guides?.nodes}
+		<p>No guides found</p>
 	{:else}
 		<PostArchive>
-			{#each $Posts.data?.posts?.nodes as post}
+			{#each $GuidePosts.data?.guides?.nodes as post}
 				<PostPreview {post} />
 			{/each}
 		</PostArchive>

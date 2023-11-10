@@ -1,7 +1,10 @@
 query Posts {
 	posts {
 		nodes {
-			...PostPreview
+			...PostTitle
+			...PostMeta
+			...PostExcerpt
+			...PostAuthor
 		}
 	}
 }

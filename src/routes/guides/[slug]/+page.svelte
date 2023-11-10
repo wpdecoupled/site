@@ -1,19 +1,19 @@
 <script lang="ts">
-	import Post from '$lib/components/wp/post/post.svelte';
+	import Post from '$lib/components/wp/content/guide.svelte';
 
 	import type { PageData } from './$houdini';
 
 	export let data: PageData;
 
-	$: ({ Article } = data);
+	$: ({ Guide } = data);
 </script>
 
 <main class="wrapper">
-	{#if $Article.fetching}
+	{#if $Guide.fetching}
 		<p>Loading...</p>
-	{:else if !$Article.data?.post}
+	{:else if !$Guide.data?.guide}
 		<p>No article found</p>
 	{:else}
-		<Post post={$Article.data.post} />
+		<Post post={$Guide.data.guide} />
 	{/if}
 </main>
