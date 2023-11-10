@@ -1,0 +1,5 @@
+query Article($slug: ID!) {
+	post(id: $slug, idType: SLUG) {
+		...PostPage
+	}
+}
