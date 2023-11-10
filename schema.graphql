@@ -624,7 +624,7 @@ input CategoryToContentNodeConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -761,7 +761,7 @@ input CategoryToPostConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -2067,7 +2067,7 @@ input ContentTypeToContentNodeConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -9742,9 +9742,6 @@ input CreateGuideInput {
   """
   menuOrder: Int
 
-  """The ID of the parent object"""
-  parentId: ID
-
   """The password used to protect the content of the object"""
   password: String
 
@@ -10175,7 +10172,7 @@ input DeleteCategoryInput {
 
 """The payload for the deleteCategory mutation."""
 type DeleteCategoryPayload {
-  """The deteted term object"""
+  """The deleted term object"""
   category: Category
 
   """
@@ -10238,7 +10235,7 @@ type DeleteGraphqlDocumentGroupPayload {
   """The ID of the deleted object"""
   deletedId: ID
 
-  """The deteted term object"""
+  """The deleted term object"""
   graphqlDocumentGroup: GraphqlDocumentGroup
 }
 
@@ -10392,7 +10389,7 @@ type DeletePostFormatPayload {
   """The ID of the deleted object"""
   deletedId: ID
 
-  """The deteted term object"""
+  """The deleted term object"""
   postFormat: PostFormat
 }
 
@@ -10450,7 +10447,7 @@ type DeleteTagPayload {
   """The ID of the deleted object"""
   deletedId: ID
 
-  """The deteted term object"""
+  """The deleted term object"""
   tag: Tag
 }
 
@@ -11273,7 +11270,7 @@ input GraphqlDocumentGroupToContentNodeConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -11375,7 +11372,7 @@ input GraphqlDocumentGroupToGraphqlDocumentConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -11706,31 +11703,7 @@ input GraphqlDocumentToTermNodeConnectionWhereArgs {
 }
 
 """The guide type"""
-type Guide implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithGuideEditorBlocks & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
-  """
-  Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
-  """
-  ancestors(
-    """
-    Cursor used along with the "first" argument to reference where in the dataset to get data
-    """
-    after: String
-
-    """
-    Cursor used along with the "last" argument to reference where in the dataset to get data
-    """
-    before: String
-
-    """The number of items to return after the referenced "after" cursor"""
-    first: Int
-
-    """The number of items to return before the referenced "before" cursor"""
-    last: Int
-
-    """Arguments for filtering the connection"""
-    where: HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs
-  ): HierarchicalContentNodeToContentNodeAncestorsConnection
-
+type Guide implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithGuideEditorBlocks & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
   """Connection between the NodeWithAuthor type and the User type"""
   author: NodeWithAuthorToUserConnectionEdge
 
@@ -11739,30 +11712,6 @@ type Guide implements ContentNode & DatabaseIdentifier & HierarchicalContentNode
 
   """The globally unique identifier of the author of the node"""
   authorId: ID
-
-  """
-  Connection between the HierarchicalContentNode type and the ContentNode type
-  """
-  children(
-    """
-    Cursor used along with the "first" argument to reference where in the dataset to get data
-    """
-    after: String
-
-    """
-    Cursor used along with the "last" argument to reference where in the dataset to get data
-    """
-    before: String
-
-    """The number of items to return after the referenced "after" cursor"""
-    first: Int
-
-    """The number of items to return before the referenced "before" cursor"""
-    last: Int
-
-    """Arguments for filtering the connection"""
-    where: HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs
-  ): HierarchicalContentNodeToContentNodeChildrenConnection
 
   """The content of the post."""
   content(
@@ -11900,15 +11849,6 @@ type Guide implements ContentNode & DatabaseIdentifier & HierarchicalContentNode
   """
   modifiedGmt: String
 
-  """The parent of the node. The parent object can be of various types"""
-  parent: HierarchicalContentNodeToParentContentNodeConnectionEdge
-
-  """Database id of the parent node"""
-  parentDatabaseId: Int
-
-  """The globally unique identifier of the parent node."""
-  parentId: ID
-
   """Connection between the Guide type and the guide type"""
   preview: GuideToPreviewConnectionEdge
 
@@ -11956,7 +11896,7 @@ type Guide implements ContentNode & DatabaseIdentifier & HierarchicalContentNode
   """The current status of the object"""
   status: String
 
-  """The template assigned to a node of content"""
+  """The template assigned to the node"""
   template: ContentTemplate
 
   """
@@ -12048,6 +11988,11 @@ enum GuideIdType {
 
   """Identify a resource by the (hashed) Global ID."""
   ID
+
+  """
+  Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier.
+  """
+  SLUG
 
   """Identify a resource by the URI."""
   URI
@@ -12208,7 +12153,7 @@ input GuideToRevisionConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -12498,7 +12443,7 @@ input HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -12603,7 +12548,7 @@ input HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -14979,7 +14924,7 @@ input PageToRevisionConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -15838,7 +15783,7 @@ input PostFormatToContentNodeConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -15964,7 +15909,7 @@ input PostFormatToPostConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -16766,7 +16711,7 @@ input PostToRevisionConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -20127,7 +20072,7 @@ type RootQuery {
   """A node used to manage content"""
   contentNode(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requestor doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
     """
     asPreview: Boolean
 
@@ -20206,7 +20151,7 @@ type RootQuery {
   """An object of the graphqlDocument Type. Saved GraphQL Documents"""
   graphqlDocument(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requestor doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
     """
     asPreview: Boolean
 
@@ -20292,7 +20237,7 @@ type RootQuery {
   """An object of the guide Type. """
   guide(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requestor doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
     """
     asPreview: Boolean
 
@@ -20310,6 +20255,9 @@ type RootQuery {
 
     """Get the guide object by its global ID"""
     id: ID
+
+    """Get the guide by its slug (only available for non-hierarchical types)"""
+    slug: String
 
     """Get the guide by its uri"""
     uri: String
@@ -20340,7 +20288,7 @@ type RootQuery {
   """An object of the mediaItem Type. """
   mediaItem(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requestor doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
     """
     asPreview: Boolean
 
@@ -20471,7 +20419,7 @@ type RootQuery {
   """An object of the page Type. """
   page(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requestor doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
     """
     asPreview: Boolean
 
@@ -20547,7 +20495,7 @@ type RootQuery {
   """An object of the post Type. """
   post(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requestor doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
     """
     asPreview: Boolean
 
@@ -21206,7 +21154,7 @@ input RootQueryToContentNodeConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -21410,7 +21358,7 @@ input RootQueryToGraphqlDocumentConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -21648,7 +21596,7 @@ input RootQueryToGuideConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -21758,7 +21706,7 @@ input RootQueryToMediaItemConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -21967,7 +21915,7 @@ input RootQueryToPageConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -22141,7 +22089,7 @@ input RootQueryToPostConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -22380,7 +22328,7 @@ input RootQueryToRevisionsConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -22806,7 +22754,7 @@ input RootQueryToUserConnectionWhereArgs {
   """
   nicenameNotIn: [String]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [UsersConnectionOrderbyInput]
 
   """
@@ -23249,7 +23197,7 @@ input TagToContentNodeConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -23375,7 +23323,7 @@ input TagToPostConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -23453,6 +23401,25 @@ type Taxonomy implements Node {
     last: Int
   ): TaxonomyToContentTypeConnection
 
+  """List of Term Nodes associated with the Taxonomy"""
+  connectedTerms(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+  ): TaxonomyToTermNodeConnection
+
   """
   Description of the taxonomy. This field is equivalent to WP_Taxonomy-&gt;description
   """
@@ -23485,7 +23452,7 @@ type Taxonomy implements Node {
   public: Boolean
 
   """
-  Name of content type to diplay in REST API &quot;wp/v2&quot; namespace.
+  Name of content type to display in REST API &quot;wp/v2&quot; namespace.
   """
   restBase: String
 
@@ -23614,6 +23581,42 @@ type TaxonomyToContentTypeConnectionEdge implements ContentTypeConnectionEdge & 
 
 """Page Info on the &quot;TaxonomyToContentTypeConnection&quot;"""
 type TaxonomyToContentTypeConnectionPageInfo implements ContentTypeConnectionPageInfo & PageInfo & WPPageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+"""Connection between the Taxonomy type and the TermNode type"""
+type TaxonomyToTermNodeConnection implements Connection & TermNodeConnection {
+  """Edges for the TaxonomyToTermNodeConnection connection"""
+  edges: [TaxonomyToTermNodeConnectionEdge!]!
+
+  """The nodes of the connection, without the edges"""
+  nodes: [TermNode!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: TaxonomyToTermNodeConnectionPageInfo!
+}
+
+"""An edge in a connection"""
+type TaxonomyToTermNodeConnectionEdge implements Edge & TermNodeConnectionEdge {
+  """A cursor for use in pagination"""
+  cursor: String
+
+  """The item at the end of the edge"""
+  node: TermNode!
+}
+
+"""Page Info on the &quot;TaxonomyToTermNodeConnection&quot;"""
+type TaxonomyToTermNodeConnectionPageInfo implements PageInfo & TermNodeConnectionPageInfo & WPPageInfo {
   """When paginating forwards, the cursor to continue."""
   endCursor: String
 
@@ -24210,9 +24213,6 @@ input UpdateGuideInput {
   A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types.
   """
   menuOrder: Int
-
-  """The ID of the parent object"""
-  parentId: ID
 
   """The password used to protect the content of the object"""
   password: String
@@ -24849,7 +24849,7 @@ type User implements Commenter & DatabaseIdentifier & Node & NodeWithRankMathSeo
   ): UserToMediaItemConnection
 
   """
-  Display name of the user. This is equivalent to the WP_User-&gt;dispaly_name property.
+  Display name of the user. This is equivalent to the WP_User-&gt;display_name property.
   """
   name: String
 
@@ -25406,7 +25406,7 @@ input UserToGuideConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -25516,7 +25516,7 @@ input UserToMediaItemConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -25626,7 +25626,7 @@ input UserToPageConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -25752,7 +25752,7 @@ input UserToPostConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
@@ -25867,7 +25867,7 @@ input UserToRevisionsConnectionWhereArgs {
   """
   notIn: [ID]
 
-  """What paramater to use to order the objects by."""
+  """What parameter to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
   """Use ID to return only children. Use 0 to return only top-level items"""
