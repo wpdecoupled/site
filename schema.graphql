@@ -2478,6 +2478,9 @@ type CoreButtonAttributes implements BlockWithSupportsAnchor {
   """The &quot;style&quot; field on the &quot;CoreButton&quot; block"""
   style: BlockAttributesObject
 
+  """The &quot;tagName&quot; field on the &quot;CoreButton&quot; block"""
+  tagName: String
+
   """The &quot;text&quot; field on the &quot;CoreButton&quot; block"""
   text: String
 
@@ -2489,6 +2492,9 @@ type CoreButtonAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;title&quot; field on the &quot;CoreButton&quot; block"""
   title: String
+
+  """The &quot;type&quot; field on the &quot;CoreButton&quot; block"""
+  type: String
 
   """The &quot;url&quot; field on the &quot;CoreButton&quot; block"""
   url: String
@@ -4121,6 +4127,9 @@ type CoreDetailsAttributes {
   """The &quot;gradient&quot; field on the &quot;CoreDetails&quot; block"""
   gradient: String
 
+  """The &quot;layout&quot; field on the &quot;CoreDetails&quot; block"""
+  layout: BlockAttributesObject
+
   """The &quot;lock&quot; field on the &quot;CoreDetails&quot; block"""
   lock: BlockAttributesObject
 
@@ -4341,11 +4350,35 @@ type CoreFootnotes implements EditorBlock & GuideEditorBlock & PageEditorBlock &
 
 """Attributes of the %s Block Type"""
 type CoreFootnotesAttributes {
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreFootnotes&quot; block
+  """
+  backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreFootnotes&quot; block
+  """
+  borderColor: String
+
   """The &quot;className&quot; field on the &quot;CoreFootnotes&quot; block"""
   className: String
 
+  """
+  The &quot;fontFamily&quot; field on the &quot;CoreFootnotes&quot; block
+  """
+  fontFamily: String
+
+  """The &quot;fontSize&quot; field on the &quot;CoreFootnotes&quot; block"""
+  fontSize: String
+
   """The &quot;lock&quot; field on the &quot;CoreFootnotes&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;style&quot; field on the &quot;CoreFootnotes&quot; block"""
+  style: BlockAttributesObject
+
+  """The &quot;textColor&quot; field on the &quot;CoreFootnotes&quot; block"""
+  textColor: String
 }
 
 """A block used for editing the site"""
@@ -4815,13 +4848,16 @@ type CoreImageAttributes implements BlockWithSupportsAnchor {
   cssClassName: String
 
   """The &quot;height&quot; field on the &quot;CoreImage&quot; block"""
-  height: Float
+  height: String
 
   """The &quot;href&quot; field on the &quot;CoreImage&quot; block"""
   href: String
 
   """The &quot;id&quot; field on the &quot;CoreImage&quot; block"""
   id: Float
+
+  """The &quot;lightbox&quot; field on the &quot;CoreImage&quot; block"""
+  lightbox: BlockAttributesObject
 
   """The &quot;linkClass&quot; field on the &quot;CoreImage&quot; block"""
   linkClass: String
@@ -4859,7 +4895,7 @@ type CoreImageAttributes implements BlockWithSupportsAnchor {
   url: String
 
   """The &quot;width&quot; field on the &quot;CoreImage&quot; block"""
-  width: Float
+  width: String
 }
 
 """A block used for editing the site"""
@@ -6698,6 +6734,11 @@ type CorePostContentAttributes {
   align: String
 
   """
+  The &quot;backgroundColor&quot; field on the &quot;CorePostContent&quot; block
+  """
+  backgroundColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CorePostContent&quot; block
   """
   className: String
@@ -6712,6 +6753,11 @@ type CorePostContentAttributes {
   """
   fontSize: String
 
+  """
+  The &quot;gradient&quot; field on the &quot;CorePostContent&quot; block
+  """
+  gradient: String
+
   """The &quot;layout&quot; field on the &quot;CorePostContent&quot; block"""
   layout: BlockAttributesObject
 
@@ -6720,6 +6766,11 @@ type CorePostContentAttributes {
 
   """The &quot;style&quot; field on the &quot;CorePostContent&quot; block"""
   style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CorePostContent&quot; block
+  """
+  textColor: String
 }
 
 """A block used for editing the site"""
@@ -7569,6 +7620,11 @@ type CoreQueryAttributes {
   """The &quot;className&quot; field on the &quot;CoreQuery&quot; block"""
   className: String
 
+  """
+  The &quot;enhancedPagination&quot; field on the &quot;CoreQuery&quot; block
+  """
+  enhancedPagination: Boolean
+
   """The &quot;layout&quot; field on the &quot;CoreQuery&quot; block"""
   layout: BlockAttributesObject
 
@@ -7903,6 +7959,11 @@ type CoreQueryPaginationNumbersAttributes {
   The &quot;lock&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
   """
   lock: BlockAttributesObject
+
+  """
+  The &quot;midSize&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
+  """
+  midSize: Float
 
   """
   The &quot;style&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
@@ -10533,14 +10594,25 @@ interface EditorBlock {
 
 """Asset enqueued by the CMS"""
 interface EnqueuedAsset {
-  """@todo"""
-  args: Boolean
+  """The inline code to be run after the asset is loaded."""
+  after: [String]
+
+  """Deprecated"""
+  args: Boolean @deprecated(reason: "Use `EnqueuedAsset.media` instead.")
+
+  """The inline code to be run before the asset is loaded."""
+  before: [String]
+
+  """
+  The HTML conditional comment for the enqueued asset. E.g. IE 6, lte IE 7, etc
+  """
+  conditional: String
 
   """Dependencies needed to use this asset"""
-  dependencies: [EnqueuedScript]
+  dependencies: [EnqueuedAsset]
 
   """Extra information needed for the script"""
-  extra: String
+  extra: String @deprecated(reason: "Use `EnqueuedScript.extraData` instead.")
 
   """The handle of the enqueued asset"""
   handle: String
@@ -10557,25 +10629,42 @@ interface EnqueuedAsset {
 
 """Script enqueued by the CMS"""
 type EnqueuedScript implements EnqueuedAsset & Node {
-  """@todo"""
-  args: Boolean
+  """The inline code to be run after the asset is loaded."""
+  after: [String]
+
+  """Deprecated"""
+  args: Boolean @deprecated(reason: "Use `EnqueuedAsset.media` instead.")
+
+  """The inline code to be run before the asset is loaded."""
+  before: [String]
+
+  """
+  The HTML conditional comment for the enqueued asset. E.g. IE 6, lte IE 7, etc
+  """
+  conditional: String
 
   """Dependencies needed to use this asset"""
   dependencies: [EnqueuedScript]
 
   """Extra information needed for the script"""
-  extra: String
+  extra: String @deprecated(reason: "Use `EnqueuedScript.extraData` instead.")
+
+  """Extra data supplied to the enqueued script"""
+  extraData: String
 
   """The handle of the enqueued asset"""
   handle: String
 
-  """The ID of the enqueued asset"""
+  """The global ID of the enqueued script"""
   id: ID!
 
   """The source of the asset"""
   src: String
 
-  """The version of the enqueued asset"""
+  """The loading strategy to use on the script tag"""
+  strategy: ScriptLoadingStrategyEnum
+
+  """The version of the enqueued script"""
   version: String
 }
 
@@ -10621,25 +10710,58 @@ interface EnqueuedScriptConnectionPageInfo implements PageInfo & WPPageInfo {
 
 """Stylesheet enqueued by the CMS"""
 type EnqueuedStylesheet implements EnqueuedAsset & Node {
-  """@todo"""
-  args: Boolean
+  """The inline code to be run after the asset is loaded."""
+  after: [String]
+
+  """Deprecated"""
+  args: Boolean @deprecated(reason: "Use `EnqueuedAsset.media` instead.")
+
+  """The inline code to be run before the asset is loaded."""
+  before: [String]
+
+  """
+  The HTML conditional comment for the enqueued asset. E.g. IE 6, lte IE 7, etc
+  """
+  conditional: String
 
   """Dependencies needed to use this asset"""
-  dependencies: [EnqueuedScript]
+  dependencies: [EnqueuedStylesheet]
 
   """Extra information needed for the script"""
-  extra: String
+  extra: String @deprecated(reason: "Use `EnqueuedScript.extraData` instead.")
 
   """The handle of the enqueued asset"""
   handle: String
 
-  """The ID of the enqueued asset"""
+  """The global ID of the enqueued stylesheet"""
   id: ID!
+
+  """Whether the enqueued style is RTL or not"""
+  isRtl: Boolean
+
+  """The media attribute to use for the link"""
+  media: String
+
+  """
+  The absolute path to the enqueued style. Set when the stylesheet is meant to load inline.
+  """
+  path: String
+
+  """The `rel` attribute to use for the link"""
+  rel: String
 
   """The source of the asset"""
   src: String
 
-  """The version of the enqueued asset"""
+  """Optional suffix, used in combination with RTL"""
+  suffix: String
+
+  """
+  The title of the enqueued style. Used for preferred/alternate stylesheets.
+  """
+  title: String
+
+  """The version of the enqueued style"""
   version: String
 }
 
@@ -20072,7 +20194,7 @@ type RootQuery {
   """A node used to manage content"""
   contentNode(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned. If the ID provided is a URI and has a preview query arg, it will be used as a fallback if the "asPreview" argument is not explicitly provided as an argument.
     """
     asPreview: Boolean
 
@@ -20151,7 +20273,7 @@ type RootQuery {
   """An object of the graphqlDocument Type. Saved GraphQL Documents"""
   graphqlDocument(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned. If the ID provided is a URI and has a preview query arg, it will be used as a fallback if the "asPreview" argument is not explicitly provided as an argument.
     """
     asPreview: Boolean
 
@@ -20237,7 +20359,7 @@ type RootQuery {
   """An object of the guide Type. """
   guide(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned. If the ID provided is a URI and has a preview query arg, it will be used as a fallback if the "asPreview" argument is not explicitly provided as an argument.
     """
     asPreview: Boolean
 
@@ -20288,7 +20410,7 @@ type RootQuery {
   """An object of the mediaItem Type. """
   mediaItem(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned. If the ID provided is a URI and has a preview query arg, it will be used as a fallback if the "asPreview" argument is not explicitly provided as an argument.
     """
     asPreview: Boolean
 
@@ -20419,7 +20541,7 @@ type RootQuery {
   """An object of the page Type. """
   page(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned. If the ID provided is a URI and has a preview query arg, it will be used as a fallback if the "asPreview" argument is not explicitly provided as an argument.
     """
     asPreview: Boolean
 
@@ -20495,7 +20617,7 @@ type RootQuery {
   """An object of the post Type. """
   post(
     """
-    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned.
+    Whether to return the Preview Node instead of the Published Node. When the ID of a Node is provided along with asPreview being set to true, the preview node with un-published changes will be returned instead of the published node. If no preview node exists or the requester doesn't have proper capabilities to preview, no node will be returned. If the ID provided is a URI and has a preview query arg, it will be used as a fallback if the "asPreview" argument is not explicitly provided as an argument.
     """
     asPreview: Boolean
 
@@ -22817,6 +22939,15 @@ type RootQueryToUserRoleConnectionPageInfo implements PageInfo & UserRoleConnect
 
   """When paginating backwards, the cursor to continue."""
   startCursor: String
+}
+
+"""The strategy to use when loading the script"""
+enum ScriptLoadingStrategyEnum {
+  """Use the script `async` attribute"""
+  ASYNC
+
+  """Use the script `defer` attribute"""
+  DEFER
 }
 
 """Input for the sendPasswordResetEmail mutation."""

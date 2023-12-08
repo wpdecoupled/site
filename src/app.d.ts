@@ -6,4 +6,9 @@ declare namespace App {
 		message: string;
 		errorId: string;
 	}
+
+	interface Metadata {
+		// the number of times we've retried the request
+		retry?: boolean;
+	}
 }

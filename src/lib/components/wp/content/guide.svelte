@@ -33,8 +33,8 @@
 	<header>
 		<h1>{$data.title}</h1>
 		<p class="top-intro">
-			{author?.name ?? 'Unknown'}&nbsp;-&nbsp;
-			Last Updated <time datetime={$data.modifiedGmt}>{formatDate($data.modifiedGmt)}</time>
+			{author?.name ?? 'Unknown'}&nbsp;-&nbsp; Last Updated
+			<time datetime={$data.modifiedGmt}>{formatDate($data.modifiedGmt)}</time>
 		</p>
 	</header>
 

@@ -11,7 +11,7 @@
 				title
 			}
 		`
-	)
+	);
 
 	$: excerpt = fragment(
 		post,
@@ -20,7 +20,7 @@
 				excerpt
 			}
 		`
-	)
+	);
 
 	$: meta = fragment(
 		post,
@@ -30,7 +30,7 @@
 				dateGmt
 			}
 		`
-	)
+	);
 
 	$: author = fragment(
 		post,
@@ -43,7 +43,7 @@
 				}
 			}
 		`
-	)
+	);
 
 	let date: string;
 
@@ -78,7 +78,7 @@
 	}
 
 	h2 {
-		font-size: var(--font-size-3)
+		font-size: var(--font-size-3);
 	}
 
 	.details {
