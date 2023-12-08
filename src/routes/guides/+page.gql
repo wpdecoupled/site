@@ -1,5 +1,5 @@
-query Posts {
-	posts {
+query GuidePosts {
+	guides {
 		nodes {
 			...PostTitle
 			...PostMeta

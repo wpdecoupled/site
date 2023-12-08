@@ -22,6 +22,7 @@
 <style lang="postcss">
 	h2 {
 		font-size: var(--font-size-fluid-2);
+		max-inline-size: unset;
 	}
 	#email_submit {
 		margin: var(--size-fluid-1);
