@@ -66,6 +66,12 @@ enum AvatarRatingEnum {
 
 scalar BlockAttributesObject
 
+"""Block that supports Anchor field"""
+interface BlockWithSupportsAnchor {
+  """The anchor field for the block."""
+  anchor: String
+}
+
 """The category type"""
 type Category implements DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & NodeWithRankMathSeo & TermNode & UniformResourceIdentifiable {
   """
@@ -1350,7 +1356,7 @@ interface Connection {
 }
 
 """A block used for editing the site"""
-type ContactForm7ContactFormSelector implements EditorBlock {
+type ContactForm7ContactFormSelector implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2090,7 +2096,7 @@ enum ContentTypesOfTagEnum {
 }
 
 """A block used for editing the site"""
-type CoreArchives implements EditorBlock {
+type CoreArchives implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2160,7 +2166,10 @@ type CoreArchivesAttributes {
 }
 
 """A block used for editing the site"""
-type CoreAudio implements EditorBlock {
+type CoreAudio implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2193,9 +2202,12 @@ type CoreAudio implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreAudioAttributes {
+type CoreAudioAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreAudio&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """The &quot;autoplay&quot; field on the &quot;CoreAudio&quot; block"""
   autoplay: Boolean
@@ -2226,7 +2238,7 @@ type CoreAudioAttributes {
 }
 
 """A block used for editing the site"""
-type CoreAvatar implements EditorBlock {
+type CoreAvatar implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2289,7 +2301,7 @@ type CoreAvatarAttributes {
 }
 
 """A block used for editing the site"""
-type CoreBlock implements EditorBlock {
+type CoreBlock implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2331,7 +2343,10 @@ type CoreBlockAttributes {
 }
 
 """A block used for editing the site"""
-type CoreButton implements EditorBlock {
+type CoreButton implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2364,7 +2379,10 @@ type CoreButton implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreButtonAttributes {
+type CoreButtonAttributes implements BlockWithSupportsAnchor {
+  """The anchor field for the block."""
+  anchor: String
+
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreButton&quot; block
   """
@@ -2417,7 +2435,10 @@ type CoreButtonAttributes {
 }
 
 """A block used for editing the site"""
-type CoreButtons implements EditorBlock {
+type CoreButtons implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2450,9 +2471,12 @@ type CoreButtons implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreButtonsAttributes {
+type CoreButtonsAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreButtons&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """The &quot;className&quot; field on the &quot;CoreButtons&quot; block"""
   className: String
@@ -2474,7 +2498,7 @@ type CoreButtonsAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCalendar implements EditorBlock {
+type CoreCalendar implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2542,7 +2566,7 @@ type CoreCalendarAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCategories implements EditorBlock {
+type CoreCategories implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2625,7 +2649,10 @@ type CoreCategoriesAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCode implements EditorBlock {
+type CoreCode implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2658,7 +2685,10 @@ type CoreCode implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreCodeAttributes {
+type CoreCodeAttributes implements BlockWithSupportsAnchor {
+  """The anchor field for the block."""
+  anchor: String
+
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreCode&quot; block
   """
@@ -2696,7 +2726,10 @@ type CoreCodeAttributes {
 }
 
 """A block used for editing the site"""
-type CoreColumn implements EditorBlock {
+type CoreColumn implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2729,11 +2762,14 @@ type CoreColumn implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreColumnAttributes {
+type CoreColumnAttributes implements BlockWithSupportsAnchor {
   """
   The &quot;allowedBlocks&quot; field on the &quot;CoreColumn&quot; block
   """
   allowedBlocks: BlockAttributesObject
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreColumn&quot; block
@@ -2780,7 +2816,10 @@ type CoreColumnAttributes {
 }
 
 """A block used for editing the site"""
-type CoreColumns implements EditorBlock {
+type CoreColumns implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2813,9 +2852,12 @@ type CoreColumns implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreColumnsAttributes {
+type CoreColumnsAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreColumns&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreColumns&quot; block
@@ -2866,7 +2908,7 @@ type CoreColumnsAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentAuthorName implements EditorBlock {
+type CoreCommentAuthorName implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -2957,7 +2999,7 @@ type CoreCommentAuthorNameAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentContent implements EditorBlock {
+type CoreCommentContent implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3036,7 +3078,7 @@ type CoreCommentContentAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentDate implements EditorBlock {
+type CoreCommentDate implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3114,7 +3156,7 @@ type CoreCommentDateAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentEditLink implements EditorBlock {
+type CoreCommentEditLink implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3195,7 +3237,7 @@ type CoreCommentEditLinkAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentReplyLink implements EditorBlock {
+type CoreCommentReplyLink implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3271,7 +3313,7 @@ type CoreCommentReplyLinkAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentTemplate implements EditorBlock {
+type CoreCommentTemplate implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3337,7 +3379,7 @@ type CoreCommentTemplateAttributes {
 }
 
 """A block used for editing the site"""
-type CoreComments implements EditorBlock {
+type CoreComments implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3408,7 +3450,7 @@ type CoreCommentsAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentsPagination implements EditorBlock {
+type CoreCommentsPagination implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3499,7 +3541,7 @@ type CoreCommentsPaginationAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentsPaginationNext implements EditorBlock {
+type CoreCommentsPaginationNext implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3575,7 +3617,7 @@ type CoreCommentsPaginationNextAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentsPaginationNumbers implements EditorBlock {
+type CoreCommentsPaginationNumbers implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3646,7 +3688,7 @@ type CoreCommentsPaginationNumbersAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentsPaginationPrevious implements EditorBlock {
+type CoreCommentsPaginationPrevious implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3722,7 +3764,7 @@ type CoreCommentsPaginationPreviousAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCommentsTitle implements EditorBlock {
+type CoreCommentsTitle implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3820,7 +3862,10 @@ type CoreCommentsTitleAttributes {
 }
 
 """A block used for editing the site"""
-type CoreCover implements EditorBlock {
+type CoreCover implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -3853,7 +3898,7 @@ type CoreCover implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreCoverAttributes {
+type CoreCoverAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreCover&quot; block"""
   align: String
 
@@ -3862,6 +3907,9 @@ type CoreCoverAttributes {
 
   """The &quot;alt&quot; field on the &quot;CoreCover&quot; block"""
   alt: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundType&quot; field on the &quot;CoreCover&quot; block
@@ -3941,7 +3989,7 @@ type CoreCoverAttributes {
 }
 
 """A block used for editing the site"""
-type CoreEmbed implements EditorBlock {
+type CoreEmbed implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4011,7 +4059,10 @@ type CoreEmbedAttributes {
 }
 
 """A block used for editing the site"""
-type CoreFile implements EditorBlock {
+type CoreFile implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4044,9 +4095,12 @@ type CoreFile implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreFileAttributes {
+type CoreFileAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreFile&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """The &quot;className&quot; field on the &quot;CoreFile&quot; block"""
   className: String
@@ -4090,7 +4144,7 @@ type CoreFileAttributes {
 }
 
 """A block used for editing the site"""
-type CoreFreeform implements EditorBlock {
+type CoreFreeform implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4132,7 +4186,10 @@ type CoreFreeformAttributes {
 }
 
 """A block used for editing the site"""
-type CoreGallery implements EditorBlock {
+type CoreGallery implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4165,12 +4222,15 @@ type CoreGallery implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreGalleryAttributes {
+type CoreGalleryAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreGallery&quot; block"""
   align: String
 
   """The &quot;allowResize&quot; field on the &quot;CoreGallery&quot; block"""
   allowResize: Boolean
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreGallery&quot; block
@@ -4226,7 +4286,10 @@ type CoreGalleryAttributes {
 }
 
 """A block used for editing the site"""
-type CoreGroup implements EditorBlock {
+type CoreGroup implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4259,9 +4322,12 @@ type CoreGroup implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreGroupAttributes {
+type CoreGroupAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreGroup&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreGroup&quot; block
@@ -4300,7 +4366,10 @@ type CoreGroupAttributes {
 }
 
 """A block used for editing the site"""
-type CoreHeading implements EditorBlock {
+type CoreHeading implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4333,9 +4402,12 @@ type CoreHeading implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreHeadingAttributes {
+type CoreHeadingAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreHeading&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreHeading&quot; block
@@ -4377,7 +4449,7 @@ type CoreHeadingAttributes {
 }
 
 """A block used for editing the site"""
-type CoreHomeLink implements EditorBlock {
+type CoreHomeLink implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4431,7 +4503,7 @@ type CoreHomeLinkAttributes {
 }
 
 """A block used for editing the site"""
-type CoreHtml implements EditorBlock {
+type CoreHtml implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4473,7 +4545,10 @@ type CoreHtmlAttributes {
 }
 
 """A block used for editing the site"""
-type CoreImage implements EditorBlock {
+type CoreImage implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4506,12 +4581,15 @@ type CoreImage implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreImageAttributes {
+type CoreImageAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreImage&quot; block"""
   align: String
 
   """The &quot;alt&quot; field on the &quot;CoreImage&quot; block"""
   alt: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """The &quot;borderColor&quot; field on the &quot;CoreImage&quot; block"""
   borderColor: String
@@ -4521,6 +4599,9 @@ type CoreImageAttributes {
 
   """The &quot;className&quot; field on the &quot;CoreImage&quot; block"""
   className: String
+
+  """The &quot;cssClassName&quot; field on the &quot;CoreImage&quot; block"""
+  cssClassName: String
 
   """The &quot;height&quot; field on the &quot;CoreImage&quot; block"""
   height: Float
@@ -4568,7 +4649,7 @@ type CoreImageAttributes {
 }
 
 """A block used for editing the site"""
-type CoreLatestComments implements EditorBlock {
+type CoreLatestComments implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4642,7 +4723,7 @@ type CoreLatestCommentsAttributes {
 }
 
 """A block used for editing the site"""
-type CoreLatestPosts implements EditorBlock {
+type CoreLatestPosts implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4801,7 +4882,7 @@ type CoreLatestPostsAttributes {
 }
 
 """A block used for editing the site"""
-type CoreLegacyWidget implements EditorBlock {
+type CoreLegacyWidget implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4851,7 +4932,10 @@ type CoreLegacyWidgetAttributes {
 }
 
 """A block used for editing the site"""
-type CoreList implements EditorBlock {
+type CoreList implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4884,7 +4968,10 @@ type CoreList implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreListAttributes {
+type CoreListAttributes implements BlockWithSupportsAnchor {
+  """The anchor field for the block."""
+  anchor: String
+
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreList&quot; block
   """
@@ -4931,7 +5018,7 @@ type CoreListAttributes {
 }
 
 """A block used for editing the site"""
-type CoreListItem implements EditorBlock {
+type CoreListItem implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -4990,7 +5077,7 @@ type CoreListItemAttributes {
 }
 
 """A block used for editing the site"""
-type CoreLoginout implements EditorBlock {
+type CoreLoginout implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5042,7 +5129,10 @@ type CoreLoginoutAttributes {
 }
 
 """A block used for editing the site"""
-type CoreMediaText implements EditorBlock {
+type CoreMediaText implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5075,9 +5165,12 @@ type CoreMediaText implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreMediaTextAttributes {
+type CoreMediaTextAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreMediaText&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreMediaText&quot; block
@@ -5176,7 +5269,7 @@ type CoreMediaTextAttributes {
 }
 
 """A block used for editing the site"""
-type CoreMissing implements EditorBlock {
+type CoreMissing implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5230,7 +5323,7 @@ type CoreMissingAttributes {
 }
 
 """A block used for editing the site"""
-type CoreMore implements EditorBlock {
+type CoreMore implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5275,7 +5368,7 @@ type CoreMoreAttributes {
 }
 
 """A block used for editing the site"""
-type CoreNavigation implements EditorBlock {
+type CoreNavigation implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5420,7 +5513,7 @@ type CoreNavigationAttributes {
 }
 
 """A block used for editing the site"""
-type CoreNavigationLink implements EditorBlock {
+type CoreNavigationLink implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5519,7 +5612,7 @@ type CoreNavigationLinkAttributes {
 }
 
 """A block used for editing the site"""
-type CoreNavigationSubmenu implements EditorBlock {
+type CoreNavigationSubmenu implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5615,7 +5708,7 @@ type CoreNavigationSubmenuAttributes {
 }
 
 """A block used for editing the site"""
-type CoreNextpage implements EditorBlock {
+type CoreNextpage implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5654,7 +5747,7 @@ type CoreNextpageAttributes {
 }
 
 """A block used for editing the site"""
-type CorePageList implements EditorBlock {
+type CorePageList implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5713,7 +5806,7 @@ type CorePageListAttributes {
 }
 
 """A block used for editing the site"""
-type CorePageListItem implements EditorBlock {
+type CorePageListItem implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5774,7 +5867,10 @@ type CorePageListItemAttributes {
 }
 
 """A block used for editing the site"""
-type CoreParagraph implements EditorBlock {
+type CoreParagraph implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5807,9 +5903,12 @@ type CoreParagraph implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreParagraphAttributes {
+type CoreParagraphAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreParagraph&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreParagraph&quot; block
@@ -5860,7 +5959,7 @@ type CoreParagraphAttributes {
 }
 
 """A block used for editing the site"""
-type CorePattern implements EditorBlock {
+type CorePattern implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -5905,7 +6004,7 @@ type CorePatternAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostAuthor implements EditorBlock {
+type CorePostAuthor implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6002,7 +6101,7 @@ type CorePostAuthorAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostAuthorBiography implements EditorBlock {
+type CorePostAuthorBiography implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6083,7 +6182,7 @@ type CorePostAuthorBiographyAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostAuthorName implements EditorBlock {
+type CorePostAuthorName implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6172,7 +6271,7 @@ type CorePostAuthorNameAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostComments implements EditorBlock {
+type CorePostComments implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6247,7 +6346,7 @@ type CorePostCommentsAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostCommentsForm implements EditorBlock {
+type CorePostCommentsForm implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6323,7 +6422,7 @@ type CorePostCommentsFormAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostContent implements EditorBlock {
+type CorePostContent implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6386,7 +6485,7 @@ type CorePostContentAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostDate implements EditorBlock {
+type CorePostDate implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6462,7 +6561,7 @@ type CorePostDateAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostExcerpt implements EditorBlock {
+type CorePostExcerpt implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6549,7 +6648,7 @@ type CorePostExcerptAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostFeaturedImage implements EditorBlock {
+type CorePostFeaturedImage implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6670,7 +6769,7 @@ type CorePostFeaturedImageAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostNavigationLink implements EditorBlock {
+type CorePostNavigationLink implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6771,7 +6870,7 @@ type CorePostNavigationLinkAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostTemplate implements EditorBlock {
+type CorePostTemplate implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6849,7 +6948,7 @@ type CorePostTemplateAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostTerms implements EditorBlock {
+type CorePostTerms implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6928,7 +7027,7 @@ type CorePostTermsAttributes {
 }
 
 """A block used for editing the site"""
-type CorePostTitle implements EditorBlock {
+type CorePostTitle implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7012,7 +7111,10 @@ type CorePostTitleAttributes {
 }
 
 """A block used for editing the site"""
-type CorePreformatted implements EditorBlock {
+type CorePreformatted implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7045,7 +7147,10 @@ type CorePreformatted implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CorePreformattedAttributes {
+type CorePreformattedAttributes implements BlockWithSupportsAnchor {
+  """The anchor field for the block."""
+  anchor: String
+
   """
   The &quot;backgroundColor&quot; field on the &quot;CorePreformatted&quot; block
   """
@@ -7089,7 +7194,10 @@ type CorePreformattedAttributes {
 }
 
 """A block used for editing the site"""
-type CorePullquote implements EditorBlock {
+type CorePullquote implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7122,9 +7230,12 @@ type CorePullquote implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CorePullquoteAttributes {
+type CorePullquoteAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CorePullquote&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CorePullquote&quot; block
@@ -7170,7 +7281,7 @@ type CorePullquoteAttributes {
 }
 
 """A block used for editing the site"""
-type CoreQuery implements EditorBlock {
+type CoreQuery implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7233,7 +7344,7 @@ type CoreQueryAttributes {
 }
 
 """A block used for editing the site"""
-type CoreQueryNoResults implements EditorBlock {
+type CoreQueryNoResults implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7312,7 +7423,7 @@ type CoreQueryNoResultsAttributes {
 }
 
 """A block used for editing the site"""
-type CoreQueryPagination implements EditorBlock {
+type CoreQueryPagination implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7403,7 +7514,7 @@ type CoreQueryPaginationAttributes {
 }
 
 """A block used for editing the site"""
-type CoreQueryPaginationNext implements EditorBlock {
+type CoreQueryPaginationNext implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7479,7 +7590,7 @@ type CoreQueryPaginationNextAttributes {
 }
 
 """A block used for editing the site"""
-type CoreQueryPaginationNumbers implements EditorBlock {
+type CoreQueryPaginationNumbers implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7550,7 +7661,7 @@ type CoreQueryPaginationNumbersAttributes {
 }
 
 """A block used for editing the site"""
-type CoreQueryPaginationPrevious implements EditorBlock {
+type CoreQueryPaginationPrevious implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7626,7 +7737,7 @@ type CoreQueryPaginationPreviousAttributes {
 }
 
 """A block used for editing the site"""
-type CoreQueryTitle implements EditorBlock {
+type CoreQueryTitle implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7718,7 +7829,10 @@ type CoreQueryTitleAttributes {
 }
 
 """A block used for editing the site"""
-type CoreQuote implements EditorBlock {
+type CoreQuote implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7751,9 +7865,12 @@ type CoreQuote implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreQuoteAttributes {
+type CoreQuoteAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreQuote&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreQuote&quot; block
@@ -7789,7 +7906,7 @@ type CoreQuoteAttributes {
 }
 
 """A block used for editing the site"""
-type CoreReadMore implements EditorBlock {
+type CoreReadMore implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7862,7 +7979,7 @@ type CoreReadMoreAttributes {
 }
 
 """A block used for editing the site"""
-type CoreRss implements EditorBlock {
+type CoreRss implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -7931,7 +8048,7 @@ type CoreRssAttributes {
 }
 
 """A block used for editing the site"""
-type CoreSearch implements EditorBlock {
+type CoreSearch implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8030,7 +8147,10 @@ type CoreSearchAttributes {
 }
 
 """A block used for editing the site"""
-type CoreSeparator implements EditorBlock {
+type CoreSeparator implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8063,9 +8183,12 @@ type CoreSeparator implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreSeparatorAttributes {
+type CoreSeparatorAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreSeparator&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreSeparator&quot; block
@@ -8089,7 +8212,7 @@ type CoreSeparatorAttributes {
 }
 
 """A block used for editing the site"""
-type CoreShortcode implements EditorBlock {
+type CoreShortcode implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8131,7 +8254,7 @@ type CoreShortcodeAttributes {
 }
 
 """A block used for editing the site"""
-type CoreSiteLogo implements EditorBlock {
+type CoreSiteLogo implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8193,7 +8316,7 @@ type CoreSiteLogoAttributes {
 }
 
 """A block used for editing the site"""
-type CoreSiteTagline implements EditorBlock {
+type CoreSiteTagline implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8273,7 +8396,7 @@ type CoreSiteTaglineAttributes {
 }
 
 """A block used for editing the site"""
-type CoreSiteTitle implements EditorBlock {
+type CoreSiteTitle implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8354,7 +8477,7 @@ type CoreSiteTitleAttributes {
 }
 
 """A block used for editing the site"""
-type CoreSocialLink implements EditorBlock {
+type CoreSocialLink implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8410,7 +8533,10 @@ type CoreSocialLinkAttributes {
 }
 
 """A block used for editing the site"""
-type CoreSocialLinks implements EditorBlock {
+type CoreSocialLinks implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8443,9 +8569,12 @@ type CoreSocialLinks implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreSocialLinksAttributes {
+type CoreSocialLinksAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreSocialLinks&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreSocialLinks&quot; block
@@ -8516,7 +8645,10 @@ type CoreSocialLinksAttributes {
 }
 
 """A block used for editing the site"""
-type CoreSpacer implements EditorBlock {
+type CoreSpacer implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8549,7 +8681,10 @@ type CoreSpacer implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreSpacerAttributes {
+type CoreSpacerAttributes implements BlockWithSupportsAnchor {
+  """The anchor field for the block."""
+  anchor: String
+
   """The &quot;className&quot; field on the &quot;CoreSpacer&quot; block"""
   className: String
 
@@ -8567,7 +8702,10 @@ type CoreSpacerAttributes {
 }
 
 """A block used for editing the site"""
-type CoreTable implements EditorBlock {
+type CoreTable implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8600,9 +8738,12 @@ type CoreTable implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreTableAttributes {
+type CoreTableAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreTable&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreTable&quot; block
@@ -8652,7 +8793,7 @@ type CoreTableAttributes {
 }
 
 """A block used for editing the site"""
-type CoreTagCloud implements EditorBlock {
+type CoreTagCloud implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8726,7 +8867,7 @@ type CoreTagCloudAttributes {
 }
 
 """A block used for editing the site"""
-type CoreTemplatePart implements EditorBlock {
+type CoreTemplatePart implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8787,7 +8928,7 @@ type CoreTemplatePartAttributes {
 }
 
 """A block used for editing the site"""
-type CoreTermDescription implements EditorBlock {
+type CoreTermDescription implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8868,7 +9009,7 @@ type CoreTermDescriptionAttributes {
 }
 
 """A block used for editing the site"""
-type CoreTextColumns implements EditorBlock {
+type CoreTextColumns implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8921,7 +9062,10 @@ type CoreTextColumnsAttributes {
 }
 
 """A block used for editing the site"""
-type CoreVerse implements EditorBlock {
+type CoreVerse implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -8954,7 +9098,10 @@ type CoreVerse implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreVerseAttributes {
+type CoreVerseAttributes implements BlockWithSupportsAnchor {
+  """The anchor field for the block."""
+  anchor: String
+
   """
   The &quot;backgroundColor&quot; field on the &quot;CoreVerse&quot; block
   """
@@ -8989,7 +9136,10 @@ type CoreVerseAttributes {
 }
 
 """A block used for editing the site"""
-type CoreVideo implements EditorBlock {
+type CoreVideo implements BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -9022,9 +9172,12 @@ type CoreVideo implements EditorBlock {
 }
 
 """Attributes of the %s Block Type"""
-type CoreVideoAttributes {
+type CoreVideoAttributes implements BlockWithSupportsAnchor {
   """The &quot;align&quot; field on the &quot;CoreVideo&quot; block"""
   align: String
+
+  """The anchor field for the block."""
+  anchor: String
 
   """The &quot;autoplay&quot; field on the &quot;CoreVideo&quot; block"""
   autoplay: Boolean
@@ -9070,7 +9223,7 @@ type CoreVideoAttributes {
 }
 
 """A block used for editing the site"""
-type CoreWidgetGroup implements EditorBlock {
+type CoreWidgetGroup implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -12327,6 +12480,18 @@ interface NodeWithPageAttributes implements Node {
   menuOrder: Int
 }
 
+"""Node that has page content blocks associated with it"""
+interface NodeWithPageEditorBlocks implements NodeWithEditorBlocks {
+  """List of page editor blocks"""
+  editorBlocks(flat: Boolean): [PageEditorBlock]
+}
+
+"""Node that has post content blocks associated with it"""
+interface NodeWithPostEditorBlocks implements NodeWithEditorBlocks {
+  """List of post editor blocks"""
+  editorBlocks(flat: Boolean): [PostEditorBlock]
+}
+
 """A node with RankMath SEO data."""
 interface NodeWithRankMathSeo implements Node {
   """The globally unique ID for the object"""
@@ -12422,7 +12587,7 @@ enum OrderEnum {
 }
 
 """The page type"""
-type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
+type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithPageEditorBlocks & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
   """
   Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
   """
@@ -12539,8 +12704,8 @@ type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode 
   """
   editingLockedBy: ContentNodeToEditLockConnectionEdge
 
-  """List of editor blocks"""
-  editorBlocks(flat: Boolean): [EditorBlock]
+  """List of page editor blocks"""
+  editorBlocks(flat: Boolean): [PageEditorBlock]
 
   """The RSS enclosure for the object"""
   enclosure: String
@@ -12763,6 +12928,36 @@ interface PageConnectionPageInfo implements PageInfo & WPPageInfo {
 
   """When paginating backwards, the cursor to continue."""
   startCursor: String
+}
+
+""""""
+interface PageEditorBlock implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the Block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
 }
 
 """The Type of Identifier used to fetch a single resource. Default is ID."""
@@ -13205,7 +13400,7 @@ enum PluginStatusEnum {
 }
 
 """The post type"""
-type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable {
+type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithPostEditorBlocks & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable {
   """Connection between the NodeWithAuthor type and the User type"""
   author: NodeWithAuthorToUserConnectionEdge
 
@@ -13296,8 +13491,8 @@ type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node 
   """
   editingLockedBy: ContentNodeToEditLockConnectionEdge
 
-  """List of editor blocks"""
-  editorBlocks(flat: Boolean): [EditorBlock]
+  """List of post editor blocks"""
+  editorBlocks(flat: Boolean): [PostEditorBlock]
 
   """The RSS enclosure for the object"""
   enclosure: String
@@ -13617,6 +13812,36 @@ interface PostConnectionPageInfo implements PageInfo & WPPageInfo {
 
   """When paginating backwards, the cursor to continue."""
   startCursor: String
+}
+
+""""""
+interface PostEditorBlock implements EditorBlock {
+  """The API version of the Gutenberg Block"""
+  apiVersion: Int
+
+  """The name of the category the Block belongs to"""
+  blockEditorCategoryName: String
+
+  """The id of the Block"""
+  clientId: String
+
+  """CSS Classnames to apply to the block"""
+  cssClassNames: [String]
+
+  """The inner blocks of the Block"""
+  innerBlocks: [EditorBlock]
+
+  """Whether the block is Dynamic (server rendered)"""
+  isDynamic: Boolean!
+
+  """The name of the Block"""
+  name: String
+
+  """The parent id of the Block"""
+  parentClientId: String
+
+  """The rendered HTML for the block"""
+  renderedHtml: String
 }
 
 """The postFormat type"""
@@ -15443,7 +15668,7 @@ type RankMathDateArchiveMetaSettings implements RankMathMetaSettingWithArchive &
 }
 
 """A block used for editing the site"""
-type RankMathFaqBlock implements EditorBlock {
+type RankMathFaqBlock implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -15706,7 +15931,7 @@ type RankMathHomepageMetaSettings implements RankMathMetaSettingWithRobots {
 }
 
 """A block used for editing the site"""
-type RankMathHowtoBlock implements EditorBlock {
+type RankMathHowtoBlock implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -16863,7 +17088,7 @@ type RankMathProduct {
 }
 
 """A block used for editing the site"""
-type RankMathRichSnippet implements EditorBlock {
+type RankMathRichSnippet implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -17428,7 +17653,7 @@ type RankMathTaxonomyMetaSettings {
 }
 
 """A block used for editing the site"""
-type RankMathTocBlock implements EditorBlock {
+type RankMathTocBlock implements EditorBlock & PageEditorBlock & PostEditorBlock {
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -21519,36 +21744,6 @@ interface UniformResourceIdentifiable implements Node {
 
   """The unique resource identifier path"""
   uri: String
-}
-
-"""A block used for resolving blocks not found in the WordPress registry"""
-type UnknownBlock implements EditorBlock {
-  """The API version of the Gutenberg Block"""
-  apiVersion: Int
-
-  """The name of the category the Block belongs to"""
-  blockEditorCategoryName: String
-
-  """The id of the Block"""
-  clientId: String
-
-  """CSS Classnames to apply to the block"""
-  cssClassNames: [String]
-
-  """The inner blocks of the Block"""
-  innerBlocks: [EditorBlock]
-
-  """Whether the block is Dynamic (server rendered)"""
-  isDynamic: Boolean!
-
-  """The name of the block"""
-  name: String
-
-  """The parent id of the Block"""
-  parentClientId: String
-
-  """The rendered HTML for the block"""
-  renderedHtml: String
 }
 
 """Input for the updateCategory mutation."""

@@ -1,3 +1,8 @@
+<script context="module">
+	import { EditorBlocks, defaultBlocks, registerBlocks } from '$lib/components/wp/gutenberg';
+	const possibleBlocks = registerBlocks(defaultBlocks);
+</script>
+
 <script lang="ts">
 	import { formatDate } from '$lib/strings';
 	import { fragment, graphql, type PostPage } from '$houdini';
@@ -23,6 +28,69 @@
 						}
 					}
 				}
+				editorBlocks(flat: true) {
+					__typename
+					clientId
+					name
+					parentClientId
+					... on CoreParagraph {
+						attributes {
+							anchor
+							align
+							gradient
+							lock
+							placeholder
+							textColor
+							fontSize
+							fontFamily
+							dropCap
+							direction
+							cssClassName
+							content
+						}
+					}
+					... on CoreHeading {
+						attributes {
+							anchor
+							align
+							backgroundColor
+							className
+							content
+							fontFamily
+							fontSize
+							gradient
+							level
+							placeholder
+							style
+							textAlign
+							textColor
+						}
+					}
+					... on CoreImage {
+						attributes {
+							id
+							align
+							alt
+							anchor
+							borderColor
+							caption
+							className
+							cssClassName
+							height
+							width
+							href
+							linkClass
+							linkDestination
+							linkTarget
+							rel
+							sizeSlug
+							src
+							style
+							title
+							url
+						}
+					}
+				}
 			}
 		`)
 	);
@@ -42,7 +110,9 @@
 		</p>
 	</header>
 
-	<div class="content">{@html $data.content}</div>
+	<section class="content">
+		<EditorBlocks blocks={$data.editorBlocks} />
+	</section>
 
 	<footer>
 		{#if author}
