@@ -1,5 +1,4 @@
 query RecentPostsQuery {
-	#Add GUIDE back when they're setup
 	contentNodes(first: 10, where: { contentTypes: [POST, GUIDE] }) {
 		nodes {
 			...PostMiniCard
