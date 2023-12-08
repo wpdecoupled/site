@@ -18,7 +18,8 @@
 		overflow: visible;
 	}
 
-	.tray-header, .tray-list {
+	.tray-header,
+	.tray-list {
 		padding-top: var(--size-6);
 	}
 
@@ -29,7 +30,6 @@
 		letter-spacing: var(--font-letterspacing-4);
 		font-size: var(--font-size-8);
 		text-decoration: 1px overline var(--primary-color);
-
 	}
 
 	.tray-list {
