@@ -40,12 +40,12 @@ add_filter('rest_url', 'rest_to_site_url', 10, 1);
 // {
 // Don't do anything if:
 // - In feed
-// - In sitemap by WordPress SEO plugin
-if (is_feed() || get_query_var('sitemap')) {
+// - In sitemap by Rank Math
+
+
+if (is_feed() || preg_match('/^(?:.*sitemap.*).(xml|xsl)$/i', $_SERVER['REQUEST_URI'])) {
 	return;
 } else {
-
-
 	$filters = array(
 		'post_link',
 		'post_type_link',
