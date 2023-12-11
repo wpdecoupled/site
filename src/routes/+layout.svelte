@@ -2,7 +2,6 @@
 	import '../app.postcss';
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
-	import Analytics from './Analytics.svelte';
 	import Seo from './Seo.svelte';
 
 	import type { LayoutData } from './$houdini';
@@ -17,7 +16,6 @@
 {#if $LayoutQuery.data?.nodeByUri}
 	<Seo data={$LayoutQuery.data.nodeByUri} />
 {/if}
-<Analytics />
 <div class="layout">
 	<div class="header">
 		<Header data={LayoutQuery} />
