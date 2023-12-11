@@ -25,7 +25,7 @@
 			}
 
 			gtag('js', new Date());
-			gtag('config', PUBLIC_GA_ID);
+			gtag('config', `${PUBLIC_GA_ID}`);
 		</script>
 	{/if}
 </svelte:head>
