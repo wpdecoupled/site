@@ -40,12 +40,12 @@ add_filter('rest_url', 'rest_to_site_url', 10, 1);
 // {
 // Don't do anything if:
 // - In feed
-// - In sitemap by WordPress SEO plugin
-if (is_feed() || get_query_var('sitemap')) {
+// - In sitemap by Rank Math
+
+
+if (is_feed() || preg_match('/^(?:.*sitemap.*).(xml|xsl)$/i', $_SERVER['REQUEST_URI'])) {
 	return;
 } else {
-
-
 	$filters = array(
 		'post_link',
 		'post_type_link',
@@ -70,14 +70,30 @@ if (is_feed() || get_query_var('sitemap')) {
 /**
  * Change the excerpt more string
  */
-function my_theme_excerpt_more( $more ) {
+function my_theme_excerpt_more($more)
+{
 	return '&hellip;';
 }
-add_filter( 'excerpt_more', 'my_theme_excerpt_more' );
+add_filter('excerpt_more', 'my_theme_excerpt_more');
 
+/**
+ * Disable WP Feeds. Because content is rendered I think we can't proxy these in the long run and need to disable them.
+ */
+function itsme_disable_feed()
+{
+	wp_die(__('No feed available'), __('Error'), array('response' => 404, 'back_link' => true, 'link_text' => __('Go back home'), 'link_url' => home_url()));
+}
+
+add_action('do_feed', 'itsme_disable_feed', 1);
+add_action('do_feed_rdf', 'itsme_disable_feed', 1);
+add_action('do_feed_rss', 'itsme_disable_feed', 1);
+add_action('do_feed_rss2', 'itsme_disable_feed', 1);
+add_action('do_feed_atom', 'itsme_disable_feed', 1);
+add_action('do_feed_rss2_comments', 'itsme_disable_feed', 1);
+add_action('do_feed_atom_comments', 'itsme_disable_feed', 1);
 
 /**
  * Rank Math URL Check ignore
  * Filter whether we need to check for URL mismatch or not.
  */
-add_filter( 'rank_math/registration/do_url_check', '__return_false' );
+add_filter('rank_math/registration/do_url_check', '__return_false');

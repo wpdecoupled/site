@@ -4,13 +4,6 @@ query LayoutQuery($uri: String!) {
 	}
 
 	nodeByUri(uri: $uri) {
-		... on NodeWithRankMathSeo {
-			seo {
-				fullHead
-				jsonLd {
-					raw
-				}
-			}
-		}
+		...SeoData
 	}
 }

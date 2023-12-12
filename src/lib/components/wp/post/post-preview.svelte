@@ -4,14 +4,38 @@
 
 	export let post: PostPreview;
 
-	$: data = fragment(
+	$: title = fragment(
 		post,
 		graphql`
-			fragment PostPreview on Post {
+			fragment PostTitle on NodeWithTitle {
 				title
+			}
+		`
+	);
+
+	$: excerpt = fragment(
+		post,
+		graphql`
+			fragment PostExcerpt on NodeWithExcerpt {
 				excerpt
+			}
+		`
+	);
+
+	$: meta = fragment(
+		post,
+		graphql`
+			fragment PostMeta on ContentNode {
 				uri
 				dateGmt
+			}
+		`
+	);
+
+	$: author = fragment(
+		post,
+		graphql`
+			fragment PostAuthor on NodeWithAuthor {
 				author {
 					node {
 						name
@@ -23,23 +47,23 @@
 
 	let date: string;
 
-	$: if ($data.dateGmt) {
-		date = formatDate($data.dateGmt);
+	$: if ($meta.dateGmt) {
+		date = formatDate($meta.dateGmt);
 	}
 
-	$: cleanExcerpt = $data.excerpt?.replace(/<[^>]*>?/gm, '');
+	$: cleanExcerpt = $excerpt.excerpt?.replace(/<[^>]*>?/gm, '');
 </script>
 
 <li>
 	<article>
-		<h2><a href={$data.uri} rel="bookmark">{$data.title}</a></h2>
+		<h2><a href={$meta.uri} rel="bookmark">{$title.title}</a></h2>
 		<p class="details">
-			Posted {date || 'IN THE FUTURE'} by {$data.author?.node.name ?? 'Unknown'}
+			Posted {date || 'IN THE FUTURE'} by {$author.author?.node.name ?? 'Unknown'}
 		</p>
-		{#if $data.excerpt}
+		{#if $excerpt.excerpt}
 			<p>
 				{@html cleanExcerpt}
-				<a class="readmore" href={$data.uri}>Read More »</a>
+				<a class="readmore" href={$meta.uri}>Read More »</a>
 			</p>
 		{/if}
 	</article>
@@ -54,7 +78,7 @@
 	}
 
 	h2 {
-		font-size: var(--font-size-3)
+		font-size: var(--font-size-3);
 	}
 
 	.details {

@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { formatDate } from '$lib/strings';
-	import { fragment, graphql, type PostPage } from '$houdini';
+	import { fragment, graphql, type GuidePage } from '$houdini';
 
-	export let post: PostPage;
+	export let post: GuidePage;
 
 	$: data = fragment(
 		post,
 		graphql(`
-			fragment PostPage on Post {
+			fragment GuidePage on Guide {
 				title
 				content
-				dateGmt
+				modifiedGmt
 				author {
 					node {
 						name
@@ -33,8 +33,8 @@
 	<header>
 		<h1>{$data.title}</h1>
 		<p class="top-intro">
-			{author?.name ?? 'Unknown'} on
-			<time datetime={$data.dateGmt}>{formatDate($data.dateGmt)}</time>
+			{author?.name ?? 'Unknown'}&nbsp;-&nbsp; Last Updated
+			<time datetime={$data.modifiedGmt}>{formatDate($data.modifiedGmt)}</time>
 		</p>
 	</header>
 

@@ -15,7 +15,7 @@
 		"test:lint": "eslint .",
 		"lint": "yarn test:lint --fix",
 		"format": "yarn test:format --write",
-		"generate": "houdini generate"
+		"generate": "houdini pull-schema && houdini generate"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.29.2",

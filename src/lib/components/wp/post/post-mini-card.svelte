@@ -94,7 +94,6 @@
 		text-transform: capitalize;
 	}
 
-
 	.author-image {
 		display: inline;
 		width: var(--size-6);
