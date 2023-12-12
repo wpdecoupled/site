@@ -43,12 +43,13 @@
 	.layout {
 		display: grid;
 		grid:
-			'header' auto
-			'main' max-content
-			'footer' auto
-			'post-footer' auto
+			'header' min-content
+			'main' auto
+			'footer' min-content
+			'post-footer' min-content
 			/ 1fr;
 		gap: var(--size-fluid-1);
+		min-height: 100dvh;
 	}
 
 	.header {

@@ -1,0 +1,15 @@
+query SearchQuery($query: String!) {
+	contentNodes(where: { search: $query, contentTypes: [POST, PAGE, GUIDE] }) {
+		edges {
+			node {
+				uri
+				... on NodeWithTitle {
+					title
+				}
+				... on NodeWithExcerpt {
+					excerpt
+				}
+			}
+		}
+	}
+}
