@@ -21,8 +21,11 @@
 			{#each $results.data?.contentNodes?.edges as result}
 				<li>
 					<a href={result.node.uri}>
-						<p>{result.node.title}</p>
+						<h3>{result.node.title}</h3>
 					</a>
+					{#if result.node.excerpt}
+						<p>{@html result.node.excerpt}</p>
+					{/if}
 				</li>
 			{/each}
 		</ol>
@@ -41,5 +44,15 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
+	}
+
+	li {
+		border: dashed 1px var(--primary-color);
+		margin: var(--size-fluid-1) 0;
+		padding: var(--size-fluid-1) 0;
+	}
+
+	h3 {
+		font-size: var(--font-size-4);
 	}
 </style>

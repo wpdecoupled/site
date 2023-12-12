@@ -6,6 +6,9 @@ query SearchQuery($query: String!) {
 				... on NodeWithTitle {
 					title
 				}
+				... on NodeWithExcerpt {
+					excerpt
+				}
 			}
 		}
 	}
