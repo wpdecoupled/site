@@ -5,7 +5,7 @@
 	let dialog: HTMLDialogElement;
 </script>
 
-<div class="layout">
+<div class="search-layout">
 	<button
 		type="button"
 		on:click={() => {
@@ -28,16 +28,18 @@
 	</button>
 
 	<dialog id="search-dialog" bind:this={dialog}>
-		<SearchInput />
+			<SearchInput />
 	</dialog>
 </div>
 
 <style lang="postcss">
-	.layout {
+	@import 'open-props/media';
+	.search-layout {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		/* width: 100%; */
+		width: 100%;
+		height: 100%;
 	}
 
 	svg {
@@ -51,5 +53,10 @@
 		border: none;
 		cursor: pointer;
 		box-shadow: none;
+	}
+
+	dialog {
+		width: 100%;
+		max-width: var(--size-content-3);
 	}
 </style>

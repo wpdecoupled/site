@@ -31,11 +31,6 @@
 <style lang="postcss">
 	nav {
 		width: 100%;
-
-		border-style: solid;
-		border-color: var(--primary-color);
-		border-bottom-width: var(--border-size-1);
-		border-top-width: var(--border-size-1);
 	}
 	nav ul {
 		width: fit-content;

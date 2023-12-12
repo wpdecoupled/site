@@ -21,18 +21,14 @@
 		background-color: var(--surface-2);
 		padding-block: var(--size-1);
 		padding-inline: var(--size-2);
-		/* border-radius: var(--radius-2) 0 0 var(--radius-2); */
+	}
+
+	.search-container {
+		width: 100%;
+		max-width: var(--size-content-3);
 	}
 
 	#search {
-		/* width: 0; */
-		/* transition: all 0.2s ease-in-out; */
-		/* padding: 0; */
-		/* border-radius: 0 var(--radius-2) var(--radius-2) 0; */
-		max-width: var(--size-content-2);
 		width: 100%;
-		/* &:focus {
-			padding: var(--size-2);
-		} */
 	}
 </style>

@@ -1,10 +1,22 @@
-import type { LayoutQueryVariables } from './$houdini';
+import { load_LayoutQuery } from '$houdini';
+import { searchHandler } from './search/searchHandler';
+
+import type { LayoutLoad } from './$types';
 
 export const trailingSlash = 'always';
 export const ssr = true;
 
-export const _LayoutQueryVariables: LayoutQueryVariables = (event) => {
+export const load: LayoutLoad = async (event) => {
+	searchHandler(event);
+
 	return {
-		uri: event.url.pathname,
-	};
-};
+		...await load_LayoutQuery({
+			event,
+			variables: {
+				uri: event.url.pathname,
+			}
+		})
+
+	}
+
+}
