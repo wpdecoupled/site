@@ -1,5 +1,5 @@
 query SearchQuery($query: String!) {
-	contentNodes(where: { search: $query, contentTypes: [POST, PAGE, BULLETIN, GUIDE] }) {
+	contentNodes(where: { search: $query, contentTypes: [POST, PAGE, GUIDE] }) {
 		edges {
 			node {
 				uri
