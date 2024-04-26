@@ -10,9 +10,9 @@ export const load: PageLoad = async (event) => {
 	const query = url.searchParams.get('q');
 
 	if (!query) {
-		throw error(StatusCodes.BAD_REQUEST, {
-			message: 'Missing search query',
-		})
+		error(StatusCodes.BAD_REQUEST, {
+        			message: 'Missing search query',
+        		});
 	}
 
 	const resp = await load_SearchQuery({ event, variables: { query } });

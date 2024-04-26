@@ -9,7 +9,7 @@ export const GET = (async ({ url }) => {
 
 	if (!resp.ok) {
 		console.error('Error fetching', url.pathname, resp.status);
-		throw error(resp.status);
+		error(resp.status);
 	}
 
 	return new Response(await resp.text(), {

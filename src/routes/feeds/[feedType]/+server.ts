@@ -37,10 +37,10 @@ export const GET = (async (event) => {
 
 	//Create feed
 	if (!feed_data) {
-		throw error(StatusCodes.INTERNAL_SERVER_ERROR, {
-			message: 'Failed to fetch feed data',
-			errorId: 'feed-fetch-failed',
-		});
+		error(StatusCodes.INTERNAL_SERVER_ERROR, {
+        			message: 'Failed to fetch feed data',
+        			errorId: 'feed-fetch-failed',
+        		});
 	}
 	const feed = createFeed({ feed_data, last_modified, site_url });
 
@@ -67,7 +67,7 @@ export const GET = (async (event) => {
 			};
 			break;
 		default:
-			throw error(StatusCodes.NOT_FOUND);
+			error(StatusCodes.NOT_FOUND);
 	}
 
 	// Spec specifies hash bieng in quotes
