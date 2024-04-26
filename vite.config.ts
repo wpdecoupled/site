@@ -4,7 +4,4 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [houdini(), sveltekit()],
-	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}'],
-	},
 });
