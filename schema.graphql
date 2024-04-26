@@ -84,10 +84,12 @@ interface BlockWithSupportsAnchor {
   anchor: String
 }
 
-"""Added by WPGraphQL for ACF Redux"""
+"""
+The &quot;BulletinInfo&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;.
+"""
 type BulletinInfo implements AcfFieldGroup & AcfFieldGroupFields & BulletinInfo_Fields {
   """
-  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  Field of the &quot;textarea&quot; Field Type added to the schema as part of the &quot;BulletinInfo&quot; Field Group
   """
   description: String
 
@@ -95,7 +97,7 @@ type BulletinInfo implements AcfFieldGroup & AcfFieldGroupFields & BulletinInfo_
   fieldGroupName: String @deprecated(reason: "Use __typename instead")
 
   """
-  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  Field of the &quot;url&quot; Field Type added to the schema as part of the &quot;BulletinInfo&quot; Field Group
   """
   linkToNews: String!
 }
@@ -105,7 +107,7 @@ Interface representing fields of the ACF &quot;BulletinInfo&quot; Field Group
 """
 interface BulletinInfo_Fields implements AcfFieldGroup & AcfFieldGroupFields {
   """
-  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  Field of the &quot;textarea&quot; Field Type added to the schema as part of the &quot;BulletinInfo&quot; Field Group
   """
   description: String
 
@@ -113,7 +115,7 @@ interface BulletinInfo_Fields implements AcfFieldGroup & AcfFieldGroupFields {
   fieldGroupName: String @deprecated(reason: "Use __typename instead")
 
   """
-  Field added to the schema as part of the &quot;BulletinInfo&quot; Field Group
+  Field of the &quot;url&quot; Field Type added to the schema as part of the &quot;BulletinInfo&quot; Field Group
   """
   linkToNews: String!
 }
@@ -235,11 +237,20 @@ type Category implements DatabaseIdentifier & HierarchicalNode & HierarchicalTer
     last: Int
   ): TermNodeToEnqueuedStylesheetConnection
 
-  """The unique resource identifier path"""
+  """The globally unique ID for the object"""
   id: ID!
+
+  """Whether the node is a Comment"""
+  isComment: Boolean!
 
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
@@ -819,7 +830,7 @@ type CategoryToTaxonomyConnectionEdge implements Edge & OneToOneConnection & Tax
 }
 
 """A Comment object"""
-type Comment implements DatabaseIdentifier & Node {
+type Comment implements DatabaseIdentifier & Node & UniformResourceIdentifiable {
   """
   User agent used to post the comment. This field is equivalent to WP_Comment-&gt;comment_agent and the value matching the &quot;comment_agent&quot; column in SQL.
   """
@@ -868,13 +879,31 @@ type Comment implements DatabaseIdentifier & Node {
   """The globally unique identifier for the comment object"""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
+  """Whether the node is a Content Node"""
+  isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
+
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
+
+  """Whether the node is a Term"""
+  isTermNode: Boolean!
 
   """
   Karma value for the comment. This field is equivalent to WP_Comment-&gt;comment_karma and the value matching the &quot;comment_karma&quot; column in SQL.
   """
   karma: Int
+
+  """The permalink of the comment"""
+  link: String
 
   """Connection between the Comment type and the Comment type"""
   parent(
@@ -921,6 +950,9 @@ type Comment implements DatabaseIdentifier & Node {
   Type of comment. This field is equivalent to WP_Comment-&gt;comment_type and the value matching the &quot;comment_type&quot; column in SQL.
   """
   type: String
+
+  """The unique resource identifier path"""
+  uri: String
 }
 
 """A Comment Author object"""
@@ -1548,8 +1580,17 @@ interface ContentNode implements Node & NodeWithRankMathSeo & UniformResourceIde
   """The globally unique ID for the object"""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is a node in the preview state"""
   isPreview: Boolean
@@ -1843,6 +1884,9 @@ type ContentType implements Node & NodeWithRankMathSeo & UniformResourceIdentifi
 
   """The globally unique identifier of the post-type object."""
   id: ID!
+
+  """Whether the node is a Comment"""
+  isComment: Boolean!
 
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
@@ -2210,6 +2254,9 @@ type CoreArchivesAttributes {
   """The &quot;lock&quot; field on the &quot;CoreArchives&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreArchives&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;showLabel&quot; field on the &quot;CoreArchives&quot; block"""
   showLabel: Boolean
 
@@ -2272,9 +2319,6 @@ type CoreAudioAttributes implements BlockWithSupportsAnchor {
   """The &quot;autoplay&quot; field on the &quot;CoreAudio&quot; block"""
   autoplay: Boolean
 
-  """The &quot;caption&quot; field on the &quot;CoreAudio&quot; block"""
-  caption: String
-
   """The &quot;className&quot; field on the &quot;CoreAudio&quot; block"""
   className: String
 
@@ -2286,6 +2330,9 @@ type CoreAudioAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;loop&quot; field on the &quot;CoreAudio&quot; block"""
   loop: Boolean
+
+  """The &quot;metadata&quot; field on the &quot;CoreAudio&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;preload&quot; field on the &quot;CoreAudio&quot; block"""
   preload: String
@@ -2350,6 +2397,9 @@ type CoreAvatarAttributes {
   """The &quot;lock&quot; field on the &quot;CoreAvatar&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreAvatar&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;size&quot; field on the &quot;CoreAvatar&quot; block"""
   size: Float
 
@@ -2395,8 +2445,14 @@ type CoreBlock implements EditorBlock & GuideEditorBlock & PageEditorBlock & Pos
 
 """Attributes of the %s Block Type"""
 type CoreBlockAttributes {
+  """The &quot;content&quot; field on the &quot;CoreBlock&quot; block"""
+  content: BlockAttributesObject
+
   """The &quot;lock&quot; field on the &quot;CoreBlock&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreBlock&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;ref&quot; field on the &quot;CoreBlock&quot; block"""
   ref: Float
@@ -2469,6 +2525,9 @@ type CoreButtonAttributes implements BlockWithSupportsAnchor {
   """The &quot;lock&quot; field on the &quot;CoreButton&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreButton&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;placeholder&quot; field on the &quot;CoreButton&quot; block"""
   placeholder: String
 
@@ -2480,9 +2539,6 @@ type CoreButtonAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;tagName&quot; field on the &quot;CoreButton&quot; block"""
   tagName: String
-
-  """The &quot;text&quot; field on the &quot;CoreButton&quot; block"""
-  text: String
 
   """The &quot;textAlign&quot; field on the &quot;CoreButton&quot; block"""
   textAlign: String
@@ -2562,6 +2618,9 @@ type CoreButtonsAttributes implements BlockWithSupportsAnchor {
   """The &quot;lock&quot; field on the &quot;CoreButtons&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreButtons&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CoreButtons&quot; block"""
   style: BlockAttributesObject
 }
@@ -2620,6 +2679,9 @@ type CoreCalendarAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreCalendar&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreCalendar&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;month&quot; field on the &quot;CoreCalendar&quot; block"""
   month: Int
@@ -2692,6 +2754,9 @@ type CoreCategoriesAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreCategories&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreCategories&quot; block"""
+  metadata: BlockAttributesObject
 
   """
   The &quot;showEmpty&quot; field on the &quot;CoreCategories&quot; block
@@ -2772,9 +2837,6 @@ type CoreCodeAttributes implements BlockWithSupportsAnchor {
   """The &quot;className&quot; field on the &quot;CoreCode&quot; block"""
   className: String
 
-  """The &quot;content&quot; field on the &quot;CoreCode&quot; block"""
-  content: String
-
   """The &quot;cssClassName&quot; field on the &quot;CoreCode&quot; block"""
   cssClassName: String
 
@@ -2789,6 +2851,9 @@ type CoreCodeAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;lock&quot; field on the &quot;CoreCode&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreCode&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;style&quot; field on the &quot;CoreCode&quot; block"""
   style: BlockAttributesObject
@@ -2871,6 +2936,9 @@ type CoreColumnAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;lock&quot; field on the &quot;CoreColumn&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreColumn&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;style&quot; field on the &quot;CoreColumn&quot; block"""
   style: BlockAttributesObject
@@ -2967,6 +3035,9 @@ type CoreColumnsAttributes implements BlockWithSupportsAnchor {
   """The &quot;lock&quot; field on the &quot;CoreColumns&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreColumns&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CoreColumns&quot; block"""
   style: BlockAttributesObject
 
@@ -3055,6 +3126,11 @@ type CoreCommentAuthorNameAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreCommentAuthorName&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;style&quot; field on the &quot;CoreCommentAuthorName&quot; block
   """
   style: BlockAttributesObject
@@ -3132,6 +3208,11 @@ type CoreCommentContentAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreCommentContent&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreCommentContent&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;style&quot; field on the &quot;CoreCommentContent&quot; block
@@ -3218,6 +3299,11 @@ type CoreCommentDateAttributes {
   """The &quot;lock&quot; field on the &quot;CoreCommentDate&quot; block"""
   lock: BlockAttributesObject
 
+  """
+  The &quot;metadata&quot; field on the &quot;CoreCommentDate&quot; block
+  """
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CoreCommentDate&quot; block"""
   style: BlockAttributesObject
 
@@ -3298,6 +3384,11 @@ type CoreCommentEditLinkAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreCommentEditLink&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;style&quot; field on the &quot;CoreCommentEditLink&quot; block
   """
   style: BlockAttributesObject
@@ -3374,6 +3465,11 @@ type CoreCommentReplyLinkAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreCommentReplyLink&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;style&quot; field on the &quot;CoreCommentReplyLink&quot; block
   """
   style: BlockAttributesObject
@@ -3445,6 +3541,11 @@ type CoreCommentTemplateAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreCommentTemplate&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;style&quot; field on the &quot;CoreCommentTemplate&quot; block
   """
   style: BlockAttributesObject
@@ -3510,6 +3611,9 @@ type CoreCommentsAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreComments&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreComments&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;style&quot; field on the &quot;CoreComments&quot; block"""
   style: BlockAttributesObject
@@ -3595,6 +3699,11 @@ type CoreCommentsPaginationAttributes {
   The &quot;lock&quot; field on the &quot;CoreCommentsPagination&quot; block
   """
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreCommentsPagination&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;paginationArrow&quot; field on the &quot;CoreCommentsPagination&quot; block
@@ -3683,6 +3792,11 @@ type CoreCommentsPaginationNextAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreCommentsPaginationNext&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;style&quot; field on the &quot;CoreCommentsPaginationNext&quot; block
   """
   style: BlockAttributesObject
@@ -3752,6 +3866,11 @@ type CoreCommentsPaginationNumbersAttributes {
   The &quot;lock&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block
   """
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;style&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block
@@ -3828,6 +3947,11 @@ type CoreCommentsPaginationPreviousAttributes {
   The &quot;lock&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
   """
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;style&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block
@@ -3908,6 +4032,11 @@ type CoreCommentsTitleAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreCommentsTitle&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreCommentsTitle&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;showCommentsCount&quot; field on the &quot;CoreCommentsTitle&quot; block
@@ -4036,11 +4165,19 @@ type CoreCoverAttributes implements BlockWithSupportsAnchor {
   """The &quot;isRepeated&quot; field on the &quot;CoreCover&quot; block"""
   isRepeated: Boolean
 
+  """
+  The &quot;isUserOverlayColor&quot; field on the &quot;CoreCover&quot; block
+  """
+  isUserOverlayColor: Boolean
+
   """The &quot;layout&quot; field on the &quot;CoreCover&quot; block"""
   layout: BlockAttributesObject
 
   """The &quot;lock&quot; field on the &quot;CoreCover&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreCover&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;minHeight&quot; field on the &quot;CoreCover&quot; block"""
   minHeight: Float
@@ -4133,14 +4270,14 @@ type CoreDetailsAttributes {
   """The &quot;lock&quot; field on the &quot;CoreDetails&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreDetails&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;showContent&quot; field on the &quot;CoreDetails&quot; block"""
   showContent: Boolean
 
   """The &quot;style&quot; field on the &quot;CoreDetails&quot; block"""
   style: BlockAttributesObject
-
-  """The &quot;summary&quot; field on the &quot;CoreDetails&quot; block"""
-  summary: String
 
   """The &quot;textColor&quot; field on the &quot;CoreDetails&quot; block"""
   textColor: String
@@ -4189,14 +4326,14 @@ type CoreEmbedAttributes {
   """
   allowResponsive: Boolean
 
-  """The &quot;caption&quot; field on the &quot;CoreEmbed&quot; block"""
-  caption: String
-
   """The &quot;className&quot; field on the &quot;CoreEmbed&quot; block"""
   className: String
 
   """The &quot;lock&quot; field on the &quot;CoreEmbed&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreEmbed&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;previewable&quot; field on the &quot;CoreEmbed&quot; block"""
   previewable: Boolean
@@ -4274,16 +4411,8 @@ type CoreFileAttributes implements BlockWithSupportsAnchor {
   """The &quot;displayPreview&quot; field on the &quot;CoreFile&quot; block"""
   displayPreview: Boolean
 
-  """
-  The &quot;downloadButtonText&quot; field on the &quot;CoreFile&quot; block
-  """
-  downloadButtonText: String
-
   """The &quot;fileId&quot; field on the &quot;CoreFile&quot; block"""
   fileId: String
-
-  """The &quot;fileName&quot; field on the &quot;CoreFile&quot; block"""
-  fileName: String
 
   """The &quot;gradient&quot; field on the &quot;CoreFile&quot; block"""
   gradient: String
@@ -4296,6 +4425,9 @@ type CoreFileAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;lock&quot; field on the &quot;CoreFile&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreFile&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;previewHeight&quot; field on the &quot;CoreFile&quot; block"""
   previewHeight: Float
@@ -4374,6 +4506,9 @@ type CoreFootnotesAttributes {
   """The &quot;lock&quot; field on the &quot;CoreFootnotes&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreFootnotes&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CoreFootnotes&quot; block"""
   style: BlockAttributesObject
 
@@ -4421,6 +4556,9 @@ type CoreFreeformAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreFreeform&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreFreeform&quot; block"""
+  metadata: BlockAttributesObject
 }
 
 """A block used for editing the site"""
@@ -4475,9 +4613,6 @@ type CoreGalleryAttributes implements BlockWithSupportsAnchor {
   """
   backgroundColor: String
 
-  """The &quot;caption&quot; field on the &quot;CoreGallery&quot; block"""
-  caption: String
-
   """The &quot;className&quot; field on the &quot;CoreGallery&quot; block"""
   className: String
 
@@ -4510,6 +4645,12 @@ type CoreGalleryAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;lock&quot; field on the &quot;CoreGallery&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreGallery&quot; block"""
+  metadata: BlockAttributesObject
+
+  """The &quot;randomOrder&quot; field on the &quot;CoreGallery&quot; block"""
+  randomOrder: Boolean
 
   """
   The &quot;shortCodeTransforms&quot; field on the &quot;CoreGallery&quot; block
@@ -4596,6 +4737,9 @@ type CoreGroupAttributes implements BlockWithSupportsAnchor {
   """The &quot;lock&quot; field on the &quot;CoreGroup&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreGroup&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CoreGroup&quot; block"""
   style: BlockAttributesObject
 
@@ -4658,9 +4802,6 @@ type CoreHeadingAttributes implements BlockWithSupportsAnchor {
   """The &quot;className&quot; field on the &quot;CoreHeading&quot; block"""
   className: String
 
-  """The &quot;content&quot; field on the &quot;CoreHeading&quot; block"""
-  content: String
-
   """The &quot;fontFamily&quot; field on the &quot;CoreHeading&quot; block"""
   fontFamily: String
 
@@ -4675,6 +4816,9 @@ type CoreHeadingAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;lock&quot; field on the &quot;CoreHeading&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreHeading&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;placeholder&quot; field on the &quot;CoreHeading&quot; block"""
   placeholder: String
@@ -4739,6 +4883,9 @@ type CoreHomeLinkAttributes {
   """The &quot;lock&quot; field on the &quot;CoreHomeLink&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreHomeLink&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CoreHomeLink&quot; block"""
   style: BlockAttributesObject
 }
@@ -4783,6 +4930,9 @@ type CoreHtmlAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreHtml&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreHtml&quot; block"""
+  metadata: BlockAttributesObject
 }
 
 """A block used for editing the site"""
@@ -4838,9 +4988,6 @@ type CoreImageAttributes implements BlockWithSupportsAnchor {
   """The &quot;borderColor&quot; field on the &quot;CoreImage&quot; block"""
   borderColor: String
 
-  """The &quot;caption&quot; field on the &quot;CoreImage&quot; block"""
-  caption: String
-
   """The &quot;className&quot; field on the &quot;CoreImage&quot; block"""
   className: String
 
@@ -4872,6 +5019,9 @@ type CoreImageAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;lock&quot; field on the &quot;CoreImage&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreImage&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;rel&quot; field on the &quot;CoreImage&quot; block"""
   rel: String
@@ -4975,6 +5125,11 @@ type CoreLatestCommentsAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreLatestComments&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreLatestComments&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;style&quot; field on the &quot;CoreLatestComments&quot; block
@@ -5111,6 +5266,11 @@ type CoreLatestPostsAttributes {
   """The &quot;lock&quot; field on the &quot;CoreLatestPosts&quot; block"""
   lock: BlockAttributesObject
 
+  """
+  The &quot;metadata&quot; field on the &quot;CoreLatestPosts&quot; block
+  """
+  metadata: BlockAttributesObject
+
   """The &quot;order&quot; field on the &quot;CoreLatestPosts&quot; block"""
   order: String
 
@@ -5189,6 +5349,11 @@ type CoreLegacyWidgetAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreLegacyWidget&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreLegacyWidget&quot; block
+  """
+  metadata: BlockAttributesObject
 }
 
 """A block used for editing the site"""
@@ -5251,6 +5416,9 @@ type CoreListAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;lock&quot; field on the &quot;CoreList&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreList&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;ordered&quot; field on the &quot;CoreList&quot; block"""
   ordered: Boolean
@@ -5315,9 +5483,6 @@ type CoreListItemAttributes {
   """The &quot;className&quot; field on the &quot;CoreListItem&quot; block"""
   className: String
 
-  """The &quot;content&quot; field on the &quot;CoreListItem&quot; block"""
-  content: String
-
   """The &quot;fontFamily&quot; field on the &quot;CoreListItem&quot; block"""
   fontFamily: String
 
@@ -5326,6 +5491,9 @@ type CoreListItemAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreListItem&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreListItem&quot; block"""
+  metadata: BlockAttributesObject
 
   """
   The &quot;placeholder&quot; field on the &quot;CoreListItem&quot; block
@@ -5387,6 +5555,9 @@ type CoreLoginoutAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreLoginout&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreLoginout&quot; block"""
+  metadata: BlockAttributesObject
 
   """
   The &quot;redirectToCurrent&quot; field on the &quot;CoreLoginout&quot; block
@@ -5527,6 +5698,9 @@ type CoreMediaTextAttributes implements BlockWithSupportsAnchor {
   """
   mediaWidth: Float
 
+  """The &quot;metadata&quot; field on the &quot;CoreMediaText&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;rel&quot; field on the &quot;CoreMediaText&quot; block"""
   rel: String
 
@@ -5579,6 +5753,9 @@ type CoreMissing implements EditorBlock & GuideEditorBlock & PageEditorBlock & P
 type CoreMissingAttributes {
   """The &quot;lock&quot; field on the &quot;CoreMissing&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreMissing&quot; block"""
+  metadata: BlockAttributesObject
 
   """
   The &quot;originalContent&quot; field on the &quot;CoreMissing&quot; block
@@ -5636,6 +5813,9 @@ type CoreMoreAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreMore&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreMore&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;noTeaser&quot; field on the &quot;CoreMore&quot; block"""
   noTeaser: Boolean
@@ -5733,6 +5913,9 @@ type CoreNavigationAttributes {
   The &quot;maxNestingLevel&quot; field on the &quot;CoreNavigation&quot; block
   """
   maxNestingLevel: Float
+
+  """The &quot;metadata&quot; field on the &quot;CoreNavigation&quot; block"""
+  metadata: BlockAttributesObject
 
   """
   The &quot;openSubmenusOnClick&quot; field on the &quot;CoreNavigation&quot; block
@@ -5861,6 +6044,11 @@ type CoreNavigationLinkAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreNavigationLink&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;opensInNewTab&quot; field on the &quot;CoreNavigationLink&quot; block
   """
   opensInNewTab: Boolean
@@ -5956,6 +6144,11 @@ type CoreNavigationSubmenuAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreNavigationSubmenu&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;opensInNewTab&quot; field on the &quot;CoreNavigationSubmenu&quot; block
   """
   opensInNewTab: Boolean
@@ -6018,6 +6211,9 @@ type CoreNextpage implements EditorBlock & GuideEditorBlock & PageEditorBlock & 
 type CoreNextpageAttributes {
   """The &quot;lock&quot; field on the &quot;CoreNextpage&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreNextpage&quot; block"""
+  metadata: BlockAttributesObject
 }
 
 """A block used for editing the site"""
@@ -6069,6 +6265,9 @@ type CorePageListAttributes {
 
   """The &quot;lock&quot; field on the &quot;CorePageList&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CorePageList&quot; block"""
+  metadata: BlockAttributesObject
 
   """
   The &quot;parentPageID&quot; field on the &quot;CorePageList&quot; block
@@ -6135,6 +6334,11 @@ type CorePageListItemAttributes {
 
   """The &quot;lock&quot; field on the &quot;CorePageListItem&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CorePageListItem&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """The &quot;title&quot; field on the &quot;CorePageListItem&quot; block"""
   title: String
@@ -6220,6 +6424,9 @@ type CoreParagraphAttributes implements BlockWithSupportsAnchor {
   """The &quot;lock&quot; field on the &quot;CoreParagraph&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreParagraph&quot; block"""
+  metadata: BlockAttributesObject
+
   """
   The &quot;placeholder&quot; field on the &quot;CoreParagraph&quot; block
   """
@@ -6272,6 +6479,9 @@ type CorePatternAttributes {
 
   """The &quot;lock&quot; field on the &quot;CorePattern&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CorePattern&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;slug&quot; field on the &quot;CorePattern&quot; block"""
   slug: String
@@ -6351,6 +6561,9 @@ type CorePostAuthorAttributes {
 
   """The &quot;lock&quot; field on the &quot;CorePostAuthor&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CorePostAuthor&quot; block"""
+  metadata: BlockAttributesObject
 
   """
   The &quot;showAvatar&quot; field on the &quot;CorePostAuthor&quot; block
@@ -6438,6 +6651,11 @@ type CorePostAuthorBiographyAttributes {
   The &quot;lock&quot; field on the &quot;CorePostAuthorBiography&quot; block
   """
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CorePostAuthorBiography&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;style&quot; field on the &quot;CorePostAuthorBiography&quot; block
@@ -6529,6 +6747,11 @@ type CorePostAuthorNameAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CorePostAuthorName&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;style&quot; field on the &quot;CorePostAuthorName&quot; block
   """
   style: BlockAttributesObject
@@ -6605,6 +6828,11 @@ type CorePostCommentsAttributes {
   """The &quot;lock&quot; field on the &quot;CorePostComments&quot; block"""
   lock: BlockAttributesObject
 
+  """
+  The &quot;metadata&quot; field on the &quot;CorePostComments&quot; block
+  """
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CorePostComments&quot; block"""
   style: BlockAttributesObject
 
@@ -6678,6 +6906,11 @@ type CorePostCommentsFormAttributes {
   The &quot;lock&quot; field on the &quot;CorePostCommentsForm&quot; block
   """
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CorePostCommentsForm&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;style&quot; field on the &quot;CorePostCommentsForm&quot; block
@@ -6764,6 +6997,11 @@ type CorePostContentAttributes {
   """The &quot;lock&quot; field on the &quot;CorePostContent&quot; block"""
   lock: BlockAttributesObject
 
+  """
+  The &quot;metadata&quot; field on the &quot;CorePostContent&quot; block
+  """
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CorePostContent&quot; block"""
   style: BlockAttributesObject
 
@@ -6838,6 +7076,9 @@ type CorePostDateAttributes {
 
   """The &quot;lock&quot; field on the &quot;CorePostDate&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CorePostDate&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;style&quot; field on the &quot;CorePostDate&quot; block"""
   style: BlockAttributesObject
@@ -6916,6 +7157,11 @@ type CorePostExcerptAttributes {
 
   """The &quot;lock&quot; field on the &quot;CorePostExcerpt&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CorePostExcerpt&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;moreText&quot; field on the &quot;CorePostExcerpt&quot; block
@@ -7037,6 +7283,11 @@ type CorePostFeaturedImageAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;overlayColor&quot; field on the &quot;CorePostFeaturedImage&quot; block
   """
   overlayColor: String
@@ -7060,6 +7311,11 @@ type CorePostFeaturedImageAttributes {
   The &quot;style&quot; field on the &quot;CorePostFeaturedImage&quot; block
   """
   style: BlockAttributesObject
+
+  """
+  The &quot;useFirstImageFromPost&quot; field on the &quot;CorePostFeaturedImage&quot; block
+  """
+  useFirstImageFromPost: Boolean
 
   """
   The &quot;width&quot; field on the &quot;CorePostFeaturedImage&quot; block
@@ -7143,6 +7399,11 @@ type CorePostNavigationLinkAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;showTitle&quot; field on the &quot;CorePostNavigationLink&quot; block
   """
   showTitle: Boolean
@@ -7151,6 +7412,11 @@ type CorePostNavigationLinkAttributes {
   The &quot;style&quot; field on the &quot;CorePostNavigationLink&quot; block
   """
   style: BlockAttributesObject
+
+  """
+  The &quot;taxonomy&quot; field on the &quot;CorePostNavigationLink&quot; block
+  """
+  taxonomy: String
 
   """
   The &quot;textAlign&quot; field on the &quot;CorePostNavigationLink&quot; block
@@ -7237,6 +7503,11 @@ type CorePostTemplateAttributes {
   """The &quot;lock&quot; field on the &quot;CorePostTemplate&quot; block"""
   lock: BlockAttributesObject
 
+  """
+  The &quot;metadata&quot; field on the &quot;CorePostTemplate&quot; block
+  """
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CorePostTemplate&quot; block"""
   style: BlockAttributesObject
 
@@ -7302,6 +7573,9 @@ type CorePostTermsAttributes {
 
   """The &quot;lock&quot; field on the &quot;CorePostTerms&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CorePostTerms&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;prefix&quot; field on the &quot;CorePostTerms&quot; block"""
   prefix: String
@@ -7396,6 +7670,9 @@ type CorePostTitleAttributes {
   """The &quot;lock&quot; field on the &quot;CorePostTitle&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CorePostTitle&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;rel&quot; field on the &quot;CorePostTitle&quot; block"""
   rel: String
 
@@ -7461,11 +7738,6 @@ type CorePreformattedAttributes implements BlockWithSupportsAnchor {
   className: String
 
   """
-  The &quot;content&quot; field on the &quot;CorePreformatted&quot; block
-  """
-  content: String
-
-  """
   The &quot;fontFamily&quot; field on the &quot;CorePreformatted&quot; block
   """
   fontFamily: String
@@ -7482,6 +7754,11 @@ type CorePreformattedAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;lock&quot; field on the &quot;CorePreformatted&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CorePreformatted&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """The &quot;style&quot; field on the &quot;CorePreformatted&quot; block"""
   style: BlockAttributesObject
@@ -7546,9 +7823,6 @@ type CorePullquoteAttributes implements BlockWithSupportsAnchor {
   """
   borderColor: String
 
-  """The &quot;citation&quot; field on the &quot;CorePullquote&quot; block"""
-  citation: String
-
   """The &quot;className&quot; field on the &quot;CorePullquote&quot; block"""
   className: String
 
@@ -7566,6 +7840,9 @@ type CorePullquoteAttributes implements BlockWithSupportsAnchor {
   """The &quot;lock&quot; field on the &quot;CorePullquote&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CorePullquote&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CorePullquote&quot; block"""
   style: BlockAttributesObject
 
@@ -7574,9 +7851,6 @@ type CorePullquoteAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;textColor&quot; field on the &quot;CorePullquote&quot; block"""
   textColor: String
-
-  """The &quot;value&quot; field on the &quot;CorePullquote&quot; block"""
-  value: String
 }
 
 """A block used for editing the site"""
@@ -7630,6 +7904,9 @@ type CoreQueryAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreQuery&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreQuery&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;namespace&quot; field on the &quot;CoreQuery&quot; block"""
   namespace: String
@@ -7711,6 +7988,11 @@ type CoreQueryNoResultsAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreQueryNoResults&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreQueryNoResults&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;style&quot; field on the &quot;CoreQueryNoResults&quot; block
@@ -7797,6 +8079,11 @@ type CoreQueryPaginationAttributes {
   The &quot;lock&quot; field on the &quot;CoreQueryPagination&quot; block
   """
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreQueryPagination&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;paginationArrow&quot; field on the &quot;CoreQueryPagination&quot; block
@@ -7890,6 +8177,11 @@ type CoreQueryPaginationNextAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreQueryPaginationNext&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;style&quot; field on the &quot;CoreQueryPaginationNext&quot; block
   """
   style: BlockAttributesObject
@@ -7959,6 +8251,11 @@ type CoreQueryPaginationNumbersAttributes {
   The &quot;lock&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
   """
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;midSize&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block
@@ -8042,6 +8339,11 @@ type CoreQueryPaginationPreviousAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;style&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block
   """
   style: BlockAttributesObject
@@ -8111,6 +8413,9 @@ type CoreQueryTitleAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreQueryTitle&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreQueryTitle&quot; block"""
+  metadata: BlockAttributesObject
 
   """
   The &quot;showPrefix&quot; field on the &quot;CoreQueryTitle&quot; block
@@ -8188,9 +8493,6 @@ type CoreQuoteAttributes implements BlockWithSupportsAnchor {
   """
   backgroundColor: String
 
-  """The &quot;citation&quot; field on the &quot;CoreQuote&quot; block"""
-  citation: String
-
   """The &quot;className&quot; field on the &quot;CoreQuote&quot; block"""
   className: String
 
@@ -8203,8 +8505,14 @@ type CoreQuoteAttributes implements BlockWithSupportsAnchor {
   """The &quot;gradient&quot; field on the &quot;CoreQuote&quot; block"""
   gradient: String
 
+  """The &quot;layout&quot; field on the &quot;CoreQuote&quot; block"""
+  layout: BlockAttributesObject
+
   """The &quot;lock&quot; field on the &quot;CoreQuote&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreQuote&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;style&quot; field on the &quot;CoreQuote&quot; block"""
   style: BlockAttributesObject
@@ -8282,6 +8590,9 @@ type CoreReadMoreAttributes {
   """The &quot;lock&quot; field on the &quot;CoreReadMore&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreReadMore&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CoreReadMore&quot; block"""
   style: BlockAttributesObject
 
@@ -8356,6 +8667,9 @@ type CoreRssAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreRss&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreRss&quot; block"""
+  metadata: BlockAttributesObject
 }
 
 """A block used for editing the site"""
@@ -8405,11 +8719,6 @@ type CoreSearchAttributes {
   borderColor: String
 
   """
-  The &quot;buttonBehavior&quot; field on the &quot;CoreSearch&quot; block
-  """
-  buttonBehavior: String
-
-  """
   The &quot;buttonPosition&quot; field on the &quot;CoreSearch&quot; block
   """
   buttonPosition: String
@@ -8444,6 +8753,9 @@ type CoreSearchAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreSearch&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreSearch&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;placeholder&quot; field on the &quot;CoreSearch&quot; block"""
   placeholder: String
@@ -8525,6 +8837,9 @@ type CoreSeparatorAttributes implements BlockWithSupportsAnchor {
   """The &quot;lock&quot; field on the &quot;CoreSeparator&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreSeparator&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;opacity&quot; field on the &quot;CoreSeparator&quot; block"""
   opacity: String
 
@@ -8569,6 +8884,9 @@ type CoreShortcode implements EditorBlock & GuideEditorBlock & PageEditorBlock &
 type CoreShortcodeAttributes {
   """The &quot;lock&quot; field on the &quot;CoreShortcode&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreShortcode&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;text&quot; field on the &quot;CoreShortcode&quot; block"""
   text: String
@@ -8623,6 +8941,9 @@ type CoreSiteLogoAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreSiteLogo&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreSiteLogo&quot; block"""
+  metadata: BlockAttributesObject
 
   """
   The &quot;shouldSyncIcon&quot; field on the &quot;CoreSiteLogo&quot; block
@@ -8701,6 +9022,11 @@ type CoreSiteTaglineAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreSiteTagline&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreSiteTagline&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """The &quot;style&quot; field on the &quot;CoreSiteTagline&quot; block"""
   style: BlockAttributesObject
@@ -8787,6 +9113,9 @@ type CoreSiteTitleAttributes {
   """The &quot;lock&quot; field on the &quot;CoreSiteTitle&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreSiteTitle&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CoreSiteTitle&quot; block"""
   style: BlockAttributesObject
 
@@ -8842,6 +9171,9 @@ type CoreSocialLinkAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreSocialLink&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreSocialLink&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;rel&quot; field on the &quot;CoreSocialLink&quot; block"""
   rel: String
@@ -8949,6 +9281,11 @@ type CoreSocialLinksAttributes implements BlockWithSupportsAnchor {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreSocialLinks&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;openInNewTab&quot; field on the &quot;CoreSocialLinks&quot; block
   """
   openInNewTab: Boolean
@@ -9015,6 +9352,9 @@ type CoreSpacerAttributes implements BlockWithSupportsAnchor {
   """The &quot;lock&quot; field on the &quot;CoreSpacer&quot; block"""
   lock: BlockAttributesObject
 
+  """The &quot;metadata&quot; field on the &quot;CoreSpacer&quot; block"""
+  metadata: BlockAttributesObject
+
   """The &quot;style&quot; field on the &quot;CoreSpacer&quot; block"""
   style: BlockAttributesObject
 
@@ -9077,9 +9417,6 @@ type CoreTableAttributes implements BlockWithSupportsAnchor {
   """The &quot;borderColor&quot; field on the &quot;CoreTable&quot; block"""
   borderColor: String
 
-  """The &quot;caption&quot; field on the &quot;CoreTable&quot; block"""
-  caption: String
-
   """The &quot;className&quot; field on the &quot;CoreTable&quot; block"""
   className: String
 
@@ -9105,6 +9442,9 @@ type CoreTableAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;lock&quot; field on the &quot;CoreTable&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreTable&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;style&quot; field on the &quot;CoreTable&quot; block"""
   style: BlockAttributesObject
@@ -9164,6 +9504,9 @@ type CoreTagCloudAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreTagCloud&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreTagCloud&quot; block"""
+  metadata: BlockAttributesObject
 
   """
   The &quot;numberOfTags&quot; field on the &quot;CoreTagCloud&quot; block
@@ -9235,6 +9578,11 @@ type CoreTemplatePartAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreTemplatePart&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreTemplatePart&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """The &quot;slug&quot; field on the &quot;CoreTemplatePart&quot; block"""
   slug: String
@@ -9314,6 +9662,11 @@ type CoreTermDescriptionAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;CoreTermDescription&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;style&quot; field on the &quot;CoreTermDescription&quot; block
   """
   style: BlockAttributesObject
@@ -9378,6 +9731,11 @@ type CoreTextColumnsAttributes {
   """The &quot;lock&quot; field on the &quot;CoreTextColumns&quot; block"""
   lock: BlockAttributesObject
 
+  """
+  The &quot;metadata&quot; field on the &quot;CoreTextColumns&quot; block
+  """
+  metadata: BlockAttributesObject
+
   """The &quot;width&quot; field on the &quot;CoreTextColumns&quot; block"""
   width: String
 }
@@ -9434,9 +9792,6 @@ type CoreVerseAttributes implements BlockWithSupportsAnchor {
   """The &quot;className&quot; field on the &quot;CoreVerse&quot; block"""
   className: String
 
-  """The &quot;content&quot; field on the &quot;CoreVerse&quot; block"""
-  content: String
-
   """The &quot;fontFamily&quot; field on the &quot;CoreVerse&quot; block"""
   fontFamily: String
 
@@ -9448,6 +9803,9 @@ type CoreVerseAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;lock&quot; field on the &quot;CoreVerse&quot; block"""
   lock: BlockAttributesObject
+
+  """The &quot;metadata&quot; field on the &quot;CoreVerse&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;style&quot; field on the &quot;CoreVerse&quot; block"""
   style: BlockAttributesObject
@@ -9506,9 +9864,6 @@ type CoreVideoAttributes implements BlockWithSupportsAnchor {
   """The &quot;autoplay&quot; field on the &quot;CoreVideo&quot; block"""
   autoplay: Boolean
 
-  """The &quot;caption&quot; field on the &quot;CoreVideo&quot; block"""
-  caption: String
-
   """The &quot;className&quot; field on the &quot;CoreVideo&quot; block"""
   className: String
 
@@ -9523,6 +9878,9 @@ type CoreVideoAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;loop&quot; field on the &quot;CoreVideo&quot; block"""
   loop: Boolean
+
+  """The &quot;metadata&quot; field on the &quot;CoreVideo&quot; block"""
+  metadata: BlockAttributesObject
 
   """The &quot;muted&quot; field on the &quot;CoreVideo&quot; block"""
   muted: Boolean
@@ -9588,6 +9946,11 @@ type CoreWidgetGroupAttributes {
 
   """The &quot;lock&quot; field on the &quot;CoreWidgetGroup&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;CoreWidgetGroup&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """The &quot;title&quot; field on the &quot;CoreWidgetGroup&quot; block"""
   title: String
@@ -10950,11 +11313,23 @@ type GraphqlDocument implements ContentNode & DatabaseIdentifier & Node & NodeWi
   """
   guid: String
 
+  """Whether the graphql_document object is password protected."""
+  hasPassword: Boolean
+
   """The globally unique identifier of the graphql_document object."""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is a node in the preview state"""
   isPreview: Boolean
@@ -10983,6 +11358,9 @@ type GraphqlDocument implements ContentNode & DatabaseIdentifier & Node & NodeWi
   The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
   """
   modifiedGmt: String
+
+  """The password for the graphql_document object."""
+  password: String
 
   """
   Connection between the GraphqlDocument type and the graphqlDocument type
@@ -11222,8 +11600,17 @@ type GraphqlDocumentGroup implements DatabaseIdentifier & Node & NodeWithRankMat
   """The globally unique ID for the object"""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
@@ -11937,11 +12324,23 @@ type Guide implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node
   """The id field matches the WP_Post-&gt;ID field."""
   guideId: Int! @deprecated(reason: "Deprecated in favor of the databaseId field")
 
+  """Whether the guide object is password protected."""
+  hasPassword: Boolean
+
   """The globally unique identifier of the guide object."""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is a node in the preview state"""
   isPreview: Boolean
@@ -11970,6 +12369,9 @@ type Guide implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node
   The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
   """
   modifiedGmt: String
+
+  """The password for the guide object."""
+  password: String
 
   """Connection between the Guide type and the guide type"""
   preview: GuideToPreviewConnectionEdge
@@ -12427,8 +12829,17 @@ interface HierarchicalContentNode implements ContentNode & DatabaseIdentifier & 
   """The globally unique ID for the object"""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is a node in the preview state"""
   isPreview: Boolean
@@ -12778,8 +13189,17 @@ interface HierarchicalTermNode implements DatabaseIdentifier & HierarchicalNode 
   """The globally unique ID for the object"""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
@@ -13023,11 +13443,23 @@ type MediaItem implements ContentNode & DatabaseIdentifier & HierarchicalContent
   """
   guid: String
 
+  """Whether the attachment object is password protected."""
+  hasPassword: Boolean
+
   """The globally unique identifier of the attachment object."""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is a node in the preview state"""
   isPreview: Boolean
@@ -13077,6 +13509,9 @@ type MediaItem implements ContentNode & DatabaseIdentifier & HierarchicalContent
 
   """The globally unique identifier of the parent node."""
   parentId: ID
+
+  """The password for the attachment object."""
+  password: String
 
   """The database id of the preview node"""
   previewRevisionDatabaseId: Int
@@ -13650,11 +14085,20 @@ interface MenuItemLinkable implements DatabaseIdentifier & Node & UniformResourc
   """The unique identifier stored in the database"""
   databaseId: Int!
 
-  """The unique resource identifier path"""
+  """The globally unique ID for the object"""
   id: ID!
+
+  """Whether the node is a Comment"""
+  isComment: Boolean!
 
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the node is a Term"""
   isTermNode: Boolean!
@@ -14034,6 +14478,9 @@ enum MimeTypeEnum {
 
   """audio/x-realaudio mime type."""
   AUDIO_X_REALAUDIO
+
+  """image/avif mime type."""
+  IMAGE_AVIF
 
   """image/bmp mime type."""
   IMAGE_BMP
@@ -14539,8 +14986,14 @@ type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode 
   """
   guid: String
 
+  """Whether the page object is password protected."""
+  hasPassword: Boolean
+
   """The globally unique identifier of the page object."""
   id: ID!
+
+  """Whether the node is a Comment"""
+  isComment: Boolean!
 
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
@@ -14598,6 +15051,9 @@ type Page implements ContentNode & DatabaseIdentifier & HierarchicalContentNode 
 
   """The globally unique identifier of the parent node."""
   parentId: ID
+
+  """The password for the page object."""
+  password: String
 
   """Connection between the Page type and the page type"""
   preview: PageToPreviewConnectionEdge
@@ -15332,11 +15788,23 @@ type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node 
   """
   guid: String
 
+  """Whether the post object is password protected."""
+  hasPassword: Boolean
+
   """The globally unique identifier of the post object."""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is a node in the preview state"""
   isPreview: Boolean
@@ -15368,6 +15836,9 @@ type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node 
   The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
   """
   modifiedGmt: String
+
+  """The password for the post object."""
+  password: String
 
   """Whether the pings are open or closed for this particular post."""
   pingStatus: String
@@ -15689,8 +16160,17 @@ type PostFormat implements DatabaseIdentifier & Node & NodeWithRankMathSeo & Ter
   """The globally unique ID for the object"""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
@@ -17423,6 +17903,11 @@ type RankMathCommandAttributes {
 
   """The &quot;lock&quot; field on the &quot;RankMathCommand&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;RankMathCommand&quot; block
+  """
+  metadata: BlockAttributesObject
 }
 
 """The seo data for Post Objects"""
@@ -17548,6 +18033,11 @@ type RankMathFaqBlockAttributes {
 
   """The &quot;lock&quot; field on the &quot;RankMathFaqBlock&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;RankMathFaqBlock&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;questions&quot; field on the &quot;RankMathFaqBlock&quot; block
@@ -17935,6 +18425,11 @@ type RankMathHowtoBlockAttributes {
   The &quot;mainSizeSlug&quot; field on the &quot;RankMathHowtoBlock&quot; block
   """
   mainSizeSlug: String
+
+  """
+  The &quot;metadata&quot; field on the &quot;RankMathHowtoBlock&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """
   The &quot;minutes&quot; field on the &quot;RankMathHowtoBlock&quot; block
@@ -19056,6 +19551,11 @@ type RankMathRichSnippetAttributes {
   lock: BlockAttributesObject
 
   """
+  The &quot;metadata&quot; field on the &quot;RankMathRichSnippet&quot; block
+  """
+  metadata: BlockAttributesObject
+
+  """
   The &quot;post_id&quot; field on the &quot;RankMathRichSnippet&quot; block
   """
   postId: Int
@@ -19647,6 +20147,11 @@ type RankMathTocBlockAttributes {
 
   """The &quot;lock&quot; field on the &quot;RankMathTocBlock&quot; block"""
   lock: BlockAttributesObject
+
+  """
+  The &quot;metadata&quot; field on the &quot;RankMathTocBlock&quot; block
+  """
+  metadata: BlockAttributesObject
 
   """The &quot;style&quot; field on the &quot;RankMathTocBlock&quot; block"""
   style: BlockAttributesObject
@@ -23105,11 +23610,20 @@ type Tag implements DatabaseIdentifier & MenuItemLinkable & Node & NodeWithRankM
     last: Int
   ): TermNodeToEnqueuedStylesheetConnection
 
-  """The unique resource identifier path"""
+  """The globally unique ID for the object"""
   id: ID!
+
+  """Whether the node is a Comment"""
+  isComment: Boolean!
 
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
@@ -23815,8 +24329,17 @@ interface TermNode implements Node & NodeWithRankMathSeo & UniformResourceIdenti
   """The globally unique ID for the object"""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
@@ -24101,11 +24624,20 @@ interface ThemeConnectionPageInfo implements PageInfo & WPPageInfo {
 
 """Any node that has a URI"""
 interface UniformResourceIdentifiable implements Node {
-  """The unique resource identifier path"""
+  """The globally unique ID for the object"""
   id: ID!
+
+  """Whether the node is a Comment"""
+  isComment: Boolean!
 
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the node is a Term"""
   isTermNode: Boolean!
@@ -24938,8 +25470,17 @@ type User implements Commenter & DatabaseIdentifier & Node & NodeWithRankMathSeo
   """The globally unique identifier for the user object."""
   id: ID!
 
+  """Whether the node is a Comment"""
+  isComment: Boolean!
+
   """Whether the node is a Content Node"""
   isContentNode: Boolean!
+
+  """Whether the node represents the front page."""
+  isFrontPage: Boolean!
+
+  """Whether  the node represents the blog page."""
+  isPostsPage: Boolean!
 
   """Whether the object is restricted from the current viewer"""
   isRestricted: Boolean
