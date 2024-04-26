@@ -6,6 +6,6 @@ export const csr = false;
 
 export function _houdini_afterLoad({ data }: AfterLoadEvent) {
 	if (!data.Article) {
-		throw error(404);
+		error(404);
 	}
 }
