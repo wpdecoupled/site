@@ -45,9 +45,7 @@
 	"type": "module",
 	"dependencies": {
 		"@js-temporal/polyfill": "^0.4.3",
-		"@sentry/node": "^7.47.0",
 		"@sentry/sveltekit": "^7.112.2",
-		"@sentry/tracing": "^7.47.0",
 		"@sveltejs/adapter-node": "^5.0.1",
 		"feed": "^4.2.2",
 		"http-status-codes": "^2.2.0",

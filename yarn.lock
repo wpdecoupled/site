@@ -818,7 +818,7 @@
     "@sentry/utils" "7.112.2"
     localforage "^1.8.1"
 
-"@sentry/node@7.112.2", "@sentry/node@^7.19.0", "@sentry/node@^7.47.0":
+"@sentry/node@7.112.2", "@sentry/node@^7.19.0":
   version "7.112.2"
   resolved "https://registry.yarnpkg.com/@sentry/node/-/node-7.112.2.tgz#9b7378004ed5aef13dbfc8ccc55b06be627eb947"
   integrity sha512-MNzkqER8jc2xOS3ArkCLH5hakzu15tcjeC7qjU7rQ1Ms4WuV+MG0docSRESux0/p23Qjzf9tZOc8C5Eq+Sxduw==
@@ -866,7 +866,7 @@
     magicast "0.2.8"
     sorcery "0.11.0"
 
-"@sentry/tracing@^7.19.0", "@sentry/tracing@^7.47.0":
+"@sentry/tracing@^7.19.0":
   version "7.112.2"
   resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.112.2.tgz#719bd07f898f2fca0d015240d07eb9bd1d7022d2"
   integrity sha512-Dw641xm7seI+f3SAbKmSi6RNIpsLPrNPxPQbUhJpfDmJQOY6Rl00XANKAwW+QEiSqukGko1Evo3kU1NDxVmRgA==
