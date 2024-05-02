@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<link rel="preconnect" href="https://cms.wpdecoupled.dev" />
+		<link rel="preconnect" href="https://www.googletagmanager.com" />
 		<link rel="preload" href="BungeeShade-Regular.woff2" as="font" crossorigin="anonymous">
 
 		<link
@@ -33,6 +34,8 @@
 		<link rel="shortcut icon" href="/favicon.ico?v=2" />
 		<meta name="theme-color" content="#e6e4dc" />
 
+		%sveltekit.head%
+
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=%sveltekit.env.PUBLIC_GA_ID%"></script>
 		<script>
@@ -44,7 +47,6 @@
 
 			gtag('config', '%sveltekit.env.PUBLIC_GA_ID%');
 		</script>
-		%sveltekit.head%
 	</head>
 
 	<body data-sveltekit-preload-data="hover">
