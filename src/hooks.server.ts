@@ -24,16 +24,9 @@ export const handle: Handle = async function ({ event, resolve }) {
 		preload: ({
 			type, path
 		}) => {
-			if (type == 'font') return false;
+			if (type !== 'font') return true;
 
-			switch (path) {
-				case '/fonts/BungeeShade-RegularSubset.woff2':
-				case '/fonts/Lora-Regular.woff2':
-				case '/fonts/Lora-Bold.woff2':
-					return true;
-				default:
-					return false;
-			}
+			return path.includes('BungeeShape') || path.includes('Lora-Regular') || path.includes('Lora-Bold.');
 
 		}
 	});
