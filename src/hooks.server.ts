@@ -1,34 +1,35 @@
-import crypto from 'node:crypto';
-
-import * as SentryNode from '@sentry/node';
-import '@sentry/tracing';
+import * as Sentry from '@sentry/sveltekit';
 
 import type { Handle, HandleServerError } from '@sveltejs/kit';
 
 import { PUBLIC_SENTRY_DSN, PUBLIC_SENTRY_ENV } from '$env/static/public';
 
-SentryNode.init({
+Sentry.init({
 	dsn: PUBLIC_SENTRY_DSN,
 	environment: PUBLIC_SENTRY_ENV || 'development',
 	tracesSampleRate: 1.0,
-	// Add the Http integration for tracing
-	integrations: [new SentryNode.Integrations.Http()],
 });
 
-SentryNode.setTag('svelteKit', 'server');
+Sentry.setTag('svelteKit', 'server');
 
-export const handleError: HandleServerError = ({ error, event }) => {
-	const errorId = crypto.randomUUID();
-	SentryNode.captureException(error, { contexts: { sveltekit: { event, errorId } } });
-
-	return {
-		message: error.message,
-		errorId,
-	};
+const myErrorHandler: HandleServerError = ({ error, event }) => {
+  console.error("An error occurred on the server side:", error, event);
 };
 
+
+export const handleError = Sentry.handleErrorWithSentry(myErrorHandler);
+
 export const handle: Handle = async function ({ event, resolve }) {
-	const response = await resolve(event);
+	const response = await resolve(event, {
+		preload: ({
+			type, path
+		}) => {
+			if (type !== 'font') return true;
+
+			return path.includes('BungeeShape') || path.includes('Lora-Regular') || path.includes('Lora-Bold.');
+
+		}
+	});
 	response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
 
 	return response;

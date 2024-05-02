@@ -5,16 +5,8 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<link rel="preconnect" href="https://cms.wpdecoupled.dev" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Bungee+Shade&text=wpdecoupled&display=block"
-			rel="stylesheet"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-			rel="stylesheet"
-		/>
+		<link rel="preconnect" href="https://www.googletagmanager.com" />
+
 		<link
 			href="/feeds/feed.json"
 			rel="alternate"
@@ -41,6 +33,8 @@
 		<link rel="shortcut icon" href="/favicon.ico?v=2" />
 		<meta name="theme-color" content="#e6e4dc" />
 
+		%sveltekit.head%
+
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=%sveltekit.env.PUBLIC_GA_ID%"></script>
 		<script>
@@ -52,7 +46,6 @@
 
 			gtag('config', '%sveltekit.env.PUBLIC_GA_ID%');
 		</script>
-		%sveltekit.head%
 	</head>
 
 	<body data-sveltekit-preload-data="hover">
