@@ -15,6 +15,8 @@ export const GET = (async ({ url }) => {
 
 	return new Response(resp.body, {
 		status: StatusCodes.OK,
-		headers: { 'Content-Type': 'application/xml' },
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Content-Type': 'application/xml' },
 	});
 }) satisfies RequestHandler;
