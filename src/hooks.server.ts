@@ -21,15 +21,9 @@ export const handleError = Sentry.handleErrorWithSentry(myErrorHandler);
 
 export const handle: Handle = async function ({ event, resolve }) {
 	const response = await resolve(event, {
-		preload: ({
-			type, path
-		}) => {
-			if (type !== 'font') return true;
-
-			return path.includes('BungeeShape') || path.includes('Lora-Regular') || path.includes('Lora-Bold.');
-
-		}
+		preload: ({type}) => type === 'js' || type === 'css' || type === 'font'
 	});
+
 	response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
 
 	return response;
