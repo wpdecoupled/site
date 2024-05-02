@@ -14,10 +14,10 @@
 
 <main class="wrapper">
 	<section class="about center add-some-spacing">
+		<h1>Independent Decoupled WordPress Content</h1>
+		<br />
 		<p class="">
-			WPDecoupled will be a place for <s>headless</s>
-			decoupled WordPress content! We hope to be
-			<em>the</em> place for independent content on building with decoupled WordPress.
+			Come join us on this headless journey! Let us know what you want read about next on <a href="https://twitter.com/intent/post?text=%40wpdecoupled%20" target="_blank" rel="nofollow noreferrer noopener">Twitter</a> or by <a href="mailto:editor@wpdecouled.dev">email</a>.
 		</p>
 	</section>
 	<section class="recent-posts">
@@ -41,6 +41,10 @@
 <style lang="postcss">
 	.add-some-spacing {
 		margin: var(--size-fluid-6) 0;
+	}
+
+	.about > h1 {
+		max-inline-size: unset;
 	}
 	.about > p {
 		font-size: var(--font-size-3);
