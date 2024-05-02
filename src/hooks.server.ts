@@ -20,7 +20,23 @@ const myErrorHandler: HandleServerError = ({ error, event }) => {
 export const handleError = Sentry.handleErrorWithSentry(myErrorHandler);
 
 export const handle: Handle = async function ({ event, resolve }) {
-	const response = await resolve(event);
+	const response = await resolve(event, {
+		preload: ({
+			type, path
+		}) => {
+			if (type == 'font') return false;
+
+			switch (path) {
+				case '/fonts/BungeeShade-RegularSubset.woff2':
+				case '/fonts/Lora-Regular.woff2':
+				case '/fonts/Lora-Bold.woff2':
+					return true;
+				default:
+					return false;
+			}
+
+		}
+	});
 	response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
 
 	return response;
