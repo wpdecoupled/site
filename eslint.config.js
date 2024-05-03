@@ -26,12 +26,12 @@ const config = [
 	...svelte.configs['flat/prettier'],
 	prettierConfig,
 	{
-		files: ["**/*.svelte"],
+		files: ['**/*.svelte'],
 		rules: {
 			'svelte/no-at-html-tags': 'warn',
 		},
 		languageOptions: {
-			ecmaVersion: "latest",
+			ecmaVersion: 'latest',
 			sourceType: 'module',
 			globals: { ...globals.node, ...globals.browser },
 			parser: svelteParser,
