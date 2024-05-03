@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fragment, graphql, type SeoData, type SeoData$data } from '$houdini';
+	import { fragment, graphql, type SeoData } from '$houdini';
 
 	export let data: SeoData;
 

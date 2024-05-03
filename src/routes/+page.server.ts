@@ -1,7 +1,6 @@
 import type { Actions } from './$types';
 import { PUBLIC_WP_URL } from '$env/static/public';
 import { fail } from '@sveltejs/kit';
-import { formatDate } from '$lib/strings';
 
 const FORM_URL = PUBLIC_WP_URL + '/wp-json/contact-form-7/v1/contact-forms/11/feedback';
 

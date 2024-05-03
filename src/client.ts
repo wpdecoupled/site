@@ -2,7 +2,16 @@ import { HoudiniClient, type ClientPlugin } from '$houdini';
 
 const SERVER_URL = 'https://cms.wpdecoupled.dev/graphql';
 
-function createGetPersistedQueryUrl({ variables, hash }: { variables?: any; hash: string }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type GraphQLVars = Record<string, any> | null | undefined;
+
+function createGetPersistedQueryUrl({
+	variables,
+	hash,
+}: {
+	variables?: GraphQLVars;
+	hash: string;
+}) {
 	const url = new URL(SERVER_URL);
 
 	url.searchParams.set('queryId', hash);
@@ -13,18 +22,19 @@ function createGetPersistedQueryUrl({ variables, hash }: { variables?: any; hash
 	return url.toString();
 }
 
-function isMissingHashError(error: any) {
-	if (error?.message !== 'PersistedQueryNotFound') {
+function isMissingHashError(error: { message: string }) {
+	if (error.message !== 'PersistedQueryNotFound') {
 		return false;
 	}
 
 	return true;
 }
+
 // if the response contains an error indicating a missing hash, we
 // need to try again with the full payload
 const persisedGetQueryPlugin: ClientPlugin = () => {
 	return {
-		afterNetwork(ctx, { client, marshalVariables, value, next, resolve }) {
+		afterNetwork(ctx, { client, value, next, resolve }) {
 			// if there are no errors, we're good to move on
 			if (!value.errors) {
 				return resolve(ctx);
@@ -46,7 +56,7 @@ const persisedGetQueryPlugin: ClientPlugin = () => {
 			// hash so resolve the request with the error
 			return resolve(ctx);
 		},
-		beforeNetwork(ctx, { client, marshalVariables, next, resolve }) {
+		beforeNetwork(ctx, { client, marshalVariables, next }) {
 			const { variables, hash } = ctx;
 
 			if (ctx.metadata?.retry) {

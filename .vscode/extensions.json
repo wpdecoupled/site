@@ -8,6 +8,7 @@
 		"eamodio.gitlens",
 		"antfu.file-nesting",
 		"graphql.vscode-graphql",
-		"graphql.vscode-graphql-syntax"
+		"graphql.vscode-graphql-syntax",
+		"dbaeumer.vscode-eslint"
 	]
 }
