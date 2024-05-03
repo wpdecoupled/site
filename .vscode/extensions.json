@@ -5,6 +5,9 @@
 		"svelte.svelte-vscode",
 		"phoenisx.cssvar",
 		"editorconfig.editorconfig",
-		"eamodio.gitlens"
+		"eamodio.gitlens",
+		"antfu.file-nesting",
+		"graphql.vscode-graphql",
+		"graphql.vscode-graphql-syntax"
 	]
 }
