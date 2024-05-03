@@ -2,15 +2,14 @@
 	"name": "wpdecoupled-site",
 	"version": "0.0.1",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"dev": "vite dev --host 127.0.0.1",
 		"build": "vite build",
 		"preview": "vite preview",
 		"start": "node build",
-		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"test:unit": "vitest",
 		"test:format": "prettier --plugin-search-dir . --check . ",
 		"test:lint": "eslint .",
 		"lint": "yarn test:lint --fix",
@@ -42,7 +41,6 @@
 		"typescript": "^5.4.5",
 		"vite": "^5.2.10"
 	},
-	"type": "module",
 	"dependencies": {
 		"@js-temporal/polyfill": "^0.4.3",
 		"@sentry/sveltekit": "^7.112.2",
