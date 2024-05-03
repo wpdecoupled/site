@@ -16,7 +16,7 @@
 					}
 				}
 			}
-		`)
+		`),
 	);
 
 	$: seo = $uriItemData?.seo;

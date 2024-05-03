@@ -3,18 +3,18 @@
 	let label = 'Search';
 </script>
 
-		<form class="search-container" action="/search">
-			<label for="search" class="visuallyhidden">Search</label>
-			<input
-				id="search"
-				type="search"
-				value={query}
-				name="q"
-				placeholder={label}
-				spellcheck="false"
-				aria-label={label}
-			/>
-		</form>
+<form class="search-container" action="/search">
+	<label for="search" class="visuallyhidden">Search</label>
+	<input
+		id="search"
+		type="search"
+		value={query}
+		name="q"
+		placeholder={label}
+		spellcheck="false"
+		aria-label={label}
+	/>
+</form>
 
 <style lang="postcss">
 	label {

@@ -10,17 +10,17 @@ Sentry.init({
 	integrations: [Sentry.replayIntegration()],
 	tracesSampleRate: 0.1,
 	// This sets the sample rate at 10%. You may want to change it to 100% while in development
-  // and then sample at a lower rate in production:
-  replaysSessionSampleRate: 0.1,
-  // If you're not already sampling the entire session, change the sample rate to 100% when
-  // sampling sessions where errors occur:
-  replaysOnErrorSampleRate: 1.0,
+	// and then sample at a lower rate in production:
+	replaysSessionSampleRate: 0.1,
+	// If you're not already sampling the entire session, change the sample rate to 100% when
+	// sampling sessions where errors occur:
+	replaysOnErrorSampleRate: 1.0,
 });
 
 Sentry.setTag('svelteKit', 'browser');
 
 const myErrorHandler: HandleClientError = ({ error, event }) => {
-  console.error("An error occurred on the client side:", error, event);
+	console.error('An error occurred on the client side:', error, event);
 };
 
 export const handleError = Sentry.handleErrorWithSentry(myErrorHandler);

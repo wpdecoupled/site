@@ -32,15 +32,15 @@ export const GET = (async (event) => {
 		feed_data?.last_modified?.nodes[0].modifiedGmt ?? '',
 		{
 			overflow: 'constrain',
-		}
+		},
 	);
 
 	//Create feed
 	if (!feed_data) {
 		error(StatusCodes.INTERNAL_SERVER_ERROR, {
-        			message: 'Failed to fetch feed data',
-        			errorId: 'feed-fetch-failed',
-        		});
+			message: 'Failed to fetch feed data',
+			errorId: 'feed-fetch-failed',
+		});
 	}
 	const feed = createFeed({ feed_data, last_modified, site_url });
 

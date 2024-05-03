@@ -23,7 +23,7 @@
 					}
 				}
 			}
-		`)
+		`),
 	);
 
 	$: author = $data.author?.node;

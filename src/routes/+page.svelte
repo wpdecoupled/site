@@ -17,7 +17,12 @@
 		<h1>Independent Decoupled WordPress Content</h1>
 		<br />
 		<p class="">
-			Come join us on this headless journey! Let us know what you want read about next on <a href="https://twitter.com/intent/post?text=%40wpdecoupled%20" target="_blank" rel="nofollow noreferrer noopener">Twitter</a> or by <a href="mailto:editor@wpdecouled.dev">email</a>.
+			Come join us on this headless journey! Let us know what you want read about next on <a
+				href="https://twitter.com/intent/post?text=%40wpdecoupled%20"
+				target="_blank"
+				rel="nofollow noreferrer noopener">Twitter</a
+			>
+			or by <a href="mailto:editor@wpdecouled.dev">email</a>.
 		</p>
 	</section>
 	<section class="recent-posts">

@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 import type { RequestHandler } from './$types';
 
 export const GET = (async ({ url }) => {
-	const sitemap_url = PUBLIC_WP_URL + url.pathname + url.search
+	const sitemap_url = PUBLIC_WP_URL + url.pathname + url.search;
 	const resp = await fetch(sitemap_url);
 
 	if (!resp.ok) {
@@ -17,6 +17,7 @@ export const GET = (async ({ url }) => {
 		status: StatusCodes.OK,
 		headers: {
 			'Access-Control-Allow-Origin': '*',
-			'Content-Type': 'application/xml' },
+			'Content-Type': 'application/xml',
+		},
 	});
 }) satisfies RequestHandler;

@@ -16,7 +16,7 @@
 				cssClasses
 				target
 			}
-		`)
+		`),
 	);
 
 	$: ({ title, target } = $data);

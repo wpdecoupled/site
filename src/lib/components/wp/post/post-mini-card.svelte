@@ -37,7 +37,7 @@
 					title
 				}
 			}
-		`
+		`,
 	);
 
 	let date: string;

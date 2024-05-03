@@ -28,7 +28,7 @@
 	</button>
 
 	<dialog id="search-dialog" bind:this={dialog}>
-			<SearchInput />
+		<SearchInput />
 	</dialog>
 </div>
 

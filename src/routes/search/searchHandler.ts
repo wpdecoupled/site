@@ -1,12 +1,12 @@
-import { redirect } from "@sveltejs/kit";
+import { redirect } from '@sveltejs/kit';
 import { StatusCodes } from 'http-status-codes';
 
-import type { LayoutLoad } from "../$types";
+import type { LayoutLoad } from '../$types';
 
 export const searchHandler: LayoutLoad = ({ url }) => {
-	if(url.searchParams.has("s")) {
-		const new_url = new URL("/search", url.origin);
-		new_url.searchParams.append("q", url.searchParams.get("s")!);
+	if (url.searchParams.has('s')) {
+		const new_url = new URL('/search', url.origin);
+		new_url.searchParams.append('q', url.searchParams.get('s')!);
 		redirect(StatusCodes.PERMANENT_REDIRECT, new_url.toString());
 	}
-}
+};

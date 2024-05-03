@@ -10,7 +10,7 @@
 			fragment PostTitle on NodeWithTitle {
 				title
 			}
-		`
+		`,
 	);
 
 	$: excerpt = fragment(
@@ -19,7 +19,7 @@
 			fragment PostExcerpt on NodeWithExcerpt {
 				excerpt
 			}
-		`
+		`,
 	);
 
 	$: meta = fragment(
@@ -29,7 +29,7 @@
 				uri
 				dateGmt
 			}
-		`
+		`,
 	);
 
 	$: author = fragment(
@@ -42,7 +42,7 @@
 					}
 				}
 			}
-		`
+		`,
 	);
 
 	let date: string;
