@@ -10,5 +10,18 @@
 	"cssvar.ignore": [],
 
 	// add support for autocomplete in JS or JS like files
-	"cssvar.extensions": ["css", "postcss", "jsx", "tsx", "svelte"]
+	"cssvar.extensions": [
+		"css",
+		"postcss",
+		"jsx",
+		"tsx",
+		"svelte"
+	],
+	"eslint.probe": [
+		"javascript",
+		"typescript",
+		"html",
+		"markdown",
+		"svelte"
+	]
 }
