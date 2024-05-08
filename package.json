@@ -43,12 +43,12 @@
 		"vite": "^5.2.10"
 	},
 	"dependencies": {
-		"@js-temporal/polyfill": "^0.4.3",
 		"@sentry/sveltekit": "^7.112.2",
 		"@sveltejs/adapter-node": "^5.0.1",
 		"feed": "^4.2.2",
 		"http-status-codes": "^2.2.0",
-		"open-props": "^1.5.3"
+		"open-props": "^1.5.3",
+		"temporal-polyfill": "^0.2.4"
 	},
 	"engines": {
 		"node": ">=20.0.0 <21.0.0"

@@ -17783,6 +17783,11 @@ type RankMathBreadcrumbsConfig {
   """
   hasAncestorCategories: Boolean
 
+  """
+  Whether the Blog page is visible in the breadcrumbs. Only relevant if you have a Posts page set.
+  """
+  hasBlogPage: Boolean
+
   """Whether to display the homepage breadcrumb in trail."""
   hasHome: Boolean
 

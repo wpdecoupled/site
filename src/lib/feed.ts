@@ -1,4 +1,4 @@
-import { Temporal } from '@js-temporal/polyfill';
+import { Temporal } from 'temporal-polyfill';
 
 import { graphql } from '$houdini';
 import { Feed, type Item } from 'feed';

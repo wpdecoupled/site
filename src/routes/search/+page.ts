@@ -3,8 +3,6 @@ import { load_SearchQuery } from '$houdini';
 import { error } from '@sveltejs/kit';
 import { StatusCodes } from 'http-status-codes';
 
-export const prerender = false;
-
 export const load: PageLoad = async (event) => {
 	const { url } = event;
 	const query = url.searchParams.get('q');

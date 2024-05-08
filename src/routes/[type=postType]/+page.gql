@@ -1,0 +1,11 @@
+query PostArchive($type: String!) {
+	contentType: nodeByUri(uri: $type) {
+		... on ContentType {
+			contentNodes {
+				nodes {
+					...PostPreview
+				}
+			}
+		}
+	}
+}

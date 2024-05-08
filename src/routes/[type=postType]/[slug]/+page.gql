@@ -1,0 +1,5 @@
+query PostContent($uri: String!) {
+	post: nodeByUri(uri: $uri) {
+		...PostPage
+	}
+}

@@ -7,18 +7,26 @@
 	$: data = fragment(
 		post,
 		graphql(`
-			fragment PostPage on Post {
-				title
-				content
-				dateGmt
-				author {
-					node {
-						name
-						description
-						avatar {
-							url
-							height
-							width
+			fragment PostPage on UniformResourceIdentifiable {
+				... on NodeWithContentEditor {
+					content
+				}
+				... on NodeWithTitle {
+					title
+				}
+				... on ContentNode {
+					dateGmt
+				}
+				... on NodeWithAuthor {
+					author {
+						node {
+							name
+							description
+							avatar {
+								url
+								height
+								width
+							}
 						}
 					}
 				}

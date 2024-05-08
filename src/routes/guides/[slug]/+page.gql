@@ -1,5 +1,0 @@
-query Guide($slug: ID!) {
-	guide(id: $slug, idType: SLUG) {
-		...GuidePage
-	}
-}
