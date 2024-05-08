@@ -9,7 +9,7 @@ export const load: PageLoad = async (event) => {
 
 	const postContent = get(data.PostContent);
 
-	if (!postContent.data?.post) {
+	if (postContent.data?.post == undefined) {
 		error(404, 'Post not found');
 	}
 

@@ -12,8 +12,8 @@
 <main class="wrapper">
 	{#if $PostContent.fetching}
 		<p>Loading...</p>
-	{:else if !$PostContent.data?.post}
-	<p>Post Not Found</p>
+	{:else if $PostContent.data?.post == undefined}
+		<p>Not Found</p>
 	{:else}
 		<Post post={$PostContent.data.post} />
 	{/if}
