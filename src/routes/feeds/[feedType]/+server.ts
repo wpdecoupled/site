@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { Temporal } from '@js-temporal/polyfill';
+import { Temporal } from 'temporal-polyfill';
 import { StatusCodes } from 'http-status-codes';
 
 import { error } from '@sveltejs/kit';
@@ -39,7 +39,6 @@ export const GET = (async (event) => {
 	if (!feed_data) {
 		error(StatusCodes.INTERNAL_SERVER_ERROR, {
 			message: 'Failed to fetch feed data',
-			errorId: 'feed-fetch-failed',
 		});
 	}
 	const feed = createFeed({ feed_data, last_modified, site_url });

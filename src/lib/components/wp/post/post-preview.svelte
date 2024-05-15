@@ -4,41 +4,28 @@
 
 	export let post: PostPreview;
 
-	$: title = fragment(
+	$: data = fragment(
 		post,
 		graphql`
-			fragment PostTitle on NodeWithTitle {
-				title
-			}
-		`,
-	);
+			fragment PostPreview on ContentNode {
+				... on NodeWithTitle {
+					title
+				}
 
-	$: excerpt = fragment(
-		post,
-		graphql`
-			fragment PostExcerpt on NodeWithExcerpt {
-				excerpt
-			}
-		`,
-	);
+				... on NodeWithExcerpt {
+					excerpt
+				}
 
-	$: meta = fragment(
-		post,
-		graphql`
-			fragment PostMeta on ContentNode {
-				uri
-				dateGmt
-			}
-		`,
-	);
+				... on ContentNode {
+					uri
+					dateGmt
+				}
 
-	$: author = fragment(
-		post,
-		graphql`
-			fragment PostAuthor on NodeWithAuthor {
-				author {
-					node {
-						name
+				... on NodeWithAuthor {
+					author {
+						node {
+							name
+						}
 					}
 				}
 			}
@@ -47,23 +34,23 @@
 
 	let date: string;
 
-	$: if ($meta.dateGmt) {
-		date = formatDate($meta.dateGmt);
+	$: if ($data.dateGmt) {
+		date = formatDate($data.dateGmt);
 	}
 
-	$: cleanExcerpt = $excerpt.excerpt?.replace(/<[^>]*>?/gm, '');
+	$: cleanExcerpt = $data.excerpt?.replace(/<[^>]*>?/gm, '');
 </script>
 
 <li>
 	<article>
-		<h2><a href={$meta.uri} rel="bookmark">{$title.title}</a></h2>
+		<h2><a href={$data.uri} rel="bookmark">{$data.title}</a></h2>
 		<p class="details">
-			Posted {date || 'IN THE FUTURE'} by {$author.author?.node.name ?? 'Unknown'}
+			Posted {date || 'IN THE FUTURE'} by {$data.author?.node.name ?? 'Unknown'}
 		</p>
-		{#if $excerpt.excerpt}
+		{#if $data.excerpt}
 			<p>
 				{@html cleanExcerpt}
-				<a class="readmore" href={$meta.uri}>Read More »</a>
+				<a class="readmore" href={$data.uri}>Read More »</a>
 			</p>
 		{/if}
 	</article>

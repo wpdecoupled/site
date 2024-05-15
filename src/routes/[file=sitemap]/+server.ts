@@ -9,8 +9,7 @@ export const GET = (async ({ url }) => {
 	const resp = await fetch(sitemap_url);
 
 	if (!resp.ok) {
-		console.error('Error fetching', sitemap_url, resp.status);
-		error(resp.status);
+		error(resp.status, `Error fetching sitemap: ${sitemap_url}`);
 	}
 
 	return new Response(resp.body, {
