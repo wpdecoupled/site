@@ -17,7 +17,7 @@
 {#if $LayoutQuery.data?.nodeByUri}
 	<Seo data={$LayoutQuery.data.nodeByUri} />
 {/if}
-	<Partytown />
+<Partytown />
 <div class="layout">
 	<div class="header">
 		<Header data={LayoutQuery} />
