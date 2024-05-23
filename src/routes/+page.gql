@@ -1,4 +1,8 @@
-query RecentPostsQuery {
+query HomePageQuery {
+	page(id: "/", idType: URI) {
+		title @required
+		content @required
+	}
 	contentNodes(first: 10, where: { contentTypes: [POST, GUIDE] }) {
 		nodes {
 			...PostMiniCard
