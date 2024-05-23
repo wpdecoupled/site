@@ -43,6 +43,7 @@
 		"vite": "^5.2.10"
 	},
 	"dependencies": {
+		"@builder.io/partytown": "^0.10.2",
 		"@sentry/sveltekit": "^7.112.2",
 		"@sveltejs/adapter-node": "^5.0.1",
 		"feed": "^4.2.2",

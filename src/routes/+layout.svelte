@@ -3,6 +3,7 @@
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
 	import Seo from './Seo.svelte';
+	import Partytown from './Partytown.svelte';
 
 	import type { LayoutData } from './$houdini';
 

@@ -15,3 +15,6 @@ yarn.lock
 # Houdini
 $houdini
 schema.graphql
+
+# Partytown
+static/~partytown
