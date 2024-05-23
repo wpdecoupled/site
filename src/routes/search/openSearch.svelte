@@ -8,6 +8,7 @@
 <div class="search-layout">
 	<button
 		type="button"
+		aria-label="Open search dialog"
 		on:click={() => {
 			dialog.showModal();
 		}}
