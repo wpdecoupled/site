@@ -3,6 +3,7 @@
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
 	import Seo from './Seo.svelte';
+	import Partytown from './Partytown.svelte';
 
 	import type { LayoutData } from './$houdini';
 
@@ -16,6 +17,7 @@
 {#if $LayoutQuery.data?.nodeByUri}
 	<Seo data={$LayoutQuery.data.nodeByUri} />
 {/if}
+	<Partytown />
 <div class="layout">
 	<div class="header">
 		<Header data={LayoutQuery} />

@@ -7,7 +7,7 @@ import { PUBLIC_SENTRY_DSN, PUBLIC_SENTRY_ENV } from '$env/static/public';
 Sentry.init({
 	dsn: PUBLIC_SENTRY_DSN,
 	environment: PUBLIC_SENTRY_ENV || 'development',
-	tracesSampleRate: 1.0,
+	tracesSampleRate: 0.1,
 });
 
 Sentry.setTag('svelteKit', 'server');
