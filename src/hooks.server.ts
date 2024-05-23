@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/sveltekit';
+import { partytownSnippet } from '@builder.io/partytown/integration';
 
 import type { Handle, HandleServerError } from '@sveltejs/kit';
 
@@ -20,6 +21,8 @@ export const handleError = Sentry.handleErrorWithSentry(myErrorHandler);
 
 export const handle: Handle = async function ({ event, resolve }) {
 	const response = await resolve(event, {
+		transformPageChunk: ({ html }) =>
+			html.replace('%partytown.script%', `<script>${partytownSnippet()}</script>`),
 		preload: ({ type }) => type === 'js' || type === 'css' || type === 'font',
 	});
 
