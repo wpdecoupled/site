@@ -9,10 +9,11 @@ export const ssr = true;
 export const prerender = false;
 
 export const load: LayoutLoad = async (event) => {
-	searchHandler(event);
+	const { url, setHeaders } = event;
+	searchHandler({ url });
 
 	if (!dev) {
-		event.setHeaders({
+		setHeaders({
 			'cache-control': 'public, max-age=300, stale-while-revalidate=60, stale-if-error=86400',
 		});
 	}
