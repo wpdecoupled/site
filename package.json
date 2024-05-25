@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "vite dev --host 127.0.0.1",
 		"build": "vite build",
+		"prepare": "svelte-kit sync",
 		"preview": "vite preview",
 		"start": "node build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -44,7 +45,7 @@
 	},
 	"dependencies": {
 		"@builder.io/partytown": "^0.10.2",
-		"@sentry/sveltekit": "^7.112.2",
+		"@sentry/sveltekit": "^8.4.0",
 		"@sveltejs/adapter-node": "^5.0.1",
 		"feed": "^4.2.2",
 		"http-status-codes": "^2.2.0",
