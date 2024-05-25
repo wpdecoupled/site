@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "vite dev --host 127.0.0.1",
 		"build": "vite build",
+		"prepare": "svelte-kit sync",
 		"preview": "vite preview",
 		"start": "node build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
