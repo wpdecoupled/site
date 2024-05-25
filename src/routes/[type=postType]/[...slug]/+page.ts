@@ -1,17 +1,15 @@
-import type { PageLoad } from './$types';
-
 import { error } from '@sveltejs/kit';
-import { get } from 'svelte/store';
-import { load_PostContent } from '$houdini';
+import type { AfterLoadEvent, PostContentVariables } from './$houdini';
 
-export const load: PageLoad = async (event) => {
-	const data = await load_PostContent({ event, variables: { uri: event.url.pathname } });
+export const _PostContentVariables: PostContentVariables = ({ url }) => {
+	return {
+		uri: url.pathname,
+	};
+}
 
-	const postContent = get(data.PostContent);
-
-	if (postContent.data?.post == undefined) {
-		error(404, 'Post not found');
+export function _houdini_afterLoad(event: AfterLoadEvent) {
+	const { data } = event;
+	if (!data.PostContent.post) {
+		error(404, 'Page not found.');
 	}
-
-	return data;
-};
+}
