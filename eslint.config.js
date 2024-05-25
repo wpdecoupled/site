@@ -19,6 +19,7 @@ const config = [
 			'yarn.lock',
 			'pnpm-lock.yaml',
 			'package-lock.json',
+			'static/~partytown',
 		],
 	},
 	js.configs.recommended,
