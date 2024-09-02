@@ -5711,6 +5711,11 @@ type CoreMediaTextAttributes implements BlockWithSupportsAnchor {
   textColor: String
 
   """
+  The &quot;useFeaturedImage&quot; field on the &quot;CoreMediaText&quot; block
+  """
+  useFeaturedImage: Boolean
+
+  """
   The &quot;verticalAlignment&quot; field on the &quot;CoreMediaText&quot; block
   """
   verticalAlignment: String
@@ -8482,9 +8487,6 @@ type CoreQuote implements BlockWithSupportsAnchor & EditorBlock & GuideEditorBlo
 
 """Attributes of the %s Block Type"""
 type CoreQuoteAttributes implements BlockWithSupportsAnchor {
-  """The &quot;align&quot; field on the &quot;CoreQuote&quot; block"""
-  align: String
-
   """The anchor field for the block."""
   anchor: String
 
@@ -8516,6 +8518,9 @@ type CoreQuoteAttributes implements BlockWithSupportsAnchor {
 
   """The &quot;style&quot; field on the &quot;CoreQuote&quot; block"""
   style: BlockAttributesObject
+
+  """The &quot;textAlign&quot; field on the &quot;CoreQuote&quot; block"""
+  textAlign: String
 
   """The &quot;textColor&quot; field on the &quot;CoreQuote&quot; block"""
   textColor: String
@@ -9019,6 +9024,9 @@ type CoreSiteTaglineAttributes {
   The &quot;gradient&quot; field on the &quot;CoreSiteTagline&quot; block
   """
   gradient: String
+
+  """The &quot;level&quot; field on the &quot;CoreSiteTagline&quot; block"""
+  level: Float
 
   """The &quot;lock&quot; field on the &quot;CoreSiteTagline&quot; block"""
   lock: BlockAttributesObject
@@ -11203,6 +11211,25 @@ type GraphqlDocument implements ContentNode & DatabaseIdentifier & Node & NodeWi
   """Alias names for saved GraphQL query documents"""
   alias: [String!]
 
+  """The ancestors of the content node."""
+  ancestors(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+  ): GraphqlDocumentToGraphqlDocumentConnection @deprecated(reason: "This content type is not hierarchical and typically will not have ancestors")
+
   """The content of the post."""
   content(
     """Format of the field output"""
@@ -11358,6 +11385,9 @@ type GraphqlDocument implements ContentNode & DatabaseIdentifier & Node & NodeWi
   The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
   """
   modifiedGmt: String
+
+  """The parent of the content node."""
+  parent: GraphqlDocumentToParentConnectionEdge @deprecated(reason: "This content type is not hierarchical and typically will not have a parent")
 
   """The password for the graphql_document object."""
   password: String
@@ -11938,6 +11968,46 @@ enum GraphqlDocumentIdType {
 }
 
 """
+Connection between the GraphqlDocument type and the graphqlDocument type
+"""
+type GraphqlDocumentToGraphqlDocumentConnection implements Connection & GraphqlDocumentConnection {
+  """Edges for the GraphqlDocumentToGraphqlDocumentConnection connection"""
+  edges: [GraphqlDocumentToGraphqlDocumentConnectionEdge!]!
+
+  """The nodes of the connection, without the edges"""
+  nodes: [GraphqlDocument!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: GraphqlDocumentToGraphqlDocumentConnectionPageInfo!
+}
+
+"""An edge in a connection"""
+type GraphqlDocumentToGraphqlDocumentConnectionEdge implements Edge & GraphqlDocumentConnectionEdge {
+  """A cursor for use in pagination"""
+  cursor: String @deprecated(reason: "This content type is not hierarchical and typically will not have ancestors")
+
+  """The item at the end of the edge"""
+  node: GraphqlDocument! @deprecated(reason: "This content type is not hierarchical and typically will not have ancestors")
+}
+
+"""
+Page Info on the &quot;GraphqlDocumentToGraphqlDocumentConnection&quot;
+"""
+type GraphqlDocumentToGraphqlDocumentConnectionPageInfo implements GraphqlDocumentConnectionPageInfo & PageInfo & WPPageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+"""
 Connection between the GraphqlDocument type and the graphqlDocumentGroup type
 """
 type GraphqlDocumentToGraphqlDocumentGroupConnection implements Connection & GraphqlDocumentGroupConnection {
@@ -12067,6 +12137,19 @@ input GraphqlDocumentToGraphqlDocumentGroupConnectionWhereArgs {
 
   """Whether to prime meta caches for matched terms. Default true."""
   updateTermMetaCache: Boolean
+}
+
+"""
+Connection between the GraphqlDocument type and the graphqlDocument type
+"""
+type GraphqlDocumentToParentConnectionEdge implements Edge & GraphqlDocumentConnectionEdge & OneToOneConnection {
+  """
+  Opaque reference to the nodes position in the connection. Value can be used with pagination args.
+  """
+  cursor: String
+
+  """The node of the connection, without the edges"""
+  node: GraphqlDocument! @deprecated(reason: "This content type is not hierarchical and typically will not have a parent")
 }
 
 """
@@ -12213,6 +12296,25 @@ input GraphqlDocumentToTermNodeConnectionWhereArgs {
 
 """The guide type"""
 type Guide implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithGuideEditorBlocks & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
+  """The ancestors of the content node."""
+  ancestors(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+  ): GuideToGuideConnection @deprecated(reason: "This content type is not hierarchical and typically will not have ancestors")
+
   """Connection between the NodeWithAuthor type and the User type"""
   author: NodeWithAuthorToUserConnectionEdge
 
@@ -12369,6 +12471,9 @@ type Guide implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node
   The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
   """
   modifiedGmt: String
+
+  """The parent of the content node."""
+  parent: GuideToParentConnectionEdge @deprecated(reason: "This content type is not hierarchical and typically will not have a parent")
 
   """The password for the guide object."""
   password: String
@@ -12582,6 +12687,53 @@ type GuideMetaSettings implements RankMathMetaSettingWithArchive & RankMathMetaS
 
   """Default title tag for single Guides pages."""
   title: String
+}
+
+"""Connection between the Guide type and the guide type"""
+type GuideToGuideConnection implements Connection & GuideConnection {
+  """Edges for the GuideToGuideConnection connection"""
+  edges: [GuideToGuideConnectionEdge!]!
+
+  """The nodes of the connection, without the edges"""
+  nodes: [Guide!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: GuideToGuideConnectionPageInfo!
+}
+
+"""An edge in a connection"""
+type GuideToGuideConnectionEdge implements Edge & GuideConnectionEdge {
+  """A cursor for use in pagination"""
+  cursor: String @deprecated(reason: "This content type is not hierarchical and typically will not have ancestors")
+
+  """The item at the end of the edge"""
+  node: Guide! @deprecated(reason: "This content type is not hierarchical and typically will not have ancestors")
+}
+
+"""Page Info on the &quot;GuideToGuideConnection&quot;"""
+type GuideToGuideConnectionPageInfo implements GuideConnectionPageInfo & PageInfo & WPPageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+"""Connection between the Guide type and the guide type"""
+type GuideToParentConnectionEdge implements Edge & GuideConnectionEdge & OneToOneConnection {
+  """
+  Opaque reference to the nodes position in the connection. Value can be used with pagination args.
+  """
+  cursor: String
+
+  """The node of the connection, without the edges"""
+  node: Guide! @deprecated(reason: "This content type is not hierarchical and typically will not have a parent")
 }
 
 """Connection between the Guide type and the guide type"""
@@ -15628,6 +15780,25 @@ enum PluginStatusEnum {
 
 """The post type"""
 type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithPostEditorBlocks & NodeWithRankMathSeo & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable {
+  """The ancestors of the content node."""
+  ancestors(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+  ): PostToPostConnection @deprecated(reason: "This content type is not hierarchical and typically will not have ancestors")
+
   """Connection between the NodeWithAuthor type and the User type"""
   author: NodeWithAuthorToUserConnectionEdge
 
@@ -15836,6 +16007,9 @@ type Post implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node 
   The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
   """
   modifiedGmt: String
+
+  """The parent of the content node."""
+  parent: PostToParentConnectionEdge @deprecated(reason: "This content type is not hierarchical and typically will not have a parent")
 
   """The password for the post object."""
   password: String
@@ -17078,6 +17252,53 @@ input PostToCommentConnectionWhereArgs {
 
   """Include comments for a specific user ID."""
   userId: ID
+}
+
+"""Connection between the Post type and the post type"""
+type PostToParentConnectionEdge implements Edge & OneToOneConnection & PostConnectionEdge {
+  """
+  Opaque reference to the nodes position in the connection. Value can be used with pagination args.
+  """
+  cursor: String
+
+  """The node of the connection, without the edges"""
+  node: Post! @deprecated(reason: "This content type is not hierarchical and typically will not have a parent")
+}
+
+"""Connection between the Post type and the post type"""
+type PostToPostConnection implements Connection & PostConnection {
+  """Edges for the PostToPostConnection connection"""
+  edges: [PostToPostConnectionEdge!]!
+
+  """The nodes of the connection, without the edges"""
+  nodes: [Post!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: PostToPostConnectionPageInfo!
+}
+
+"""An edge in a connection"""
+type PostToPostConnectionEdge implements Edge & PostConnectionEdge {
+  """A cursor for use in pagination"""
+  cursor: String @deprecated(reason: "This content type is not hierarchical and typically will not have ancestors")
+
+  """The item at the end of the edge"""
+  node: Post! @deprecated(reason: "This content type is not hierarchical and typically will not have ancestors")
+}
+
+"""Page Info on the &quot;PostToPostConnection&quot;"""
+type PostToPostConnectionPageInfo implements PageInfo & PostConnectionPageInfo & WPPageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
 }
 
 """Connection between the Post type and the postFormat type"""
