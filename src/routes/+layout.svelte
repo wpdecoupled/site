@@ -31,9 +31,9 @@
 		<p class="post-footer-line">
 			Hosting sponsored by
 			<a
-				href="https://wpengine.com/atlas/?utm_source=wpdecoupled&utm_campaign=hosting_sponsor"
+				href="https://wpengine.com/headless-wordpress/?utm_source=wpdecoupled&utm_campaign=hosting_sponsor"
 				target="_blank"
-				rel="noreferrer">WPEngine Atlas</a
+				rel="noreferrer">WPEngine</a
 			>
 		</p>
 	</div>
