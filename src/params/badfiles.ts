@@ -11,7 +11,7 @@ example.html
 test.css
 */
 
-const regex = /(.php)|^\./gmi;
+const regex = /(.php)|^\.|(^\/wp-json)/gmi;
 
 export const match: ParamMatcher = (param) => {
 	const standard = param.toLowerCase();
