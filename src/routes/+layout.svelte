@@ -6,11 +6,16 @@
 
 	import type { LayoutData } from './$houdini';
 
-	export let data: LayoutData;
+	interface Props {
+		data: LayoutData;
+		children?: import('svelte').Snippet;
+	}
+
+	let { data, children }: Props = $props();
 
 	let year = new Date().getFullYear();
 
-	$: ({ LayoutQuery } = data);
+	let { LayoutQuery } = $derived(data);
 </script>
 
 {#if $LayoutQuery.data?.nodeByUri}
@@ -21,7 +26,7 @@
 		<Header data={LayoutQuery} />
 	</div>
 	<div class="main">
-		<slot />
+		{@render children?.()}
 	</div>
 	<div class="footer">
 		<Footer />

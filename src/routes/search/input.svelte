@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let query = '';
+	interface Props {
+		query?: string;
+	}
+
+	let { query = '' }: Props = $props();
 	let label = 'Search';
 </script>
 

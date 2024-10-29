@@ -6,11 +6,15 @@
 	import type { PageData } from './$houdini';
 	import { HomePageQueryStore } from '$houdini';
 
-	export let form: ActionData;
 
-	export let data: PageData;
+	interface Props {
+		form: ActionData;
+		data: PageData;
+	}
 
-	$: ({ HomePageQuery } = data);
+	let { form, data }: Props = $props();
+
+	let { HomePageQuery } = $derived(data);
 </script>
 
 <main class="wrapper">

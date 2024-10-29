@@ -2,9 +2,13 @@
 	import SearchInput from './input.svelte';
 	import type { PageData } from './$houdini';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: ({ query, results } = data);
+	let { data }: Props = $props();
+
+	let { query, results } = $derived(data);
 </script>
 
 <main id="content" class="wrapper">

@@ -2,9 +2,13 @@
 	import { formatDate } from '$lib/strings';
 	import { fragment, graphql, type PostPage } from '$houdini';
 
-	export let post: PostPage;
+	interface Props {
+		post: PostPage;
+	}
 
-	$: data = fragment(
+	let { post }: Props = $props();
+
+	let data = $derived(fragment(
 		post,
 		graphql(`
 			fragment PostPage on UniformResourceIdentifiable {
@@ -32,9 +36,9 @@
 				}
 			}
 		`),
-	);
+	));
 
-	$: author = $data.author?.node;
+	let author = $derived($data.author?.node);
 </script>
 
 <article class="prose">

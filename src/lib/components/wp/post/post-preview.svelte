@@ -1,10 +1,16 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { formatDate } from '$lib/strings';
 	import { fragment, graphql, type PostPreview } from '$houdini';
 
-	export let post: PostPreview;
+	interface Props {
+		post: PostPreview;
+	}
 
-	$: data = fragment(
+	let { post }: Props = $props();
+
+	let data = $derived(fragment(
 		post,
 		graphql`
 			fragment PostPreview on ContentNode {
@@ -30,15 +36,17 @@
 				}
 			}
 		`,
-	);
+	));
 
-	let date: string;
+	let date: string = $state();
 
-	$: if ($data.dateGmt) {
-		date = formatDate($data.dateGmt);
-	}
+	run(() => {
+		if ($data.dateGmt) {
+			date = formatDate($data.dateGmt);
+		}
+	});
 
-	$: cleanExcerpt = $data.excerpt?.replace(/<[^>]*>?/gm, '');
+	let cleanExcerpt = $derived($data.excerpt?.replace(/<[^>]*>?/gm, ''));
 </script>
 
 <li>

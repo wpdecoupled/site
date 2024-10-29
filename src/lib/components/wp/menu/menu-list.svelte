@@ -2,9 +2,13 @@
 	import MenuItem from './menu-item.svelte';
 	import { fragment, graphql, type MenuItems } from '$houdini';
 
-	export let data: MenuItems | null;
+	interface Props {
+		data: MenuItems | null;
+	}
 
-	$: menuItemsData = fragment(
+	let { data }: Props = $props();
+
+	let menuItemsData = $derived(fragment(
 		data,
 		graphql(`
 			fragment MenuItems on Menu {
@@ -15,7 +19,7 @@
 				}
 			}
 		`),
-	);
+	));
 </script>
 
 {#if $menuItemsData && $menuItemsData.menuItems}
