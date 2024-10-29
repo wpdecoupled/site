@@ -1,4 +1,9 @@
 <script lang="ts">
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 <div class="card-tray">
@@ -6,7 +11,7 @@
 		<h2>Recent</h2>
 	</header>
 	<ul class="tray-list">
-		<slot />
+		{@render children?.()}
 	</ul>
 </div>
 

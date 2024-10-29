@@ -6,14 +6,18 @@
 
 	import type { LayoutData } from './$houdini';
 
-	export let data: LayoutData['LayoutQuery'];
+	interface Props {
+		data: LayoutData['LayoutQuery'];
+	}
 
-	$: ({ data: resultData } = $data);
+	let { data }: Props = $props();
+
+	let { data: resultData } = $derived($data);
 </script>
 
 <header class="center bottom-border">
 	<div class="banner bottom-border">
-		<div />
+		<div></div>
 		<a class="wrapper logo" href="/">
 			<Logo />
 		</a>

@@ -3,9 +3,13 @@
 	import PostPreview from '$lib/components/wp/post/post-preview.svelte';
 	import type { PageData } from './$houdini';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: ({ PostArchive: PostArchiveData } = data);
+	let { data }: Props = $props();
+
+	let { PostArchive: PostArchiveData } = $derived(data);
 </script>
 
 <main class="wrapper">

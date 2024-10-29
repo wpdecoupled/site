@@ -1,10 +1,16 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { formatDate } from '$lib/strings';
 	import { fragment, graphql, type PostMiniCard } from '$houdini';
 
-	export let post: PostMiniCard;
+	interface Props {
+		post: PostMiniCard;
+	}
 
-	$: data = fragment(
+	let { post }: Props = $props();
+
+	let data = $derived(fragment(
 		post,
 		graphql`
 			fragment PostMiniCard on ContentNode {
@@ -38,13 +44,15 @@
 				}
 			}
 		`,
-	);
+	));
 
-	let date: string;
+	let date: string = $state();
 
-	$: if ($data.dateGmt) {
-		date = formatDate($data.dateGmt);
-	}
+	run(() => {
+		if ($data.dateGmt) {
+			date = formatDate($data.dateGmt);
+		}
+	});
 </script>
 
 <li class="card">

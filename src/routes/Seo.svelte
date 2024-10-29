@@ -1,9 +1,13 @@
 <script lang="ts">
 	import { fragment, graphql, type SeoData } from '$houdini';
 
-	export let data: SeoData;
+	interface Props {
+		data: SeoData;
+	}
 
-	$: uriItemData = fragment(
+	let { data }: Props = $props();
+
+	let uriItemData = $derived(fragment(
 		data,
 		graphql(`
 			fragment SeoData on UniformResourceIdentifiable {
@@ -17,9 +21,9 @@
 				}
 			}
 		`),
-	);
+	));
 
-	$: seo = $uriItemData?.seo;
+	let seo = $derived($uriItemData?.seo);
 </script>
 
 <svelte:head>

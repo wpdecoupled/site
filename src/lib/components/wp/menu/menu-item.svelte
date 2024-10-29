@@ -3,9 +3,13 @@
 	import { classNames } from '$lib/strings';
 	import { fragment, graphql, type MenuItem } from '$houdini';
 
-	export let menuItemData: MenuItem;
+	interface Props {
+		menuItemData: MenuItem;
+	}
 
-	$: data = fragment(
+	let { menuItemData }: Props = $props();
+
+	let data = $derived(fragment(
 		menuItemData,
 		graphql(`
 			fragment MenuItem on MenuItem {
@@ -17,10 +21,10 @@
 				target
 			}
 		`),
-	);
+	));
 
-	$: ({ title, target } = $data);
-	$: current_url = $page.url.pathname;
+	let { title, target } = $derived($data);
+	let current_url = $derived($page.url.pathname);
 </script>
 
 <li class="nav-item">

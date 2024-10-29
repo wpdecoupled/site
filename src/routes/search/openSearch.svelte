@@ -2,14 +2,14 @@
 	// import { enhance } from '$app/forms';
 	import SearchInput from './input.svelte';
 
-	let dialog: HTMLDialogElement;
+	let dialog: HTMLDialogElement = $state();
 </script>
 
 <div class="search-layout">
 	<button
 		type="button"
 		aria-label="Open search dialog"
-		on:click={() => {
+		onclick={() => {
 			dialog.showModal();
 		}}
 		><svg

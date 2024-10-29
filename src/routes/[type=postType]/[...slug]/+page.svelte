@@ -4,9 +4,13 @@
 
 	import type { PageData } from './$houdini';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: ({ PostContent } = data);
+	let { data }: Props = $props();
+
+	let { PostContent } = $derived(data);
 </script>
 
 <main class="wrapper">
