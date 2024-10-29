@@ -11,6 +11,7 @@
 		"start": "node build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"check:schema": "graphql-inspector diff https://cms.wpdecoupled.dev/graphql ./schema.graphql",
 		"test:format": "prettier --check . ",
 		"test:lint": "eslint .",
 		"lint": "pnpm test:lint --fix",
@@ -19,6 +20,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.11.1",
+		"@graphql-inspector/cli": "^5.0.6",
 		"@sveltejs/kit": "^2.6.1",
 		"@sveltejs/vite-plugin-svelte": "^3.1.2",
 		"@types/gtag.js": "^0.0.19",
@@ -27,6 +29,7 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.44.1",
 		"globals": "^15.10.0",
+		"graphql": "^16.9.0",
 		"houdini": "^1.2.62",
 		"houdini-svelte": "^1.2.62",
 		"postcss": "^8.4.47",
@@ -55,5 +58,5 @@
 	"engines": {
 		"node": ">=20.0.0 <21.0.0"
 	},
-	"packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca"
+	"packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
 }
