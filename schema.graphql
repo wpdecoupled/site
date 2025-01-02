@@ -849,9 +849,9 @@ type Comment implements DatabaseIdentifier & Node & UniformResourceIdentifiable 
   author: CommentToCommenterConnectionEdge
 
   """
-  IP address for the author. This field is equivalent to WP_Comment-&gt;comment_author_IP and the value matching the &quot;comment_author_IP&quot; column in SQL.
+  IP address for the author at the time of commenting. This field is equivalent to WP_Comment-&gt;comment_author_IP and the value matching the &quot;comment_author_IP&quot; column in SQL.
   """
-  authorIp: String
+  authorIp: String @deprecated(reason: "Use the ipAddress field on the edge between the comment and author")
 
   """ID for the comment, unique among comments."""
   commentId: Int @deprecated(reason: "Deprecated in favor of databaseId")
@@ -1205,8 +1205,22 @@ type CommentToCommenterConnectionEdge implements CommenterConnectionEdge & Edge 
   """
   cursor: String
 
+  """The email address representing the author for this particular comment"""
+  email: String
+
+  """
+  IP address of the author at the time of making this comment. This field is equivalent to WP_Comment-&gt;comment_author_IP and the value matching the &quot;comment_author_IP&quot; column in SQL.
+  """
+  ipAddress: String
+
+  """The display name of the comment author for this particular comment"""
+  name: String
+
   """The node of the connection, without the edges"""
   node: Commenter!
+
+  """The url entered for the comment author on this particular comment"""
+  url: String
 }
 
 """Connection between the Comment type and the ContentNode type"""
@@ -2370,6 +2384,11 @@ type CoreAudioAttributes implements BlockWithSupportsAnchor {
   autoplay: Boolean
 
   """
+  The &quot;blob&quot; field on the &quot;CoreAudioAttributes&quot; block or block attributes
+  """
+  blob: String
+
+  """
   The &quot;caption&quot; field on the &quot;CoreAudioAttributes&quot; block or block attributes
   """
   caption: String
@@ -2768,6 +2787,16 @@ type CoreButtonsAttributes implements BlockWithSupportsAnchor {
   anchor: String
 
   """
+  The &quot;backgroundColor&quot; field on the &quot;CoreButtonsAttributes&quot; block or block attributes
+  """
+  backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreButtonsAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreButtonsAttributes&quot; block or block attributes
   """
   className: String
@@ -2786,6 +2815,11 @@ type CoreButtonsAttributes implements BlockWithSupportsAnchor {
   The &quot;fontSize&quot; field on the &quot;CoreButtonsAttributes&quot; block or block attributes
   """
   fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreButtonsAttributes&quot; block or block attributes
+  """
+  gradient: String
 
   """
   The &quot;layout&quot; field on the &quot;CoreButtonsAttributes&quot; block or block attributes
@@ -2946,6 +2980,11 @@ type CoreCategoriesAttributes {
   align: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreCategoriesAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreCategoriesAttributes&quot; block or block attributes
   """
   className: String
@@ -2964,6 +3003,11 @@ type CoreCategoriesAttributes {
   The &quot;fontSize&quot; field on the &quot;CoreCategoriesAttributes&quot; block or block attributes
   """
   fontSize: String
+
+  """
+  The &quot;label&quot; field on the &quot;CoreCategoriesAttributes&quot; block or block attributes
+  """
+  label: String
 
   """
   The &quot;lock&quot; field on the &quot;CoreCategoriesAttributes&quot; block or block attributes
@@ -2986,6 +3030,11 @@ type CoreCategoriesAttributes {
   showHierarchy: Boolean!
 
   """
+  The &quot;showLabel&quot; field on the &quot;CoreCategoriesAttributes&quot; block or block attributes
+  """
+  showLabel: Boolean!
+
+  """
   The &quot;showOnlyTopLevel&quot; field on the &quot;CoreCategoriesAttributes&quot; block or block attributes
   """
   showOnlyTopLevel: Boolean!
@@ -2999,6 +3048,11 @@ type CoreCategoriesAttributes {
   The &quot;style&quot; field on the &quot;CoreCategoriesAttributes&quot; block or block attributes
   """
   style: BlockAttributesObject
+
+  """
+  The &quot;taxonomy&quot; field on the &quot;CoreCategoriesAttributes&quot; block or block attributes
+  """
+  taxonomy: String!
 }
 
 """A block used for editing the site"""
@@ -3395,6 +3449,11 @@ type CoreCommentAuthorNameAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreCommentAuthorNameAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreCommentAuthorNameAttributes&quot; block or block attributes
   """
   className: String
@@ -3494,6 +3553,11 @@ type CoreCommentContentAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreCommentContentAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreCommentContentAttributes&quot; block or block attributes
   """
   className: String
@@ -3581,6 +3645,11 @@ type CoreCommentDateAttributes {
   The &quot;backgroundColor&quot; field on the &quot;CoreCommentDateAttributes&quot; block or block attributes
   """
   backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreCommentDateAttributes&quot; block or block attributes
+  """
+  borderColor: String
 
   """
   The &quot;className&quot; field on the &quot;CoreCommentDateAttributes&quot; block or block attributes
@@ -3677,6 +3746,11 @@ type CoreCommentEditLinkAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreCommentEditLinkAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreCommentEditLinkAttributes&quot; block or block attributes
   """
   className: String
@@ -3766,6 +3840,11 @@ type CoreCommentReplyLinkAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreCommentReplyLinkAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreCommentReplyLinkAttributes&quot; block or block attributes
   """
   className: String
@@ -3848,6 +3927,11 @@ type CoreCommentTemplateAttributes {
   The &quot;align&quot; field on the &quot;CoreCommentTemplateAttributes&quot; block or block attributes
   """
   align: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreCommentTemplateAttributes&quot; block or block attributes
+  """
+  borderColor: String
 
   """
   The &quot;className&quot; field on the &quot;CoreCommentTemplateAttributes&quot; block or block attributes
@@ -4404,6 +4488,11 @@ type CoreCommentsTitleAttributes {
   level: Float!
 
   """
+  The &quot;levelOptions&quot; field on the &quot;CoreCommentsTitleAttributes&quot; block or block attributes
+  """
+  levelOptions: BlockAttributesArray
+
+  """
   The &quot;lock&quot; field on the &quot;CoreCommentsTitleAttributes&quot; block or block attributes
   """
   lock: BlockAttributesObject
@@ -4897,6 +4986,16 @@ type CoreFileAttributes implements BlockWithSupportsAnchor {
   backgroundColor: String
 
   """
+  The &quot;blob&quot; field on the &quot;CoreFileAttributes&quot; block or block attributes
+  """
+  blob: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreFileAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreFileAttributes&quot; block or block attributes
   """
   className: String
@@ -5168,6 +5267,11 @@ type CoreGalleryAttributes implements BlockWithSupportsAnchor {
   The &quot;backgroundColor&quot; field on the &quot;CoreGalleryAttributes&quot; block or block attributes
   """
   backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreGalleryAttributes&quot; block or block attributes
+  """
+  borderColor: String
 
   """
   The &quot;caption&quot; field on the &quot;CoreGalleryAttributes&quot; block or block attributes
@@ -5460,6 +5564,11 @@ type CoreHeadingAttributes implements BlockWithSupportsAnchor {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreHeadingAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreHeadingAttributes&quot; block or block attributes
   """
   className: String
@@ -5493,6 +5602,11 @@ type CoreHeadingAttributes implements BlockWithSupportsAnchor {
   The &quot;level&quot; field on the &quot;CoreHeadingAttributes&quot; block or block attributes
   """
   level: Float!
+
+  """
+  The &quot;levelOptions&quot; field on the &quot;CoreHeadingAttributes&quot; block or block attributes
+  """
+  levelOptions: BlockAttributesArray
 
   """
   The &quot;lock&quot; field on the &quot;CoreHeadingAttributes&quot; block or block attributes
@@ -5716,6 +5830,11 @@ type CoreImageAttributes implements BlockWithSupportsAnchor {
   aspectRatio: String
 
   """
+  The &quot;blob&quot; field on the &quot;CoreImageAttributes&quot; block or block attributes
+  """
+  blob: String
+
+  """
   The &quot;borderColor&quot; field on the &quot;CoreImageAttributes&quot; block or block attributes
   """
   borderColor: String
@@ -5865,6 +5984,11 @@ type CoreLatestCommentsAttributes {
   align: String
 
   """
+  The &quot;backgroundColor&quot; field on the &quot;CoreLatestCommentsAttributes&quot; block or block attributes
+  """
+  backgroundColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreLatestCommentsAttributes&quot; block or block attributes
   """
   className: String
@@ -5900,6 +6024,11 @@ type CoreLatestCommentsAttributes {
   fontSize: String
 
   """
+  The &quot;gradient&quot; field on the &quot;CoreLatestCommentsAttributes&quot; block or block attributes
+  """
+  gradient: String
+
+  """
   The &quot;lock&quot; field on the &quot;CoreLatestCommentsAttributes&quot; block or block attributes
   """
   lock: BlockAttributesObject
@@ -5913,6 +6042,11 @@ type CoreLatestCommentsAttributes {
   The &quot;style&quot; field on the &quot;CoreLatestCommentsAttributes&quot; block or block attributes
   """
   style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreLatestCommentsAttributes&quot; block or block attributes
+  """
+  textColor: String
 }
 
 """A block used for editing the site"""
@@ -6208,6 +6342,11 @@ type CoreListAttributes implements BlockWithSupportsAnchor {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreListAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreListAttributes&quot; block or block attributes
   """
   className: String
@@ -6284,7 +6423,10 @@ type CoreListAttributes implements BlockWithSupportsAnchor {
 }
 
 """A block used for editing the site"""
-type CoreListItem implements EditorBlock & GuideEditorBlock & PageEditorBlock & PostEditorBlock {
+type CoreListItem implements BlockWithSupportsAnchor & EditorBlock & GuideEditorBlock & PageEditorBlock & PostEditorBlock {
+  """The anchor field for the block."""
+  anchor: String
+
   """The API version of the Gutenberg Block"""
   apiVersion: Int
 
@@ -6320,7 +6462,20 @@ type CoreListItem implements EditorBlock & GuideEditorBlock & PageEditorBlock & 
 }
 
 """Attributes of the CoreListItem Block Type"""
-type CoreListItemAttributes {
+type CoreListItemAttributes implements BlockWithSupportsAnchor {
+  """The anchor field for the block."""
+  anchor: String
+
+  """
+  The &quot;backgroundColor&quot; field on the &quot;CoreListItemAttributes&quot; block or block attributes
+  """
+  backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreListItemAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
   """
   The &quot;className&quot; field on the &quot;CoreListItemAttributes&quot; block or block attributes
   """
@@ -6342,6 +6497,11 @@ type CoreListItemAttributes {
   fontSize: String
 
   """
+  The &quot;gradient&quot; field on the &quot;CoreListItemAttributes&quot; block or block attributes
+  """
+  gradient: String
+
+  """
   The &quot;lock&quot; field on the &quot;CoreListItemAttributes&quot; block or block attributes
   """
   lock: BlockAttributesObject
@@ -6360,6 +6520,11 @@ type CoreListItemAttributes {
   The &quot;style&quot; field on the &quot;CoreListItemAttributes&quot; block or block attributes
   """
   style: BlockAttributesObject
+
+  """
+  The &quot;textColor&quot; field on the &quot;CoreListItemAttributes&quot; block or block attributes
+  """
+  textColor: String
 }
 
 """A block used for editing the site"""
@@ -6401,6 +6566,16 @@ type CoreLoginout implements EditorBlock & GuideEditorBlock & PageEditorBlock & 
 """Attributes of the CoreLoginout Block Type"""
 type CoreLoginoutAttributes {
   """
+  The &quot;backgroundColor&quot; field on the &quot;CoreLoginoutAttributes&quot; block or block attributes
+  """
+  backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreLoginoutAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreLoginoutAttributes&quot; block or block attributes
   """
   className: String
@@ -6419,6 +6594,11 @@ type CoreLoginoutAttributes {
   The &quot;fontSize&quot; field on the &quot;CoreLoginoutAttributes&quot; block or block attributes
   """
   fontSize: String
+
+  """
+  The &quot;gradient&quot; field on the &quot;CoreLoginoutAttributes&quot; block or block attributes
+  """
+  gradient: String
 
   """
   The &quot;lock&quot; field on the &quot;CoreLoginoutAttributes&quot; block or block attributes
@@ -6499,6 +6679,11 @@ type CoreMediaTextAttributes implements BlockWithSupportsAnchor {
   The &quot;backgroundColor&quot; field on the &quot;CoreMediaTextAttributes&quot; block or block attributes
   """
   backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreMediaTextAttributes&quot; block or block attributes
+  """
+  borderColor: String
 
   """
   The &quot;className&quot; field on the &quot;CoreMediaTextAttributes&quot; block or block attributes
@@ -7091,6 +7276,16 @@ type CoreNavigationSubmenuAttributes {
   description: String
 
   """
+  The &quot;fontFamily&quot; field on the &quot;CoreNavigationSubmenuAttributes&quot; block or block attributes
+  """
+  fontFamily: String
+
+  """
+  The &quot;fontSize&quot; field on the &quot;CoreNavigationSubmenuAttributes&quot; block or block attributes
+  """
+  fontSize: String
+
+  """
   The &quot;id&quot; field on the &quot;CoreNavigationSubmenuAttributes&quot; block or block attributes
   """
   id: Float
@@ -7129,6 +7324,11 @@ type CoreNavigationSubmenuAttributes {
   The &quot;rel&quot; field on the &quot;CoreNavigationSubmenuAttributes&quot; block or block attributes
   """
   rel: String
+
+  """
+  The &quot;style&quot; field on the &quot;CoreNavigationSubmenuAttributes&quot; block or block attributes
+  """
+  style: BlockAttributesObject
 
   """
   The &quot;title&quot; field on the &quot;CoreNavigationSubmenuAttributes&quot; block or block attributes
@@ -7408,6 +7608,11 @@ type CoreParagraphAttributes implements BlockWithSupportsAnchor {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreParagraphAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreParagraphAttributes&quot; block or block attributes
   """
   className: String
@@ -7581,6 +7786,11 @@ type CorePostAuthorAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CorePostAuthorAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;byline&quot; field on the &quot;CorePostAuthorAttributes&quot; block or block attributes
   """
   byline: String
@@ -7695,6 +7905,11 @@ type CorePostAuthorBiographyAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CorePostAuthorBiographyAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CorePostAuthorBiographyAttributes&quot; block or block attributes
   """
   className: String
@@ -7782,6 +7997,11 @@ type CorePostAuthorNameAttributes {
   The &quot;backgroundColor&quot; field on the &quot;CorePostAuthorNameAttributes&quot; block or block attributes
   """
   backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CorePostAuthorNameAttributes&quot; block or block attributes
+  """
+  borderColor: String
 
   """
   The &quot;className&quot; field on the &quot;CorePostAuthorNameAttributes&quot; block or block attributes
@@ -7972,6 +8192,11 @@ type CorePostCommentsFormAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CorePostCommentsFormAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CorePostCommentsFormAttributes&quot; block or block attributes
   """
   className: String
@@ -8150,6 +8375,11 @@ type CorePostDateAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CorePostDateAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CorePostDateAttributes&quot; block or block attributes
   """
   className: String
@@ -8252,6 +8482,11 @@ type CorePostExcerptAttributes {
   The &quot;backgroundColor&quot; field on the &quot;CorePostExcerptAttributes&quot; block or block attributes
   """
   backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CorePostExcerptAttributes&quot; block or block attributes
+  """
+  borderColor: String
 
   """
   The &quot;className&quot; field on the &quot;CorePostExcerptAttributes&quot; block or block attributes
@@ -8705,6 +8940,11 @@ type CorePostTermsAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CorePostTermsAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CorePostTermsAttributes&quot; block or block attributes
   """
   className: String
@@ -8819,6 +9059,11 @@ type CorePostTitleAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CorePostTitleAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CorePostTitleAttributes&quot; block or block attributes
   """
   className: String
@@ -8847,6 +9092,11 @@ type CorePostTitleAttributes {
   The &quot;level&quot; field on the &quot;CorePostTitleAttributes&quot; block or block attributes
   """
   level: Float!
+
+  """
+  The &quot;levelOptions&quot; field on the &quot;CorePostTitleAttributes&quot; block or block attributes
+  """
+  levelOptions: BlockAttributesArray
 
   """
   The &quot;linkTarget&quot; field on the &quot;CorePostTitleAttributes&quot; block or block attributes
@@ -8932,6 +9182,11 @@ type CorePreformattedAttributes implements BlockWithSupportsAnchor {
   The &quot;backgroundColor&quot; field on the &quot;CorePreformattedAttributes&quot; block or block attributes
   """
   backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CorePreformattedAttributes&quot; block or block attributes
+  """
+  borderColor: String
 
   """
   The &quot;className&quot; field on the &quot;CorePreformattedAttributes&quot; block or block attributes
@@ -9677,6 +9932,11 @@ type CoreQueryTitleAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreQueryTitleAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreQueryTitleAttributes&quot; block or block attributes
   """
   className: String
@@ -9700,6 +9960,11 @@ type CoreQueryTitleAttributes {
   The &quot;level&quot; field on the &quot;CoreQueryTitleAttributes&quot; block or block attributes
   """
   level: Float!
+
+  """
+  The &quot;levelOptions&quot; field on the &quot;CoreQueryTitleAttributes&quot; block or block attributes
+  """
+  levelOptions: BlockAttributesArray
 
   """
   The &quot;lock&quot; field on the &quot;CoreQueryTitleAttributes&quot; block or block attributes
@@ -9783,6 +10048,11 @@ type CoreQuote implements BlockWithSupportsAnchor & EditorBlock & GuideEditorBlo
 
 """Attributes of the CoreQuote Block Type"""
 type CoreQuoteAttributes implements BlockWithSupportsAnchor {
+  """
+  The &quot;align&quot; field on the &quot;CoreQuoteAttributes&quot; block or block attributes
+  """
+  align: String
+
   """The anchor field for the block."""
   anchor: String
 
@@ -9790,6 +10060,11 @@ type CoreQuoteAttributes implements BlockWithSupportsAnchor {
   The &quot;backgroundColor&quot; field on the &quot;CoreQuoteAttributes&quot; block or block attributes
   """
   backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreQuoteAttributes&quot; block or block attributes
+  """
+  borderColor: String
 
   """
   The &quot;citation&quot; field on the &quot;CoreQuoteAttributes&quot; block or block attributes
@@ -10476,6 +10751,11 @@ type CoreSiteTaglineAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreSiteTaglineAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreSiteTaglineAttributes&quot; block or block attributes
   """
   className: String
@@ -10499,6 +10779,11 @@ type CoreSiteTaglineAttributes {
   The &quot;level&quot; field on the &quot;CoreSiteTaglineAttributes&quot; block or block attributes
   """
   level: Float!
+
+  """
+  The &quot;levelOptions&quot; field on the &quot;CoreSiteTaglineAttributes&quot; block or block attributes
+  """
+  levelOptions: BlockAttributesArray!
 
   """
   The &quot;lock&quot; field on the &quot;CoreSiteTaglineAttributes&quot; block or block attributes
@@ -10575,6 +10860,11 @@ type CoreSiteTitleAttributes {
   backgroundColor: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreSiteTitleAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreSiteTitleAttributes&quot; block or block attributes
   """
   className: String
@@ -10603,6 +10893,11 @@ type CoreSiteTitleAttributes {
   The &quot;level&quot; field on the &quot;CoreSiteTitleAttributes&quot; block or block attributes
   """
   level: Float!
+
+  """
+  The &quot;levelOptions&quot; field on the &quot;CoreSiteTitleAttributes&quot; block or block attributes
+  """
+  levelOptions: BlockAttributesArray!
 
   """
   The &quot;linkTarget&quot; field on the &quot;CoreSiteTitleAttributes&quot; block or block attributes
@@ -10762,6 +11057,11 @@ type CoreSocialLinksAttributes implements BlockWithSupportsAnchor {
   The &quot;backgroundColor&quot; field on the &quot;CoreSocialLinksAttributes&quot; block or block attributes
   """
   backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreSocialLinksAttributes&quot; block or block attributes
+  """
+  borderColor: String
 
   """
   The &quot;className&quot; field on the &quot;CoreSocialLinksAttributes&quot; block or block attributes
@@ -11218,6 +11518,11 @@ type CoreTagCloudAttributes {
   align: String
 
   """
+  The &quot;borderColor&quot; field on the &quot;CoreTagCloudAttributes&quot; block or block attributes
+  """
+  borderColor: String
+
+  """
   The &quot;className&quot; field on the &quot;CoreTagCloudAttributes&quot; block or block attributes
   """
   className: String
@@ -11394,6 +11699,11 @@ type CoreTermDescriptionAttributes {
   The &quot;backgroundColor&quot; field on the &quot;CoreTermDescriptionAttributes&quot; block or block attributes
   """
   backgroundColor: String
+
+  """
+  The &quot;borderColor&quot; field on the &quot;CoreTermDescriptionAttributes&quot; block or block attributes
+  """
+  borderColor: String
 
   """
   The &quot;className&quot; field on the &quot;CoreTermDescriptionAttributes&quot; block or block attributes
@@ -11673,6 +11983,11 @@ type CoreVideoAttributes implements BlockWithSupportsAnchor {
   The &quot;autoplay&quot; field on the &quot;CoreVideoAttributes&quot; block or block attributes
   """
   autoplay: Boolean
+
+  """
+  The &quot;blob&quot; field on the &quot;CoreVideoAttributes&quot; block or block attributes
+  """
+  blob: String
 
   """
   The &quot;caption&quot; field on the &quot;CoreVideoAttributes&quot; block or block attributes
@@ -16491,6 +16806,15 @@ enum MimeTypeEnum {
 
   """image/heic mime type."""
   IMAGE_HEIC
+
+  """image/heic-sequence mime type."""
+  IMAGE_HEIC_SEQUENCE
+
+  """image/heif mime type."""
+  IMAGE_HEIF
+
+  """image/heif-sequence mime type."""
+  IMAGE_HEIF_SEQUENCE
 
   """image/jpeg mime type."""
   IMAGE_JPEG
@@ -21600,11 +21924,6 @@ type RankMathRichSnippetAttributes {
   className: String
 
   """
-  The &quot;id&quot; field on the &quot;RankMathRichSnippetAttributes&quot; block or block attributes
-  """
-  id: String!
-
-  """
   The &quot;lock&quot; field on the &quot;RankMathRichSnippetAttributes&quot; block or block attributes
   """
   lock: BlockAttributesObject
@@ -21617,7 +21936,7 @@ type RankMathRichSnippetAttributes {
   """
   The &quot;post_id&quot; field on the &quot;RankMathRichSnippetAttributes&quot; block or block attributes
   """
-  postId: Int!
+  postId: String!
 }
 
 """Robot meta value tag."""
